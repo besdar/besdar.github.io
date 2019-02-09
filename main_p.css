@@ -1,0 +1,103 @@
+@charset "UTF-8";
+body,html{height:100%}
+.center,body{text-align:center}
+@font-face{
+    font-family:Roboto;
+    font-style:normal;
+    font-weight:300;
+    src:local('Roboto Light'),local('Roboto-Light'),url(https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfaCWcynf_cDxXwCLxiixG1c.ttf) format('truetype')
+}
+@font-face{
+    font-family:'Roboto Slab';
+    font-style:normal;
+    font-weight:700;
+    src:local('Roboto Slab Bold'),local('RobotoSlab-Bold'),url(https://fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJZ_TkvowlIOtbR7ePgFOpF4.ttf) format('truetype')
+}
+@media screen and (max-width:770px){
+    main{
+        width:100%!important;
+        height:100%!important
+    }
+    main .desc{font-size:1.2em}
+}
+@media screen and (max-width:335px){h1{font-size:36pt!important}}
+body,main{display:flex}
+body{
+    margin:0;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    background:url('../images/back.jpg') center no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover
+}
+a{
+    color:inherit;
+    text-decoration: none
+}
+p a {color: rgb(121, 252, 15)}
+p a:hover {color: rgb(34, 180, 34)}
+main{
+    background:rgba(0,0,0,.85);
+    width:800px;
+    height:450px;
+    align-content:stretch;
+    font-family:Roboto,sans-serif;
+    font-weight:300
+}
+main h1{
+    font-size:56pt;
+    margin:0 0 0px;
+    text-align:center;
+    font-family:'Roboto Slab',serif;
+    font-weight:700
+}
+/* main text */
+main .desc{
+    text-align:justify;
+    margin-top:24px;
+    margin-bottom:5px;
+    margin-left:16px;
+    margin-right:16px;
+    display:none;
+    display:block;
+    opacity: 1;
+}
+main .links{
+    font-size:24pt;
+    margin-top:auto;
+    margin-bottom:16px
+}
+main .content{
+    width:100%;
+    display:flex;
+    flex-direction:column
+}
+/* "links" font and svg settings*/
+svg :not(:hover) {
+    fill:white;
+    transition:linear .6s;
+}
+
+svg :hover {
+    transition: linear .3s;
+}
+
+ul { 
+    list-style: none outside;
+    text-align: center;
+    padding-left: 0px;
+    font-size:24pt;
+    margin-top:auto;
+    margin-bottom:16px;
+    height: 38px;
+ }
+ 
+ li { line-height: 18px; 
+    margin-bottom: 12px; 
+    display: inline-block;
+    padding: 0;
+    margin:0 10px}
+  
