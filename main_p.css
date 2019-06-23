@@ -18,7 +18,7 @@ body,html{height:100%}
         width:100%!important;
         height:100%!important
     }
-    body,html{height:auto}
+    
     main .desc{font-size:1.2em}
 }
 @media screen and (max-width:335px){h1{font-size:36pt!important}}
@@ -43,7 +43,7 @@ p a:hover {color: rgb(34, 180, 34)}
 main{
     background:rgba(0,0,0,.85);
     width:800px;
-    height:450px;
+    height:auto;
     align-content:stretch;
     font-family:Roboto,sans-serif;
     font-weight:300
@@ -95,6 +95,8 @@ ul {
     margin-bottom:16px;
     height: 38px;
  }
+
+#hide {margin-top: 0;}
  
  li { line-height: 18px; 
     margin-bottom: 12px; 
