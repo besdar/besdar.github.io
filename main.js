@@ -6,7 +6,7 @@ function ChangeHTMLHeight () {
 }
 
 document.getElementById('hider').onclick = function toggle() {
-    var el = document.getElementById('hide');
+    let el = document.getElementById('hide');
     el.style.display = (el.style.display === 'none') ? '' : 'none';
     ChangeHTMLHeight();
 };
