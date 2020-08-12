@@ -28,8 +28,8 @@ main, .content {
 }
 
 main {
-    background-color: darkgreen;
-    background-image: url('./back.webp');
+    background-color: #001a00;
+    background-image: url('./back.jpg');
     background-position: center; 
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -63,6 +63,14 @@ main .content .description {
 
 .description p a:hover {
     color: rgb(34, 180, 34)
+}
+
+#hide {
+    /* transition: opacity 1s ease-out; */
+    transition-property: height;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    overflow: hidden;
 }
 
 .footer_icons {
