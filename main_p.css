@@ -29,7 +29,7 @@ main, .content {
 
 main {
     background-color: #001a00;
-    background-image: url('./back.jpg');
+    background-image: url('./back.webp');
     background-position: center; 
     background-repeat: no-repeat;
     -webkit-background-size: cover;
