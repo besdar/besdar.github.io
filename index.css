@@ -9,6 +9,7 @@ main {
     width: 60%;
     margin: auto;
     min-width: 700px;
+    max-width: 1000px;
 }
 
 .body__header {
