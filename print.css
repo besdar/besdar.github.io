@@ -1,0 +1,7 @@
+@media print {
+    html {
+        --main-color: black;
+        --hover-color: black;
+        --background-color: white;
+    }
+}
