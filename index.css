@@ -1,0 +1,127 @@
+html {
+    --main-color: midnightblue;
+    --hover-color: dodgerblue;
+    --background-color: white;
+}
+
+header,
+main {
+    width: 60%;
+    margin: auto;
+    min-width: 700px;
+}
+
+.body__header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.header-title__employee-name {
+    text-align: center;
+    position: relative;
+    color: var(--main-color);
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.header-title__job-position {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: fit-content;
+    width: -moz-fit-content;
+    font-size: 1.3em;
+}
+
+.title-contacts,
+.header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts-links_margin-top {
+    margin-top: 0.5em;
+}
+
+.title-contacts__contact {
+    font-size: small;
+}
+
+.description__title {
+    width: fit-content;
+    width: -moz-fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--main-color);
+    background-color: var(--background-color);
+    position: relative;
+    z-index: 2;
+    padding: 0 5%;
+    margin-bottom: 0;
+}
+
+.description__title-container {
+    position: relative;
+    text-align: center;
+}
+
+.description__title-container::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    top: 50%;
+    left: 0;
+    border-top: 1px solid var(--main-color);
+    z-index: 1;
+}
+
+a {
+    font-style: italic;
+    text-decoration: none;
+    color: var(--main-color);
+    transition: linear .3s;
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+.history__dates {
+    font-size: smaller;
+}
+
+.history__activity,
+.history__faculty-title {
+    margin-bottom: 0;
+}
+
+.contacts-links svg {
+    width: 20px;
+}
+
+.contacts-link__link:not(:hover) svg path {
+    fill: var(--main-color);
+    transition: linear .6s;
+}
+
+.contacts-link__link:hover svg path {
+    transition: linear .3s;
+}
+
+.contacts-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacts-link__link {
+    margin-right: 10px;
+}
+
+.achivements__item {
+    padding-bottom: 5px;
+}

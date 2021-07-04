@@ -1,0 +1,9 @@
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: black;
+        color: white;
+        --main-color: dodgerblue;
+        --hover-color: blue;
+        --background-color: black;
+    }
+}
