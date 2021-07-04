@@ -4,4 +4,12 @@
         --hover-color: black;
         --background-color: white;
     }
+
+    .body__header {
+        margin: 0;
+    }
+
+    .body__aside-content, .contacts-links_not-printed {
+        display: none;
+    }
 }

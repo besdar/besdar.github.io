@@ -23,7 +23,7 @@
         </div>
         <div class="title-contacts">
             <address class="title-contacts__contact">г. Санкт-Петербург, м. Удельная</address>
-            <div class="title-contacts__contact contacts-links contacts-links_margin-top">
+            <div class="title-contacts__contact contacts-links contacts-links_margin-top contacts-links_not-printed">
                 <a title="Email" class="contacts-link__link" rel="noopener" href="mailto:beskovda@yandex.ru">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path
@@ -141,12 +141,13 @@
             <div class="history description__columns">
                 <div class="history__list">
                     <h4 class="history__company-name">
-                        <a rel="noopener" href="https://etu.ru/">СПбГЭТУ «ЛЭТИ»</a>
+                        <a title="СПбГЭТУ «ЛЭТИ»" rel="noopener" href="https://etu.ru/">СПбГЭТУ «ЛЭТИ»</a>
                     </h4>
                     <span class="history__dates">2014 - 2018</span>
                 </div>
                 <div class="history__about">
-                    <h4 class="history__title">«Инфоккомуникационные технологии и системы связи»</h4>
+                    <h4 class="history__title history__title-without-margin">«Инфоккомуникационные технологии и системы
+                        связи»</h4>
                     <p class="history__faculty-title">Факультет радиотехники и телекоммуникаций</p>
                 </div>
             </div>
@@ -155,16 +156,6 @@
             <div class="description__title-container">
                 <h3 class="description__title">Навыки</h3>
             </div>
-            <div class="description__columns">
-                <div class="description__item">
-
-                </div>
-                <div class="description__item">
-
-                </div>
-            </div>
-        </article>
-        <article class="resume">
             <ul class="achivements">
                 <li class="achivements__item">Способен найти и предложить стек инструментов для решения поступившей
                     бизнес-задачи;
@@ -177,11 +168,19 @@
             <p>Хочу развиваться в направлении React-приложений, мобильной разработки и (изучать) работать с
                 технологиями и языками, с которыми я ещё не сталкивался.</p>
             <p>Технологии и языки с которыми мне довелось поработать: JS, JSDoc, React, Redux, HTML, CSS, PHP,
-                PostgreSQL, MySQL, Vue, NodeJS, Webpack, Rollup, Gulp, PWA, jQuery, Git, Apache, Nginx, 1С-
-                Битрикс, 1С, Bash, Python, C++, Go.</p>
+                PostgreSQL, MySQL, Vue, NodeJS, Webpack, Rollup, Gulp, PWA, jQuery, Git, Apache, Nginx, 1С-Битрикс,
+                1С, Bash, Python, C++, Go.</p>
         </article>
     </main>
-
+    <aside class="body__aside-content aside-content">
+        <a class="aside-content__download-button" title="Download PDF" href="./Dmitry Beskov.pdf">
+            <svg class="aside-content__download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                fill="dodgerblue">
+                <path
+                    d="M12,2C6.49,2,2,6.49,2,12s4.49,10,10,10s10-4.49,10-10S17.51,2,12,2z M11,10V6h2v4h3l-4,4l-4-4H11z M17,17H7v-2h10V17z" />
+            </svg>
+        </a>
+    </aside>
     <script defer src="index.js?1"></script>
 </body>
 

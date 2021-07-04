@@ -97,18 +97,22 @@ a:hover {
 .history__activity,
 .history__faculty-title {
     margin-bottom: 0;
+    margin-top: 0;
+}
+.history__title-without-margin {
+    margin-bottom: 10px;
 }
 
 .contacts-links svg {
     width: 20px;
 }
 
-.contacts-link__link:not(:hover) svg path {
+a:not(:hover) svg path {
     fill: var(--main-color);
     transition: linear .6s;
 }
 
-.contacts-link__link:hover svg path {
+a:hover svg path {
     transition: linear .3s;
 }
 
@@ -124,4 +128,15 @@ a:hover {
 
 .achivements__item {
     padding-bottom: 5px;
+}
+
+.aside-content__download-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
+.aside-content__download-icon {
+    width: 50px;
+    height: 50px;
 }
