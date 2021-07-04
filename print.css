@@ -9,7 +9,8 @@
         margin-top: 0;
     }
 
-    .body__aside-content, .contacts-links_not-printed {
+    .body__aside-content,
+    .contacts-links_not-printed {
         display: none;
     }
 }
