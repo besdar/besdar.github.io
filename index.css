@@ -72,7 +72,7 @@ main {
 
 .description__title-container::after {
     position: absolute;
-    content: "";
+    content: '';
     width: 100%;
     top: 50%;
     left: 0;
@@ -141,4 +141,49 @@ a:hover svg path {
 .aside-content__download-icon {
     width: 50px;
     height: 50px;
+}
+
+.aside-content__tooltip {
+    position: absolute;
+    display: none;
+
+    background-color: var(--main-color);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 250px;
+}
+
+.softwise-stack__js,
+.softwise-stack__jquery,
+.softwise-stack__htmlcss,
+.softwise-stack__php,
+.softwise-stack__sql,
+.softwise-stack__react,
+.softwise-stack__vue,
+.bios-stack__react,
+.bios-stack__htmlcss,
+.bios-stack__js,
+.bios-stack__php,
+.bios-stack__nodejs,
+.bios-stack__1c {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    cursor: pointer;
+}
+
+.softwise-stack__js:hover,
+.softwise-stack__jquery:hover,
+.softwise-stack__htmlcss:hover,
+.softwise-stack__php:hover,
+.softwise-stack__sql:hover,
+.softwise-stack__react:hover,
+.softwise-stack__vue:hover,
+.bios-stack__react:hover,
+.bios-stack__htmlcss:hover,
+.bios-stack__js:hover,
+.bios-stack__php:hover,
+.bios-stack__nodejs:hover,
+.bios-stack__1c:hover {
+    color: var(--hover-color);
 }
