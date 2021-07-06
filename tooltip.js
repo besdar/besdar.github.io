@@ -1,7 +1,7 @@
 'use strict';
 
 const tipTexts = {
-    'softwise-stack__js': 'ES5 и ES6, TS, участие в доработке линтера и таск-ранннера, написание кода правил workflow в изолированной среде YouTrack, решение разноплановых задач (как доработка сайтов, так и доработка невидимых рекламных скриптов) и много чего ещё',
+    'softwise-stack__js': 'ES5 и ES6+, TS, участие в доработке линтера и таск-ранннера, написание кода правил workflow в изолированной среде YouTrack, решение разноплановых задач (как доработка сайтов, так и доработка невидимых рекламных скриптов) и много чего ещё',
     'softwise-stack__jquery': 'Переписывал легаси код на современный стек или дорабатывал его функциональность.',
     'softwise-stack__htmlcss': 'Учавствовал в обсуждении стандартов компании в HTML и CSS, делал рефактор верстки в phtml.',
     'softwise-stack__php': 'Дорабатывал и делал рефактор существующего кода согласно современным стандартам компании, но без архитектурных изменений.',
@@ -17,12 +17,17 @@ const tipTexts = {
 };
 
 const tooltipElement = document.getElementsByClassName('aside-content__tooltip')[0];
+let isClicked = false;
 
 /**
  * Cancelles created tip
  * @param {boolean} isHover
  */
 const cancelTip = (isHover = false) => {
+    if (isHover && isClicked) {
+        return;
+    }
+
     tooltipElement.innerHTML = '';
     tooltipElement.removeAttribute('style');
 };
@@ -43,28 +48,28 @@ const createTip = (event, isHover = false) => {
     tooltipElement.style.display = 'block';
 
     const padding = 5;
+    const windowPadding = 10;
     const { offsetTop: targetTopPosition, offsetLeft: targetLeftPosition, offsetWidth: targetWidth } = currentTarget;
     const { height: tooltipHeight, width: tooltipWidth } = tooltipElement.getBoundingClientRect();
     const topPos = targetTopPosition - (tooltipHeight + padding);
     let leftPos = targetLeftPosition + targetWidth / 2 - tooltipWidth / 2;
-    if (leftPos < 10) {
-        leftPos = 10;
-    } else if (leftPos + tooltipWidth > window.innerWidth - 10) {
-        leftPos = window.innerWidth - 10 - tooltipWidth;
+    if (leftPos < windowPadding) {
+        leftPos = windowPadding;
+    } else if (leftPos + tooltipWidth > window.innerWidth - windowPadding) {
+        leftPos = window.innerWidth - windowPadding - tooltipWidth;
     }
     
     tooltipElement.style.top = topPos + 'px';
-    tooltipElement.style.left = (leftPos > 0 ? leftPos : 10) + 'px';
-    
+    tooltipElement.style.left = leftPos + 'px';
+    isClicked = !isHover;
 };
 
-document.body.getElementsByTagName('header')[0].addEventListener('click', cancelTip);
-document.body.getElementsByTagName('main')[0].addEventListener('click', cancelTip);
+document.body.addEventListener('click', e => cancelTip(e.target.className === 'aside-content__tooltip'));
 
 Object.keys(tipTexts).forEach(className => {
     const htmlElement = document.getElementsByClassName(className)[0];
 
     htmlElement.addEventListener('click', createTip);
-    // htmlElement.addEventListener('mouseover', createTip);
-    // htmlElement.addEventListener('mouseout', cancelTip(true));
+    htmlElement.addEventListener('mouseover', e => createTip(e, true));
+    htmlElement.addEventListener('mouseout', e => cancelTip(true));
 });
