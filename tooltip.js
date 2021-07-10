@@ -17,7 +17,7 @@ if (language === 'ru') {
     tipTexts['softwise-stack__react'] = 'Производил большой рефакторинг существующего кода в том числе архитектурный, писал объемные модули на несколько тысяч строк.';
     tipTexts['softwise-stack__sql'] = 'Доработка функций, написание запросов на обновление и получение каких-либо данных.';
     tipTexts['softwise-stack__vue'] = 'Производил небольшие доработки существующего функционала, брался за Vue и успешно с ним справлялся в положенные сроки при том, что ранее вообще не имел опыта работы с Vue.';
-} else if (language === 'en') {
+} else if (language === 'en' && false) {
     tipTexts['bios-stack__1c'] = 'As a frontend developer was working with 1C-Bitrix. Among other things was writing a lot of 1C server side code for working with web protocols, API different applications (like Telegram for example).';
     tipTexts['bios-stack__htmlcss'] = 'Supported several different sites, made serious refactor for CSS and HTML. Wrote new pages and modules for this sites.';
     tipTexts['bios-stack__js'] = 'Use vanilla JS (+TS) as for React applications as well for refine several sites.';
