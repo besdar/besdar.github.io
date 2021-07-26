@@ -18,19 +18,19 @@ if (language === 'ru') {
     tipTexts['softwise-stack__sql'] = 'Доработка функций, написание запросов на обновление и получение каких-либо данных.';
     tipTexts['softwise-stack__vue'] = 'Производил небольшие доработки существующего функционала, брался за Vue и успешно с ним справлялся в положенные сроки при том, что ранее вообще не имел опыта работы с Vue.';
 } else if (language === 'en') {
-    tipTexts['bios-stack__1c'] = 'As a frontend developer was working with 1C-Bitrix. Among other things was writing a lot of 1C server side code for working with web protocols, API different applications (like Telegram for example).';
-    tipTexts['bios-stack__htmlcss'] = 'Supported several different sites, made serious refactor for CSS and HTML. Wrote new pages and modules for this sites.';
-    tipTexts['bios-stack__js'] = 'Use vanilla JS (+TS) as for React applications as well for refine several sites.';
-    tipTexts['bios-stack__nodejs'] = 'Wrote server side JS code for React application, worked with webpack and babel configurations, used npm as task-runner as well package manager.';
-    tipTexts['bios-stack__php'] = 'Support and rewrite exist legacy code, interact with 1C-Bitrix API, writing small php-scripts, updating PHP version.';
-    tipTexts['bios-stack__react'] = 'Created application from scratch, analyze application architecture by myself, analyzed and seriously rewrite (refine) exist projects, actively used TS.';
-    tipTexts['softwise-stack__htmlcss'] = 'Take part in the HTML and CSS code style standarts discussions, made refactoring html layout in the phtml files.';
-    tipTexts['softwise-stack__jquery'] = 'Rewrite legacy code to modern language stack or refined its functionality';
-    tipTexts['softwise-stack__js'] = 'ES5 and ES6+, TS, took part in the JS linter and task-runner (gulp) refining, wrote rules for YouTrack workflows, solved the most different tasks (as the site refining as well refining invisible advertising scripts) and a lot of other things.';
-    tipTexts['softwise-stack__php'] = 'Rewrote and made refactoring existing code according company standarts but without architecture changes.';
-    tipTexts['softwise-stack__react'] = 'Made large refactoring existing code including architecture refactoring, wrote large modules for thousands rows.';
-    tipTexts['softwise-stack__sql'] = 'Rewriting functions, writing queries for updating and getting different data.';
-    tipTexts['softwise-stack__vue'] = 'Made small fixes existing functionality, took Vue and succesfully handle task in the right time despite the fact that I have not experience with Vue earlier.';
+    tipTexts['bios-stack__1c'] = 'As a frontend developer worked with 1C-Bitrix. Also wrote a lot of 1C server side code for working with web protocols, various application\'s APIs (Telegram, for example).';
+    tipTexts['bios-stack__htmlcss'] = 'Supported various websites, made serious refactoring for CSS and HTML. Wrote new pages and modules for these websites.';
+    tipTexts['bios-stack__js'] = 'Used vanilla JS (+TS) for React applications as well as for several websites adjustment.';
+    tipTexts['bios-stack__nodejs'] = 'Wrote server side JS code for React application, worked with webpack and babel configurations, used npm as a task-runner as a well package manager.';
+    tipTexts['bios-stack__php'] = 'Supported and rewrote existing legacy code, interacted with 1C-Bitrix API, wrote small php-scripts, updated PHP version.';
+    tipTexts['bios-stack__react'] = 'Created new applications, analyzed application architecture, analyzed and seriously rewrote (adjusted) existing projects, actively used TS.';
+    tipTexts['softwise-stack__htmlcss'] = 'Participated in the HTML and CSS code style standarts discussions, made refactoring HTML layout in the phtml files.';
+    tipTexts['softwise-stack__jquery'] = 'Rewrote legacy code into modern language stack or adjusted its functionality';
+    tipTexts['softwise-stack__js'] = 'ES5 and ES6+, TS, took part in the JS linter and task-runner (gulp) adjustment, wrote rules for YouTrack workflows, solved various tasks (websites adjustment, adjustment invisible advertising scripts, etc.) and many other things.';
+    tipTexts['softwise-stack__php'] = 'Rewrote and refactored existing code in accordance with the company\'s standards (didn\'t change the app\'s architecture)';
+    tipTexts['softwise-stack__react'] = 'Made large-scale refactoring of existing code including architecture refactoring, wrote large modules for thousands lines.';
+    tipTexts['softwise-stack__sql'] = 'Rewrote functions, writing queries for updating and getting various data.';
+    tipTexts['softwise-stack__vue'] = 'Made small fixes in existing functionality, took part in working with Vue and succesfully handled tasks on time regardless of the lack of experience in working with Vue.';
 }
 
 const tooltipElement = document.getElementsByClassName('aside-content__tooltip')[0];
