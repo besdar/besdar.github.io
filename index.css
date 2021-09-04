@@ -1,157 +1,156 @@
 html {
-    --main-color: midnightblue;
-    --hover-color: dodgerblue;
-    --background-color: white;
+  --main-color: midnightblue;
+  --hover-color: dodgerblue;
+  --background-color: white;
 }
 
 header,
 main {
-    width: 60%;
-    margin: auto;
-    min-width: 700px;
-    max-width: 1000px;
+  width: 60%;
+  margin: auto;
+  min-width: 700px;
+  max-width: 1000px;
 }
 
 .body__header {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
 }
 
 .header-title__employee-name {
-    text-align: center;
-    position: relative;
-    color: var(--main-color);
-    margin-bottom: 0;
-    margin-top: 0;
+  text-align: center;
+  position: relative;
+  color: var(--main-color);
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .header-title__job-position {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    width: fit-content;
-    width: -moz-fit-content;
-    font-size: 1.3em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: fit-content;
+  width: -moz-fit-content;
+  font-size: 1.3em;
 }
 
 .title-contacts,
 .header-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .contacts-links_margin-top {
-    margin-top: 0.5em;
+  margin-top: 0.5em;
 }
 
 .title-contacts__contact {
-    font-size: small;
+  font-size: small;
 }
 
 .description__title {
-    width: fit-content;
-    width: -moz-fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    color: var(--main-color);
-    background-color: var(--background-color);
-    position: relative;
-    z-index: 2;
-    padding: 0 5%;
-    margin-bottom: 0;
+  width: fit-content;
+  width: -moz-fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--main-color);
+  background-color: var(--background-color);
+  position: relative;
+  z-index: 2;
+  padding: 0 5%;
+  margin-bottom: 0;
 }
 
 .description__title-container {
-    position: relative;
-    text-align: center;
+  position: relative;
+  text-align: center;
 }
 
 .description__title-container::after {
-    position: absolute;
-    content: '';
-    width: 100%;
-    top: 50%;
-    left: 0;
-    border-top: 1px solid var(--main-color);
-    z-index: 1;
+  position: absolute;
+  content: '';
+  width: 100%;
+  top: 50%;
+  left: 0;
+  border-top: 1px solid var(--main-color);
+  z-index: 1;
 }
 
 a {
-    font-style: italic;
-    text-decoration: none;
-    color: var(--main-color);
-    transition: linear 0.3s;
+  font-style: italic;
+  text-decoration: none;
+  color: var(--main-color);
+  transition: linear 0.3s;
 }
 
 a:hover {
-    color: var(--hover-color);
+  color: var(--hover-color);
 }
 
 .history__dates {
-    font-size: smaller;
+  font-size: smaller;
 }
 
 .history__tech-stack,
 .history__faculty-title {
-    margin-bottom: 0;
-    margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .history__title-without-margin {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .contacts-links svg {
-    width: 20px;
+  width: 20px;
 }
 
 a:not(:hover) svg path {
-    fill: var(--main-color);
-    transition: linear 0.6s;
+  fill: var(--main-color);
+  transition: linear 0.6s;
 }
 
 a:hover svg path {
-    transition: linear 0.3s;
+  transition: linear 0.3s;
 }
 
 .contacts-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contacts-link__link {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .achivements__item {
-    padding-bottom: 5px;
+  padding-bottom: 5px;
 }
 
 .aside-content__download-button {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
 }
 
 .aside-content__download-icon {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .aside-content__tooltip {
-    position: absolute;
-    display: none;
-
-    background-color: var(--main-color);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    max-width: 250px;
+  position: absolute;
+  display: none;
+  background-color: var(--main-color);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 250px;
 }
 
 .softwise-stack__js,
@@ -167,9 +166,9 @@ a:hover svg path {
 .bios-stack__php,
 .bios-stack__nodejs,
 .bios-stack__1c {
-    text-decoration: underline;
-    text-decoration-style: dashed;
-    cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  cursor: pointer;
 }
 
 .softwise-stack__js:hover,
@@ -185,5 +184,5 @@ a:hover svg path {
 .bios-stack__php:hover,
 .bios-stack__nodejs:hover,
 .bios-stack__1c:hover {
-    color: var(--hover-color);
+  color: var(--hover-color);
 }

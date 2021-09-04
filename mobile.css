@@ -1,39 +1,36 @@
-@media screen and (max-width: 700px),
-print {
+@media screen and (max-width: 700px), print {
+  header,
+  main {
+    width: 100%;
+    min-width: 300px;
+  }
 
-    header,
-    main {
-        width: 100%;
-        min-width: 300px;
-    }
+  .body__header {
+    flex-direction: column;
+  }
 
-    .body__header {
-        flex-direction: column;
-    }
+  .description__columns {
+    display: block;
+  }
 
-    .description__columns {
-        display: block;
-    }
+  .history__list {
+    display: flex;
+    align-items: center;
+    margin-top: 1.3em;
+  }
 
-    .history__list {
-        display: flex;
-        align-items: center;
-        margin-top: 1.3em;
-    }
+  .history__company-name {
+    border-right: 1px solid midnightblue;
+    width: -moz-fit-content;
+    margin: 0;
+    padding-right: 10px;
+  }
 
-    .history__company-name {
-        border-right: 1px solid midnightblue;
-        margin-bottom: 0.5em;
-        width: -moz-fit-content;
-        margin: 0;
-        padding-right: 10px;
-    }
+  .history__dates {
+    padding-left: 10px;
+  }
 
-    .history__dates {
-        padding-left: 10px;
-    }
-
-    .history__title {
-        margin-top: 10px;
-    }
+  .history__title {
+    margin-top: 10px;
+  }
 }

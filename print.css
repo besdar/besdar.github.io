@@ -1,16 +1,16 @@
 @media print {
-    html {
-        --main-color: black;
-        --hover-color: black;
-        --background-color: white;
-    }
+  html {
+    --main-color: black;
+    --hover-color: black;
+    --background-color: white;
+  }
 
-    .body__header {
-        margin-top: 0;
-    }
+  .body__header {
+    margin-top: 0;
+  }
 
-    .body__aside-content,
-    .contacts-links_not-printed {
-        display: none;
-    }
+  .body__aside-content,
+  .contacts-links_not-printed {
+    display: none;
+  }
 }
