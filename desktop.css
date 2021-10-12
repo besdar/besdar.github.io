@@ -4,7 +4,7 @@
     padding-left: 10px;
   }
 
-  .description__columns {
+  .description__item {
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-column-gap: 20px;

@@ -8,6 +8,7 @@ if (language === 'ru') {
   tipTexts['bios-stack__nodejs'] = 'Писал серверный JS код для React-приложения, работал с кофигом webpack и babel, использовал npm как таск-раннер так и пакетный менеджер.';
   tipTexts['bios-stack__php'] = 'Поддержка и доработка существующего легаси-кода, взаимодействие с API 1С-Битрикс, написание небольших php-скриптов, обновление версии PHP.';
   tipTexts['bios-stack__react'] = 'Создавал приложения с чистого листа, сам продумывал архитектуру, разбирал и серьезно дорабатывал (переделывал) существующие проекты, активно использовал TS.';
+
   tipTexts['softwise-stack__htmlcss'] = 'Учавствовал в обсуждении стандартов компании в HTML и CSS, делал рефактор верстки в phtml.';
   tipTexts['softwise-stack__jquery'] = 'Переписывал легаси код на современный стек или дорабатывал его функциональность.';
   tipTexts['softwise-stack__js'] = 'ES5 и ES6+, TS, участие в доработке линтера и таск-ранннера, написание кода правил workflow в изолированной среде YouTrack, решение разноплановых задач (как доработка сайтов, так и доработка невидимых рекламных скриптов) и много чего ещё.';
@@ -15,6 +16,11 @@ if (language === 'ru') {
   tipTexts['softwise-stack__react'] = 'Производил большой рефакторинг существующего кода в том числе архитектурный, писал объемные модули на несколько тысяч строк.';
   tipTexts['softwise-stack__sql'] = 'Доработка функций, написание запросов на обновление и получение каких-либо данных.';
   tipTexts['softwise-stack__vue'] = 'Производил небольшие доработки существующего функционала, брался за Vue и успешно с ним справлялся в положенные сроки при том, что ранее вообще не имел опыта работы с Vue.';
+
+  tipTexts['foxford-stack__htmlcss'] = 'Верстка лендов в Webflow. Именование css классов по БЭМ. Работал над разработкой стаил-гайдов для команды';
+  tipTexts['foxford-stack__jquery'] = 'Написание простых анимаций и взаимодействий с DOM';
+  tipTexts['foxford-stack__js'] = 'Рефакторинг проекта и выделение однотипных функций в новые общие модули. Обновление пакетов, доработка сборки Rollup. Формирование правил разработки для команды (в том числе в линтере) и введение ревью.';
+  tipTexts['foxford-stack__react'] = 'Написание небольших приложений для лендов, рефакторинг и выделение общих компонент в старом коде.';
 } else if (language === 'en') {
   tipTexts['bios-stack__1c'] = 'As a frontend developer worked with 1C-Bitrix. Also wrote a lot of 1C server side code for working with web protocols, various application\'s APIs (Telegram, for example).';
   tipTexts['bios-stack__htmlcss'] = 'Supported various websites, made serious refactoring for CSS and HTML. Wrote new pages and modules for these websites.';
@@ -22,6 +28,7 @@ if (language === 'ru') {
   tipTexts['bios-stack__nodejs'] = 'Wrote server side JS code for React application, worked with webpack and babel configurations, used npm as a task-runner as well as package manager.';
   tipTexts['bios-stack__php'] = 'Supported and rewrote existing legacy code, interacted with 1C-Bitrix API, wrote small php-scripts, updated PHP version.';
   tipTexts['bios-stack__react'] = 'Created new applications, analyzed application architecture, analyzed and seriously rewrote (adjusted) existing projects, actively used TS.';
+
   tipTexts['softwise-stack__htmlcss'] = 'Participated in the HTML and CSS code style standarts discussions, made refactoring HTML layout in the phtml files.';
   tipTexts['softwise-stack__jquery'] = 'Rewrote legacy code into modern language stack or adjusted its functionality';
   tipTexts['softwise-stack__js'] = 'ES5 and ES6+, TS, took part in the JS linter and task-runner (gulp) adjustment, wrote rules for YouTrack workflows, solved various tasks (websites adjustment, adjustment invisible advertising scripts, etc.) and many other things.';
