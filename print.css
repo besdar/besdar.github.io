@@ -1,8 +1,9 @@
 @media print {
   html {
-    --main-color: black;
+    --highlight-color: black;
     --hover-color: black;
     --background-color: white;
+    --main-color: black;
   }
 
   .body__header {
@@ -12,5 +13,15 @@
   .body__aside-content,
   .contacts-links_not-printed {
     display: none;
+  }
+
+  .title-contacts {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .title-contacts__email,
+  .title-contacts__divider {
+    display: block;
   }
 }
