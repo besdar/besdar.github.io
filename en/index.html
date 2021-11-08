@@ -8,11 +8,11 @@
     <meta name="description" content="Frontend-разработчик" />
     <meta name="author" content="Dmitry Beskov - CV" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="../index.css?1" />
+    <link rel="stylesheet" href="../index.css?4" />
     <link rel="stylesheet" href="../mobile.css?1" media="screen and (max-width: 700px), print" />
-    <link rel="stylesheet" href="../desktop.css?1" media="screen and (min-width: 701px)" />
-    <link rel="stylesheet" href="../dark.css?1" media="(prefers-color-scheme: dark)" />
-    <link rel="stylesheet" href="../print.css?1" media="print" />
+    <link rel="stylesheet" href="../desktop.css?2" media="screen and (min-width: 701px)" />
+    <link rel="stylesheet" href="../dark.css?3" media="(prefers-color-scheme: dark)" />
+    <link rel="stylesheet" href="../print.css?2" media="print" />
 </head>
 
 <body class="body">
@@ -25,6 +25,8 @@
             <address class="title-contacts__contact">
                 Saint Petersburg, Russia
             </address>
+            <div class="title-contacts__divider">|</div>
+            <span class="title-contacts__contact title-contacts__email">beskovda@yandex.ru</span>
             <div class="title-contacts__contact contacts-links contacts-links_margin-top contacts-links_not-printed">
                 <a class="contacts-link__link" rel="noopener" href="mailto:beskovda@yandex.ru">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -76,23 +78,62 @@
             <div class="description__title-container">
                 <h3 class="description__title">Work experience</h3>
             </div>
-            <div class="history description__columns">
+            <section class="history description__item">
                 <div class="history__list">
-                    <h4 class="history__company-name">
+                    <h3 class="history__company-name">
+                        <a title="Foxford" rel="noopener" href="https://foxford.ru" target="_blank">Foxford</a>
+                    </h3>
+                    <span class="history__dates">August 2021 - Now</span>
+                </div>
+                <div class="history__description">
+                    <h3 class="history__title">Frontend developer</h3>
+                    <div class="history__about">
+                        <ul class="history__achivements achivements">
+                            <li class="achivements__item">
+                                Implemented code review for the team, was an organazer of frontend meetings
+                            </li>
+                            <li class="achivements__item">
+                                Added large adjustment to the ESLint of a team project, added Stylelint,
+                                adjusted bundling and CI of the project
+                            </li>
+                            <li class="achivements__item">
+                                Optimized JS code of the project and work process of the team - developers
+                                now are writing faster and more stable code
+                            </li>
+                        </ul>
+                        <p class="history__activity">
+                            Practically was a team leader, worked a lot with HTML&CSS
+                            and managerial activities like teamwork process optimization on various development stages
+                        </p>
+                        <p class="history__tech-stack foxford-stack">
+                            <span class="foxford-stack__title">Stack:</span>
+                            <span class="foxford-stack__js">JS&Flow</span>,
+                            <span class="foxford-stack__jquery">JQuery</span>,
+                            <span class="foxford-stack__htmlcss">HTML&CSS</span>,
+                            <span class="foxford-stack__react">React&Effector</span>,
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="history description__item">
+                <div class="history__list">
+                    <h3 class="history__company-name">
                         <a title="SoftWise" rel="noopener" href="https://softwise.ru">SoftWise</a>
-                    </h4>
+                    </h3>
                     <span class="history__dates">December 2020 - June 2021</span>
                 </div>
                 <div class="history__description">
-                    <h4 class="history__title">Frontend developer</h4>
+                    <h3 class="history__title">Frontend developer</h3>
                     <div class="history__about">
                         <ul class="history__achivements achivements">
                             <li class="achivements__item">
                                 Was noticed as one of the fastest employees in feature development
                             </li>
                             <li class="achivements__item">
-                                Offered JS linter and Styleint improvement and integration techniques, minification of JS and CSS;
-                                took active part in writing the frontend style guide; has a rich experience in refactoring the legacy code
+                                Offered JS linter and Styleint improvement and integration techniques, minification
+                                of JS and CSS;
+                                took active part in writing the frontend style guide; has a rich experience in
+                                refactoring the legacy code
                             </li>
                             <li class="achivements__item">
                                 Successfully and confidently worked with php and PostgreSQL
@@ -118,7 +159,8 @@
                         </p>
                     </div>
                 </div>
-
+            </section>
+            <section class="history description__item">
                 <div class="history__list">
                     <h4 class="history__company-name">
                         <a title="BIOS" rel="noopener" href="https://bios.guru">BIOS</a>
@@ -160,13 +202,13 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </section>
         </article>
         <article class="description">
             <div class="description__title-container">
                 <h3 class="description__title">Education</h3>
             </div>
-            <div class="history description__columns">
+            <div class="history description__item">
                 <div class="history__list">
                     <h4 class="history__company-name">
                         <a title="ETU «LETI»" rel="noopener" href="https://etu.ru/">ETU «LETI»</a>
