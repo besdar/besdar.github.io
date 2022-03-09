@@ -1,0 +1,272 @@
+html {
+  --main-color: black;
+  --highlight-color: midnightblue;
+  --hover-color: dodgerblue;
+  --background-color: white;
+}
+
+header,
+main {
+  width: 60%;
+  margin: auto;
+  min-width: 700px;
+  max-width: 1000px;
+}
+
+.body__header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+}
+
+.header-title__employee-name {
+  text-align: center;
+  position: relative;
+  color: var(--highlight-color);
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.title-contacts,
+.header-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacts-links_margin-top {
+  margin-top: 0.5em;
+}
+
+.title-contacts__contact {
+  font-size: small;
+}
+
+.title-contacts__email,
+.title-contacts__divider {
+  display: none;
+}
+
+.description__title {
+  width: fit-content;
+  width: -moz-fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--highlight-color);
+  background-color: var(--background-color);
+  position: relative;
+  z-index: 2;
+  padding: 0 5%;
+  margin-bottom: 0;
+}
+
+.description__title-container {
+  position: relative;
+  text-align: center;
+}
+
+.description__title-container::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  top: 50%;
+  left: 0;
+  border-top: 1px solid var(--highlight-color);
+  z-index: 1;
+}
+
+a {
+  font-style: italic;
+  text-decoration: none;
+  color: var(--highlight-color);
+  transition: linear 0.3s;
+}
+
+a:hover {
+  color: var(--hover-color);
+}
+
+.history__dates {
+  font-size: smaller;
+}
+
+.history__tech-stack,
+.history__faculty-title {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.history__title-without-margin {
+  margin-bottom: 10px;
+}
+
+.contacts-links svg {
+  width: 20px;
+}
+
+a:not(:hover) svg path {
+  fill: var(--highlight-color);
+  transition: linear 0.6s;
+}
+
+a:hover svg path {
+  transition: linear 0.3s;
+}
+
+.contacts-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacts-link__link {
+  margin-right: 10px;
+}
+
+.achivements__item {
+  padding-bottom: 5px;
+}
+
+.aside-content__download-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.aside-content__download-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.aside-content__tooltip {
+  position: absolute;
+  background-color: var(--highlight-color);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 250px;
+}
+
+.history__tech-stack span:not(:first-child) {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  cursor: pointer;
+}
+
+.history__tech-stack span:not(:first-child):hover {
+  color: var(--hover-color);
+}
+
+.language-button {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+@media screen and (max-width: 700px), print {
+  header,
+  main {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  .body__header {
+    flex-direction: column;
+  }
+
+  .description__columns {
+    display: block;
+  }
+
+  .history__list {
+    display: flex;
+    align-items: center;
+    margin-top: 1.3em;
+  }
+
+  .history__company-name {
+    border-right: 1px solid midnightblue;
+    width: -moz-fit-content;
+    margin: 0;
+    padding-right: 10px;
+  }
+
+  .history__dates {
+    padding-left: 10px;
+  }
+
+  .history__title {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  .title-contacts {
+    border-left: 1px solid lightgray;
+    padding-left: 10px;
+  }
+
+  .description__item {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-column-gap: 20px;
+  }
+
+  .history__list {
+    text-align: center;
+  }
+
+  .history__company-name {
+    border: 1px solid midnightblue;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 0.5em;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --highlight-color: dodgerblue;
+    --hover-color: deepskyblue;
+    --background-color: black;
+    --main-color: white;
+
+    background-color: var(--background-color);
+    color: var(--main-color);
+  }
+}
+
+@media print {
+  html {
+    --highlight-color: black;
+    --hover-color: black;
+    --background-color: white;
+    --main-color: black;
+  }
+
+  .body__header {
+    margin-top: 0;
+  }
+
+  .body__aside-content,
+  .contacts-links_not-printed {
+    display: none;
+  }
+
+  .title-contacts {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .title-contacts__email,
+  .title-contacts__divider {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=index.9e4c6fd2.css.map */
