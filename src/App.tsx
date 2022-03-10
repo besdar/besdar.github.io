@@ -11,7 +11,7 @@ import "../desktop.css"
 import "../dark.css"
 import "../print.css"
 
-const INITIAL_LANGUAGE: LanguagesType = window.navigator.language === 'en-US' || window.location.pathname.startsWith('/en') ? 'EN' : 'RU'
+const INITIAL_LANGUAGE: LanguagesType = window.navigator.language === 'ru-RU' && !window.location.pathname.startsWith('/en') ? 'RU' : 'EN'
 
 type TooltipContextType = { setTooltip?: (params: TooltipProps, isFixed?: boolean) => void, Language: LanguagesType }
 export const TooltipContext = createContext<TooltipContextType>({ Language: INITIAL_LANGUAGE })
