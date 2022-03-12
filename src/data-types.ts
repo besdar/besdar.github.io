@@ -1,4 +1,4 @@
-import { StackData } from "./Description/Stack"
+import { StackData } from './Description/Stack';
 
 export type CompanyData = {
   company: {

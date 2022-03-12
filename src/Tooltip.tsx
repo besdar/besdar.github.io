@@ -1,4 +1,6 @@
-import React, { FC, memo, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  FC, memo, useLayoutEffect, useRef, useState,
+} from 'react';
 
 export type TooltipProps = {
   text?: string;
@@ -45,7 +47,7 @@ const Component: FC<TooltipProps> = ({ text, positionPoint }) => {
     {
       top: 0,
       left: 0,
-    }
+    },
   );
 
   useLayoutEffect(() => {
@@ -59,7 +61,7 @@ const Component: FC<TooltipProps> = ({ text, positionPoint }) => {
         ...positionPoint,
         height: tooltipRect.height,
         width: tooltipRect.width,
-      })
+      }),
     );
   }, [positionPoint, tooltipElement]);
 

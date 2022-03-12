@@ -9,7 +9,7 @@ type ContentProps = {
 }
 
 const Component: FC<PageDataType & ContentProps> = ({
-  address, education, employee, jobHistory, summary, onClick
+  address, education, employee, jobHistory, summary, onClick,
 }) => {
   const jobDescriptionItems: Array<DescriptionItemProps> = Object
     .keys(jobHistory.jobs)
@@ -54,11 +54,11 @@ const Component: FC<PageDataType & ContentProps> = ({
       <header className="body__header">
         <div className="header-title">
           <h1 className="header-title__employee-name">{employee}</h1>
-          <h2 style={{ display: "none" }} className="header-title__job-position">Frontend developer</h2>
+          <h2 style={{ display: 'none' }} className="header-title__job-position">Frontend developer</h2>
         </div>
         <Contacts address={address} />
       </header>
-      <main onClick={onClick} className="body__content">
+      <main onClick={onClick} className="body__content" role="presentation">
         <Description title={jobHistory.title} items={jobDescriptionItems} />
         <Description title={education.title} items={[universityDescription]} />
         <Description title={summary.title} items={[summaryDescription]} />

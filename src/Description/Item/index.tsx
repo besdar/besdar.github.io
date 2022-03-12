@@ -1,7 +1,7 @@
-import React, { FC, memo } from "react";
-import { Achievements, AchievementsProps } from "../Achivements";
-import { Stack, StackProps } from "../Stack";
-import { Tab, TabProps } from "./Tab";
+import React, { FC, memo } from 'react';
+import { Achievements, AchievementsProps } from '../Achivements';
+import { Stack, StackProps } from '../Stack';
+import { Tab, TabProps } from './Tab';
 
 export type ItemProps = {
   tab?: TabProps;
@@ -18,7 +18,7 @@ const Component: FC<ItemProps> = ({
   stack,
   title,
 }) => {
-  const sectionClasses = ['history', tab && 'description__item'].filter(Boolean).join(' ')
+  const sectionClasses = ['history', tab && 'description__item'].filter(Boolean).join(' ');
 
   return (
     <section className={sectionClasses}>
@@ -32,7 +32,7 @@ const Component: FC<ItemProps> = ({
         </div>
       </div>
     </section>
-  )
+  );
 };
 
 export const Item = memo(Component);

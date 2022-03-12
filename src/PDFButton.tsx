@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 const Component: FC = () => (
-  <a className="aside-content__download-button" href='./Dmitry Beskov.pdf' download target="_blank">
+  <a className="aside-content__download-button" href="./Dmitry Beskov.pdf" download target="_blank">
     <svg className="aside-content__download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <title>PDF</title>
       <path
