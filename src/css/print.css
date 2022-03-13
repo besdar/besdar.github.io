@@ -11,7 +11,8 @@
   }
 
   .body__aside-content,
-  .contacts-links_not-printed {
+  .contacts-links_not-printed,
+  .description__details {
     display: none;
   }
 

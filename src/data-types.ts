@@ -18,6 +18,7 @@ export type PageDataType = {
   jobHistory: {
     title: string,
     stackTitle: string,
+    showMoreTitle: string,
     jobs: {
       [key: string]: CompanyData
     },

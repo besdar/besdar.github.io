@@ -101,6 +101,7 @@ export const RUSSIAN_DATA: PageDataType = {
   address: 'г. Санкт-Петербург',
   jobHistory: {
     title: 'Опыт работы',
+    showMoreTitle: 'Более ранний опыт работы',
     stackTitle: 'Стек',
     jobs: {
       Foxford: {
@@ -204,7 +205,7 @@ export const RUSSIAN_DATA: PageDataType = {
         },
         position: 'Программист',
         achivements: [
-          'Web-разработка: React и Redux / PHP / Typescript / Bitrix. Поддержка, развертывание и создание проектов. Самообучение, саморефакторинг.',
+          'Web-разработка: React и Redux / PHP / Typescript / Bitrix / HTTP. Поддержка, развертывание и создание проектов. Самообучение, саморефакторинг.',
           'Системное администрирование: Настройка и развертываение (веб-)серверов и платформ (1С), решение ошибок ОС, управление ветвлением в проектах.',
           'Разработка 1С клиента телеграм, разработка TOTP-алгоритма двухфакторной аутентификации',
           'Работа с 1С на серьезном уровне: принятие архитектурных решений, работа с нестандартными механизмами. EDT.',
@@ -233,6 +234,10 @@ export const RUSSIAN_DATA: PageDataType = {
               'Поддержка и доработка существующего легаси-кода, взаимодействие с API 1С-Битрикс, написание небольших php-скриптов, обновление версии PHP.',
           },
           {
+            title: 'HTTP',
+            description: 'Стал автором сложных модулей по работе с API в 1С как государственных систем (ФНС, ЭПТС), так и частных (Яндекс.Карты, dadata) в том числе собственных систем компании',
+          },
+          {
             title: 'NodeJS',
             description:
               'Писал серверный JS код для React-приложения, работал с кофигом webpack и babel, использовал npm как таск-раннер так и пакетный менеджер.',
@@ -241,6 +246,39 @@ export const RUSSIAN_DATA: PageDataType = {
             title: '1С',
             description:
               'Как веб-разработчик работал с 1С-Битрикс. Помимо прочей работы в 1С писал много серверного кода для взаимодействия 1С с вебом, API разных приложений (например, Telegram).',
+          },
+        ],
+      },
+      RKS: {
+        company: {
+          name: 'РКС',
+          link: 'https://www.roscomsys.ru/',
+          dates: 'Декабрь 2018 - Март 2019',
+        },
+        position: 'Инженер-программист',
+        achivements: [
+          'Оптимизировал работу отдела печати и рассылки, автоматизировав 70% его работы',
+          'Быстро обучился и по итогу создал сложнейшие модули в системе 1С для нужд компании',
+          'Взаимодействовал напрямую с клиентами и работниками компании для программного решения их нужд и сложностей работы',
+          'Находил и исправлял серьезные финансовые ошибки возникающие в базе данных 1С',
+        ],
+        activity:
+          'Не смотря на то, что пришел без знания языка, быстро смог ему обучиться и в результате менторил новичков, решал сложнейшие софтверные вопросы компании',
+        stack: [
+          {
+            title: '1С',
+            description:
+              'Самостоятельно обучился языку с 0 до серьезного уровня за короткое время. К моменту окончания работы в компании менторил новичков и был автором сложнейших подсистем в компании',
+          },
+          {
+            title: 'SQL',
+            description:
+              'Писал запросы различной сложности как на SQL-подобном языке от 1С, так и на чистом SQL',
+          },
+          {
+            title: 'HTTP',
+            description:
+              'Создавал и дорабатывал веб-сервисы платформы 1С',
           },
         ],
       },
@@ -283,21 +321,22 @@ export const ENGLISH_DATA: PageDataType = {
   },
   summary: {
     achivements: [
-      'Is capable of finding and offering stack ot technologies for business task solving, suggesting initiatives for modernization and optimization of the existing code base',
+      'Is capable of finding and offering stack on technologies for business task solving, suggesting initiatives for modernization and optimization of the existing code base',
       'Has fast-learning skills and quickly adapts to working with new codes and architectures',
       'Enjoys working in the IT sphere, continuously watches and listens to online lectures and conferences, explores various technologies and programming languages',
     ],
     english: "English - C1. I'm ok with writing and speaking, but I make mistakes sometimes.",
     stack: {
-      title: 'Technologies and languagies I worked with',
+      title: 'Technologies and languages I worked with',
       technologies: stack,
     },
-    text: 'Is eager to grow in the field of React and mobile development, to explore new technologies and programming languages and work with them',
+    text: 'I am eager to grow in the field of React and mobile development, to explore new technologies and programming languages and work with them',
     title: 'Summary',
   },
   jobHistory: {
     title: 'Work experience',
     stackTitle: 'Stack',
+    showMoreTitle: 'Earlier work experience',
     jobs: {
       Foxford: {
         company: {
@@ -306,9 +345,9 @@ export const ENGLISH_DATA: PageDataType = {
           name: 'Foxford',
         },
         position: 'Frontend developer',
-        activity: 'Practically was a team leader, worked a lot with HTML&CSS and managerial activities like teamwork process optimization on various development stages',
+        activity: 'Practically was a team leader, worked a lot with HTML&CSS and performed managerial activities like teamwork process optimization on various development stages',
         achivements: [
-          'Implemented code review for the team, was an organazer of frontend meetings',
+          'Implemented code review for the team, was an organizer of frontend meetings',
           'Added large adjustment to the ESLint of a team project, added Stylelint, adjusted bundling and CI of the project',
           'Optimized JS code of the project and work process of the team - developers now are writing faster and more stable code',
         ],
@@ -386,7 +425,7 @@ export const ENGLISH_DATA: PageDataType = {
         achivements: [
           'Web-development: React and Redux / PHP / Typescript / 1C-Bitrix. Maintenence, project development. Self-education, self-refactoring',
           "System administration: Configuring and deployment of (web-) servers and platforms (1C and others), OS errors resolving, project's git trees management",
-          'Telegram client and TOTP algorythm two-factor authentication development for 1C platform',
+          'Telegram client and TOTP algorithm two-factor authentication development for 1C platform',
         ],
         stack: [
           {
@@ -406,12 +445,49 @@ export const ENGLISH_DATA: PageDataType = {
             description: 'Supported and rewrote existing legacy code, interacted with 1C-Bitrix API, wrote small php-scripts, updated PHP version.',
           },
           {
+            title: 'HTTP',
+            description: 'Was an author of the most difficult API intergation software 1C modules with several government systems and nongovernment companies (including BIOS own services)',
+          },
+          {
             title: 'NodeJS',
             description: 'Wrote server side JS code for React application, worked with webpack and babel configurations, used npm as a task-runner as well as package manager.',
           },
           {
             title: '1С',
             description: "As a frontend developer worked with 1C-Bitrix. Also wrote a lot of 1C server side code for working with web protocols, various application's APIs (Telegram, for example).",
+          },
+        ],
+      },
+      RKS: {
+        company: {
+          name: 'Russian utility systems',
+          link: 'https://www.roscomsys.ru/',
+          dates: 'December 2018 - March 2019',
+        },
+        position: 'Software developer',
+        achivements: [
+          'Automatized work of the delivery and printing department reducing their work by 70%',
+          'Was a fast-learner and as a result created the most difficult 1C software modules by the end of this job',
+          'Talked directly with clients and regular company employees for better understanding their needs and difficulties with the software',
+          'Found out and fixed company\'s finantional programming errors in the 1C database',
+        ],
+        activity:
+          'Despite the fact that I started working without any programming knowledge, I could become the person that mentored others and was an author of some complex and difficult programming modules',
+        stack: [
+          {
+            title: '1C',
+            description:
+              'Independently learned this programming language from 0 knowledge to a high level in a short time.',
+          },
+          {
+            title: 'SQL',
+            description:
+              'Made various SQL requests in the 1C SQL-similar programming language and vanilla SQL',
+          },
+          {
+            title: 'HTTP',
+            description:
+              'Enchanced and made new web-services in the 1C programming platform',
           },
         ],
       },

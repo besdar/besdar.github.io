@@ -76,6 +76,16 @@ main {
   z-index: 1;
 }
 
+.description__summary-title {
+  color: var(--highlight-color);
+  cursor: pointer;
+  margin-top: 1.3em;
+}
+
+.description__summary-title:hover {
+  color: var(--hover-color);
+}
+
 a {
   font-style: italic;
   text-decoration: none;

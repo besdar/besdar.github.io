@@ -7,11 +7,11 @@ import { PDFButton } from './PDFButton';
 import { LanguageButton, LanguagesType } from './LanguageButton';
 import { Tooltip, TooltipProps } from './Tooltip';
 
-import '../index.css';
-import '../mobile.css';
-import '../desktop.css';
-import '../dark.css';
-import '../print.css';
+import './css/index.css';
+import './css/mobile.css';
+import './css/desktop.css';
+import './css/dark.css';
+import './css/print.css';
 
 const INITIAL_LANGUAGE: LanguagesType = window.navigator.language === 'ru-RU' ? 'RU' : 'EN';
 
