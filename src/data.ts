@@ -304,7 +304,7 @@ export const RUSSIAN_DATA: PageDataType = {
       title: 'Технологии и языки с которыми мне довелось поработать',
       technologies: stack,
     },
-    english: 'Английский - B2: Легко могу говорить и писать, но не без ошибок',
+    english: 'Английский: Легко могу говорить и писать, но не без ошибок',
   },
 };
 
@@ -325,7 +325,7 @@ export const ENGLISH_DATA: PageDataType = {
       'Has fast-learning skills and quickly adapts to working with new codes and architectures',
       'Enjoys working in the IT sphere, continuously watches and listens to online lectures and conferences, explores various technologies and programming languages',
     ],
-    english: "English - C1. I'm ok with writing and speaking, but I make mistakes sometimes.",
+    english: "English: I'm ok with writing and speaking, but I make mistakes sometimes.",
     stack: {
       title: 'Technologies and languages I worked with',
       technologies: stack,
@@ -354,18 +354,26 @@ export const ENGLISH_DATA: PageDataType = {
         stack: [
           {
             title: 'JS&Flow',
+            description:
+              'Formed development rules for the team (including ones in linters), added code review process, reduced typing issues in the project',
           },
           {
             title: 'JQuery',
+            description: 'Made simple animation and changes in DOM',
           },
           {
             title: 'HTML&CSS',
+            description:
+              'Wrote CSS classes using BEM design and developed style guides for the team.',
           },
           {
             title: 'React&Effector',
+            description:
+              'Made little apps, refactored an old code',
           },
           {
             title: 'NodeJS',
+            description: 'Added Puppeteer to the project and made several SEO reports with it; enchanced Rollup building script and config: added code splitting for production build, CSS support, debugging features and much more.',
           },
         ],
       },
