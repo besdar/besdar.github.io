@@ -1,7 +1,6 @@
 import React, {
-  FC, Fragment, memo, useContext, useState,
+  FC, Fragment, memo, useContext,
 } from 'react';
-import ReactDOM from 'react-dom';
 import { TooltipContext } from '../App';
 
 export type StackData = {

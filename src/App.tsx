@@ -13,7 +13,7 @@ import './css/desktop.css';
 import './css/dark.css';
 import './css/print.css';
 
-const INITIAL_LANGUAGE: LanguagesType = window.navigator.language === 'ru-RU' ? 'RU' : 'EN';
+const INITIAL_LANGUAGE: LanguagesType = window.navigator.language.startsWith('ru') ? 'RU' : 'EN';
 
 type TooltipContextType = {
   setTooltip?: (params: TooltipProps, isFixed?: boolean) => void,

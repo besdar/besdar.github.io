@@ -5,7 +5,7 @@ import { Description } from './Description';
 import { Contacts } from './Contacts';
 
 type ContentProps = {
-  onClick?: () => any;
+  onClick?: () => unknown;
 };
 
 const Component: FC<PageDataType & ContentProps> = ({
