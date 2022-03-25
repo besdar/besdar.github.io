@@ -26,6 +26,9 @@ export const App: FC = () => {
   const [Language, setLanguage] = useState<LanguagesType>(INITIAL_LANGUAGE);
   const switchLanguage = () => setLanguage(Language === 'EN' ? 'RU' : 'EN');
   const data = Language === 'EN' ? ENGLISH_DATA : RUSSIAN_DATA;
+  if (Language !== 'EN') {
+    document.documentElement.lang = Language.toLowerCase();
+  }
 
   const [tooltipParams, setTooltipProps] = useState<TooltipProps>({});
   const [isTooltipFixed, setTooltipFixed] = useState(false);

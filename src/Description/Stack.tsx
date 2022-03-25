@@ -41,7 +41,7 @@ const Component: FC<StackProps> = ({ stack, title }) => {
         {title}
         :&nbsp;&#8203;
       </span>
-      {stack?.map(({ title: stackTitle, description }, index) => (
+      {stack?.map(({ title: stackTitle, description }) => (
         <Fragment key={stackTitle}>
           <span
             className="tech-stack__item"
@@ -50,9 +50,9 @@ const Component: FC<StackProps> = ({ stack, title }) => {
             onClick={(e) => setTooltipEffect(e, true, description)}
             onKeyDown={(e) => setTooltipEffect(e, true, description)}
             key={stackTitle}
-            aria-selected="false"
-            role="option"
-            tabIndex={index}
+            aria-label="show more"
+            role="button"
+            tabIndex={0}
           >
             {stackTitle}
           </span>

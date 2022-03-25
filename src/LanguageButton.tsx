@@ -53,7 +53,7 @@ const Component: FC<LanguageButtonProps> = ({ Language, click }) => {
   const content = Language === 'EN' ? <USAFlag /> : <RUSFlag />;
 
   return (
-    <button className="language-button" type="button" onClick={click}>
+    <button className="language-button" type="button" onClick={click} aria-label="language change">
       {content}
     </button>
   );
