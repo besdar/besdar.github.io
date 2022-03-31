@@ -295,7 +295,7 @@ export const ENGLISH_DATA: PageDataType = {
       'Has fast-learning skills and quickly adapts to working with new codes and architectures',
       'Enjoys working in the IT sphere, continuously watches and listens to online lectures and conferences, explores various technologies and programming languages',
     ],
-    english: "English (B1): I'm ok with writing and speaking, but I make mistakes sometimes.",
+    english: "English (B2): I'm ok with writing and speaking, but I make mistakes sometimes.",
     stack: {
       title: 'Technologies and languages I worked with',
       technologies: stack,
