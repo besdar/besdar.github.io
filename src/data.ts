@@ -5,40 +5,22 @@ const stack = [
     title: 'JavaScript',
   },
   {
-    title: 'TypeScript',
-  },
-  {
-    title: 'Flow',
-  },
-  {
-    title: 'JSDoc',
+    title: 'TypeScript&FlowType',
   },
   {
     title: 'React',
   },
   {
-    title: 'Redux',
+    title: 'Redux&Effector',
   },
   {
-    title: 'Effector',
-  },
-  {
-    title: 'HTML',
-  },
-  {
-    title: 'CSS',
+    title: 'HTML&CSS',
   },
   {
     title: 'PHP',
   },
   {
     title: 'PostgreSQL',
-  },
-  {
-    title: 'JQuery',
-  },
-  {
-    title: 'MySQL',
   },
   {
     title: 'Vue',
@@ -62,22 +44,13 @@ const stack = [
     title: 'jQuery',
   },
   {
-    title: 'Git',
-  },
-  {
     title: 'YouTrack',
-  },
-  {
-    title: 'Webflow',
   },
   {
     title: 'Apache',
   },
   {
     title: 'Nginx',
-  },
-  {
-    title: '1С-Битрикс',
   },
   {
     title: '1С',
@@ -90,9 +63,6 @@ const stack = [
   },
   {
     title: 'C++',
-  },
-  {
-    title: 'Go',
   },
 ];
 
@@ -325,7 +295,7 @@ export const ENGLISH_DATA: PageDataType = {
       'Has fast-learning skills and quickly adapts to working with new codes and architectures',
       'Enjoys working in the IT sphere, continuously watches and listens to online lectures and conferences, explores various technologies and programming languages',
     ],
-    english: "English: I'm ok with writing and speaking, but I make mistakes sometimes.",
+    english: "English (B1): I'm ok with writing and speaking, but I make mistakes sometimes.",
     stack: {
       title: 'Technologies and languages I worked with',
       technologies: stack,

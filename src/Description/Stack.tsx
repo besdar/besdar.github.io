@@ -15,8 +15,9 @@ export type StackProps = {
 
 const Component: FC<StackProps> = ({ stack, title }) => {
   const { setTooltip } = useContext(TooltipContext);
+  const stackLength = stack?.length;
 
-  if (!stack?.length) {
+  if (!stackLength) {
     return null;
   }
 
@@ -40,7 +41,7 @@ const Component: FC<StackProps> = ({ stack, title }) => {
         {title}
         :&nbsp;&#8203;
       </span>
-      {stack?.map(({ title: stackTitle, description }) => (
+      {stack.map(({ title: stackTitle, description }, index) => (
         <Fragment key={stackTitle}>
           <span
             className="tech-stack__item"
@@ -55,7 +56,7 @@ const Component: FC<StackProps> = ({ stack, title }) => {
           >
             {stackTitle}
           </span>
-          ,&nbsp;&#8203;
+          {stackLength - 1 !== index && <>,&nbsp;&#8203;</>}
         </Fragment>
       ))}
     </p>
