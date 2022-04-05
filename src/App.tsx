@@ -53,7 +53,7 @@ export const App: FC = () => {
       </TooltipContext.Provider>
       <aside className="body__aside-content aside-content">
         <LanguageButton Language={Language} click={switchLanguage} />
-        <PDFButton />
+        <PDFButton Language={Language} />
         <Tooltip {...tooltipParams} />
       </aside>
     </>

@@ -1,7 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
+import { LanguagesType } from './LanguageButton';
 
-const Component: FC = () => (
-  <a className="aside-content__download-button" href="./Dmitry_Beskov.pdf" download target="_blank">
+const Component: FC<{ Language: LanguagesType }> = ({ Language }) => (
+  <a
+    className="aside-content__download-button"
+    href={Language === 'RU' ? './Dmitry_Beskov_RU.pdf' : './Dmitry_Beskov.pdf'}
+    download
+    target="_blank"
+    rel="noreferrer"
+  >
     <svg className="aside-content__download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <title>PDF</title>
       <path
@@ -12,4 +19,4 @@ const Component: FC = () => (
   </a>
 );
 
-export const PDFButton = Component;
+export const PDFButton = memo(Component);
