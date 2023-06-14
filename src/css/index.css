@@ -13,13 +13,13 @@ main {
   max-width: 1000px;
 }
 
-.body__header {
+.body-header {
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
 }
 
-.header-title__employee-name {
+.header-title-employee-name {
   text-align: center;
   position: relative;
   color: var(--highlight-color);
@@ -35,22 +35,21 @@ main {
   align-items: center;
 }
 
-.contacts-links_margin-top {
+.contacts-links-margin-top {
   margin-top: 0.5em;
 }
 
-.title-contacts__contact {
+.title-contacts-contact {
   font-size: small;
 }
 
-.title-contacts__email,
-.title-contacts__divider {
+.title-contacts-email,
+.title-contacts-divider {
   display: none;
 }
 
-.description__title {
+.description-title {
   width: fit-content;
-  width: -moz-fit-content;
   margin-left: auto;
   margin-right: auto;
   color: var(--highlight-color);
@@ -61,12 +60,12 @@ main {
   margin-bottom: 0;
 }
 
-.description__title-container {
+.description-title-container {
   position: relative;
   text-align: center;
 }
 
-.description__title-container::after {
+.description-title-container::after {
   position: absolute;
   content: '';
   width: 100%;
@@ -76,13 +75,13 @@ main {
   z-index: 1;
 }
 
-.description__summary-title {
+.description-summary-title {
   color: var(--highlight-color);
   cursor: pointer;
   margin-top: 1.3em;
 }
 
-.description__summary-title:hover {
+.description-summary-title:hover {
   color: var(--hover-color);
 }
 
@@ -97,17 +96,17 @@ a:hover {
   color: var(--hover-color);
 }
 
-.history__dates {
+.history-dates {
   font-size: smaller;
 }
 
-.history__tech-stack,
-.history__faculty-title {
+.history-tech-stack,
+.history-faculty-title {
   margin-bottom: 0;
   margin-top: 0;
 }
 
-.history__title-without-margin {
+.history-title-without-margin {
   margin-bottom: 10px;
 }
 
@@ -130,26 +129,26 @@ a:hover svg path {
   justify-content: center;
 }
 
-.contacts-link__link {
+.contacts-link-link {
   margin-right: 10px;
 }
 
-.achivements__item {
+.achivements-item {
   padding-bottom: 5px;
 }
 
-.aside-content__download-button {
+.aside-content-download-button {
   position: fixed;
   bottom: 30px;
   right: 30px;
 }
 
-.aside-content__download-icon {
+.aside-content-download-icon {
   width: 50px;
   height: 50px;
 }
 
-.aside-content__tooltip {
+.aside-content-tooltip {
   position: absolute;
   background-color: var(--highlight-color);
   color: white;
@@ -158,13 +157,13 @@ a:hover svg path {
   max-width: 250px;
 }
 
-.history__tech-stack span:not(:first-child) {
+.history-tech-stack span:not(:first-child) {
   text-decoration: underline;
   text-decoration-style: dashed;
   cursor: pointer;
 }
 
-.history__tech-stack span:not(:first-child):hover {
+.history-tech-stack span:not(:first-child):hover {
   color: var(--hover-color);
 }
 

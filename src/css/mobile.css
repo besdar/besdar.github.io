@@ -1,36 +1,35 @@
-@media screen and (max-width: 700px), print {
+@media screen and (width <= 700px), print {
   header,
   main {
     width: 100%;
     min-width: 300px;
   }
 
-  .body__header {
+  .body-header {
     flex-direction: column;
   }
 
-  .description__columns {
+  .description-columns {
     display: block;
   }
 
-  .history__list {
+  .history-list {
     display: flex;
     align-items: center;
     margin-top: 1.3em;
   }
 
-  .history__company-name {
+  .history-company-name {
     border-right: 1px solid midnightblue;
-    width: -moz-fit-content;
     margin: 0;
     padding-right: 10px;
   }
 
-  .history__dates {
+  .history-dates {
     padding-left: 10px;
   }
 
-  .history__title {
+  .history-title {
     margin-top: 10px;
   }
 }

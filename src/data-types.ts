@@ -33,8 +33,7 @@ export type PageDataType = {
   },
   summary: {
     title: string,
-    text: string,
-    achivements: Array<string>,
+    overview: string,
     stack: {
       title: string,
       technologies: Array<StackData>,

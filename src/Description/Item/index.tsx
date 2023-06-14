@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React from 'react';
 import { Achievements, AchievementsProps } from '../Achivements';
 import { Stack, StackProps } from '../Stack';
 import { Tab, TabProps } from './Tab';
@@ -11,23 +11,23 @@ export type ItemProps = {
   text: string;
 };
 
-const Component: FC<ItemProps> = ({
+const Component: React.FC<ItemProps> = ({
   tab,
   achievements,
   text,
   stack,
   title,
 }) => {
-  const sectionClasses = ['history', tab && 'description__item'].filter(Boolean).join(' ');
+  const sectionClasses = ['history', tab && 'description-item'].filter(Boolean).join(' ');
 
   return (
     <section className={sectionClasses}>
       {tab && <Tab {...tab} />}
-      <div className="history__description">
-        {title && <h3 className="history__title">{title}</h3>}
-        <div className="history__about">
+      <div className="history-description">
+        {title && <h3 className="history-title">{title}</h3>}
+        <div className="history-about">
           {achievements && <Achievements {...achievements} />}
-          <p className="history__activity">{text}</p>
+          <p className="history-activity">{text}</p>
           {stack && <Stack {...stack} />}
         </div>
       </div>
@@ -35,4 +35,4 @@ const Component: FC<ItemProps> = ({
   );
 };
 
-export const Item = memo(Component);
+export const Item = React.memo(Component);

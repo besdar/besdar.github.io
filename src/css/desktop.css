@@ -1,20 +1,20 @@
-@media screen and (min-width: 701px) {
+@media screen and (width >= 701px) {
   .title-contacts {
     border-left: 1px solid lightgray;
     padding-left: 10px;
   }
 
-  .description__item {
+  .description-item {
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-column-gap: 20px;
   }
 
-  .history__list {
+  .history-list {
     text-align: center;
   }
 
-  .history__company-name {
+  .history-company-name {
     border: 1px solid midnightblue;
     border-radius: 5px;
     padding: 15px;

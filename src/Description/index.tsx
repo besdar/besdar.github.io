@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React from 'react';
 import { Item, ItemProps } from './Item';
 
 type DescriptionProps = {
@@ -7,21 +7,21 @@ type DescriptionProps = {
     showMoreTitle: string
 }
 
-const Component: FC<DescriptionProps> = ({ items, title, showMoreTitle }) => (
+const Component: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) => (
   <article className="description">
-    <div className="description__title-container">
-      <h2 className="description__title">{title}</h2>
+    <div className="description-title-container">
+      <h2 className="description-title">{title}</h2>
     </div>
     {items.slice(0, 3).map((item) => (
       <Item key={item.text} {...item} />
     ))}
     {items.slice(3).map((item) => (
-      <details className="description__details" key={item.text}>
-        <summary className="description__summary-title" key={item.text}>{showMoreTitle}</summary>
+      <details className="description-details" key={item.text}>
+        <summary className="description-summary-title" key={item.text}>{showMoreTitle}</summary>
         <Item key={item.text} {...item} />
       </details>
     ))}
   </article>
 );
 
-export const Description = memo(Component);
+export const Description = React.memo(Component);

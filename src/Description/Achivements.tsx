@@ -1,18 +1,18 @@
-import React, { FC, memo } from 'react';
+import React from 'react';
 
 export type AchievementsProps = {
   achievements?: Array<string>
 }
 
-const Component: FC<AchievementsProps> = ({ achievements }) => {
+const Component: React.FC<AchievementsProps> = ({ achievements }) => {
   if (!achievements?.length) {
     return null;
   }
 
   return (
-    <ul className="history__achivements achivements">
+    <ul className="history-achivements achivements">
       {achievements.map((achievement) => (
-        <li key={achievement} className="achivements__item">
+        <li key={achievement} className="achivements-item">
           {achievement}
         </li>
       ))}
@@ -20,4 +20,4 @@ const Component: FC<AchievementsProps> = ({ achievements }) => {
   );
 };
 
-export const Achievements = memo(Component);
+export const Achievements = React.memo(Component);

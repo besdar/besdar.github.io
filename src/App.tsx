@@ -1,10 +1,7 @@
-import React, {
-  createContext, FC, useCallback, useMemo, useState,
-} from 'react';
+import React from 'react';
 import { Content } from './Content';
-import { ENGLISH_DATA, RUSSIAN_DATA } from './data';
+import { ENGLISH_DATA } from './data';
 import { PDFButton } from './PDFButton';
-import { LanguageButton, LanguagesType } from './LanguageButton';
 import { Tooltip, TooltipProps } from './Tooltip';
 
 import './css/index.css';
@@ -13,26 +10,16 @@ import './css/desktop.css';
 import './css/dark.css';
 import './css/print.css';
 
-const INITIAL_LANGUAGE: LanguagesType = window.navigator.language.startsWith('ru') ? 'RU' : 'EN';
-
 type TooltipContextType = {
   setTooltip?: (params: TooltipProps, isFixed?: boolean) => void,
-  Language: LanguagesType
 }
 
-export const TooltipContext = createContext<TooltipContextType>({ Language: INITIAL_LANGUAGE });
+export const TooltipContext = React.createContext<TooltipContextType>({});
 
-export const App: FC = () => {
-  const [Language, setLanguage] = useState<LanguagesType>(INITIAL_LANGUAGE);
-  const switchLanguage = () => setLanguage(Language === 'EN' ? 'RU' : 'EN');
-  const data = Language === 'EN' ? ENGLISH_DATA : RUSSIAN_DATA;
-  if (Language !== 'EN') {
-    document.documentElement.lang = Language.toLowerCase();
-  }
-
-  const [tooltipParams, setTooltipProps] = useState<TooltipProps>({});
-  const [isTooltipFixed, setTooltipFixed] = useState(false);
-  const setTooltip = useCallback((params: TooltipProps, isFixed?: boolean) => {
+export const App: React.FC = () => {
+  const [tooltipParams, setTooltipProps] = React.useState<TooltipProps>({});
+  const [isTooltipFixed, setTooltipFixed] = React.useState(false);
+  const setTooltip = React.useCallback((params: TooltipProps, isFixed?: boolean) => {
     if (isTooltipFixed && isFixed === undefined) {
       return;
     }
@@ -41,19 +28,18 @@ export const App: FC = () => {
     setTooltipProps(params);
   }, [isTooltipFixed]);
 
-  const contextValue = useMemo<TooltipContextType>(
-    () => ({ setTooltip, Language }),
-    [setTooltip, Language],
+  const contextValue = React.useMemo<TooltipContextType>(
+    () => ({ setTooltip }),
+    [setTooltip],
   );
 
   return (
     <>
       <TooltipContext.Provider value={contextValue}>
-        <Content {...data} onClick={() => setTooltip({}, false)} />
+        <Content {...ENGLISH_DATA} onClick={() => setTooltip({}, false)} />
       </TooltipContext.Provider>
-      <aside className="body__aside-content aside-content">
-        <LanguageButton Language={Language} click={switchLanguage} />
-        <PDFButton Language={Language} />
+      <aside className="body-aside-content aside-content">
+        <PDFButton />
         <Tooltip {...tooltipParams} />
       </aside>
     </>

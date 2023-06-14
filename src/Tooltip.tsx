@@ -1,6 +1,4 @@
-import React, {
-  FC, memo, useLayoutEffect, useRef, useState,
-} from 'react';
+import React from 'react';
 
 export type TooltipProps = {
   text?: string;
@@ -41,16 +39,16 @@ const calculateTooltipPosition = ({
   };
 };
 
-const Component: FC<TooltipProps> = ({ text, positionPoint }) => {
-  const tooltipElement = useRef<HTMLDivElement>(null);
-  const [coordinates, setCoordinates] = useState<{ top: number; left: number }>(
+const Component: React.FC<TooltipProps> = ({ text, positionPoint }) => {
+  const tooltipElement = React.useRef<HTMLDivElement>(null);
+  const [coordinates, setCoordinates] = React.useState<{ top: number; left: number }>(
     {
       top: 0,
       left: 0,
     },
   );
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     const tooltipRect = tooltipElement.current?.getBoundingClientRect();
     if (!positionPoint || !tooltipRect) {
       return;
@@ -73,11 +71,11 @@ const Component: FC<TooltipProps> = ({ text, positionPoint }) => {
     <div
       ref={tooltipElement}
       style={coordinates}
-      className="aside-content__tooltip"
+      className="aside-content-tooltip"
     >
       {text}
     </div>
   );
 };
 
-export const Tooltip = memo(Component);
+export const Tooltip = React.memo(Component);

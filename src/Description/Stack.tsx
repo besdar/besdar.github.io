@@ -1,6 +1,4 @@
-import React, {
-  FC, Fragment, memo, useContext,
-} from 'react';
+import React, { Fragment } from 'react';
 import { TooltipContext } from '../App';
 
 export type StackData = {
@@ -13,8 +11,8 @@ export type StackProps = {
   title: string;
 };
 
-const Component: FC<StackProps> = ({ stack, title }) => {
-  const { setTooltip } = useContext(TooltipContext);
+const Component: React.FC<StackProps> = ({ stack, title }) => {
+  const { setTooltip } = React.useContext(TooltipContext);
   const stackLength = stack?.length;
 
   if (!stackLength) {
@@ -36,15 +34,15 @@ const Component: FC<StackProps> = ({ stack, title }) => {
   };
 
   return (
-    <p className="history__tech-stack tech-stack">
-      <span className="tech-stack__title">
+    <p className="history-tech-stack tech-stack">
+      <span className="tech-stack-title">
         {title}
         :&nbsp;&#8203;
       </span>
       {stack.map(({ title: stackTitle, description }, index) => (
         <Fragment key={stackTitle}>
           <span
-            className="tech-stack__item"
+            className="tech-stack-item"
             onMouseEnter={(e) => setTooltipEffect(e, undefined, description)}
             onMouseLeave={() => setTooltip?.({})}
             onClick={(e) => setTooltipEffect(e, true, description)}
@@ -63,4 +61,4 @@ const Component: FC<StackProps> = ({ stack, title }) => {
   );
 };
 
-export const Stack = memo(Component);
+export const Stack = React.memo(Component);

@@ -6,13 +6,13 @@
     --main-color: black;
   }
 
-  .body__header {
+  .body-header {
     margin-top: 0;
   }
 
-  .body__aside-content,
-  .contacts-links_not-printed,
-  .description__details {
+  .body-aside-content,
+  .contacts-links-not-printed,
+  .description-details {
     display: none;
   }
 
@@ -21,8 +21,12 @@
     gap: 10px;
   }
 
-  .title-contacts__email,
-  .title-contacts__divider {
+  .title-contacts-email,
+  .title-contacts-divider {
     display: block;
+  }
+
+  .history-tech-stack span {
+    text-decoration: none!important;
   }
 }
