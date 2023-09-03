@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { TooltipContext } from '../App';
 
 export type StackData = {
   title: string;
@@ -12,26 +11,11 @@ export type StackProps = {
 };
 
 const Component: React.FC<StackProps> = ({ stack, title }) => {
-  const { setTooltip } = React.useContext(TooltipContext);
   const stackLength = stack?.length;
 
   if (!stackLength) {
     return null;
   }
-
-  const setTooltipEffect = (
-    event: React.MouseEvent<HTMLElement, Event> | React.KeyboardEvent<HTMLSpanElement>,
-    isFixed?: boolean,
-    description?: string,
-  ) => {
-    event.stopPropagation();
-    const { offsetTop, offsetLeft, offsetWidth } = event.currentTarget;
-
-    setTooltip?.({
-      text: description,
-      positionPoint: { offsetTop, offsetLeft, offsetWidth },
-    }, isFixed);
-  };
 
   return (
     <p className="history-tech-stack tech-stack">
@@ -43,16 +27,13 @@ const Component: React.FC<StackProps> = ({ stack, title }) => {
         <Fragment key={stackTitle}>
           <span
             className="tech-stack-item"
-            onMouseEnter={(e) => setTooltipEffect(e, undefined, description)}
-            onMouseLeave={() => setTooltip?.({})}
-            onClick={(e) => setTooltipEffect(e, true, description)}
-            onKeyDown={(e) => setTooltipEffect(e, true, description)}
             key={stackTitle}
             aria-label="show more"
             role="button"
             tabIndex={0}
           >
             {stackTitle}
+            {description && <span className="tech-stack-item tooltip">{description}</span>}
           </span>
           {stackLength - 1 !== index && <>,&nbsp;&#8203;</>}
         </Fragment>

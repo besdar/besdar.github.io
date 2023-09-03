@@ -101,7 +101,7 @@ export const ENGLISH_DATA: PageDataType = {
         activity: 'Created and updated various submodules for client\'s account pages, internal admin pages',
         achivements: [
           'Created a chrome extension for the company greatly facilitating the daily work of both QA and development',
-          "Simultaneously worked in several teams and on several projects, never missed deadlines"
+          'Simultaneously worked in several teams and on several projects, never missed deadlines',
         ],
         stack: [
           {
@@ -112,7 +112,7 @@ export const ENGLISH_DATA: PageDataType = {
           },
           {
             title: 'Java&Kotlin',
-            description: "If necessary, worked with backend projects with new languages"
+            description: 'If necessary, worked with backend projects with new languages',
           },
         ],
       },
