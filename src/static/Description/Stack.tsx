@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
 export type StackData = {
   title: string;
@@ -33,7 +33,9 @@ const Component: React.FC<StackProps> = ({ stack, title }) => {
             tabIndex={0}
           >
             {stackTitle}
-            {description && <span className="tech-stack-item tooltip">{description}</span>}
+            {description && (
+              <span className="tech-stack-item tooltip">{description}</span>
+            )}
           </span>
           {stackLength - 1 !== index && <>,&nbsp;&#8203;</>}
         </Fragment>

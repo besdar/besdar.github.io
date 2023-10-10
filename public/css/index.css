@@ -184,9 +184,9 @@ a:hover svg path {
 }
 
 .tech-stack-item .tooltip {
-  bottom: 100%;
+  bottom: calc(100% + 10px);
   left: 50%;
-  transform:translateX(-50%);
+  transform: translateX(-50%);
   display: none;
   width: 16vw;
   min-width: 200px;

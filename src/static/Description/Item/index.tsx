@@ -1,7 +1,7 @@
-import React from 'react';
-import { Achievements, AchievementsProps } from '../Achivements';
-import { Stack, StackProps } from '../Stack';
-import { Tab, TabProps } from './Tab';
+import React from "react";
+import { Achievements, AchievementsProps } from "../Achivements";
+import { Stack, StackProps } from "../Stack";
+import { Tab, TabProps } from "./Tab";
 
 export type ItemProps = {
   tab?: TabProps;
@@ -18,7 +18,9 @@ const Component: React.FC<ItemProps> = ({
   stack,
   title,
 }) => {
-  const sectionClasses = ['history', tab && 'description-item'].filter(Boolean).join(' ');
+  const sectionClasses = ["history", tab && "description-item"]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <section className={sectionClasses}>

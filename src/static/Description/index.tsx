@@ -1,13 +1,17 @@
-import React from 'react';
-import { Item, ItemProps } from './Item';
+import React from "react";
+import { Item, ItemProps } from "./Item";
 
 type DescriptionProps = {
-    title: string,
-    items: Array<ItemProps>,
-    showMoreTitle: string
-}
+  title: string;
+  items: Array<ItemProps>;
+  showMoreTitle: string;
+};
 
-const Component: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) => (
+const Component: React.FC<DescriptionProps> = ({
+  items,
+  title,
+  showMoreTitle,
+}) => (
   <article className="description">
     <div className="description-title-container">
       <h2 className="description-title">{title}</h2>
@@ -17,7 +21,9 @@ const Component: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) 
     ))}
     {items.slice(3).map((item) => (
       <details className="description-details" key={item.text}>
-        <summary className="description-summary-title" key={item.text}>{showMoreTitle}</summary>
+        <summary className="description-summary-title" key={item.text}>
+          {showMoreTitle}
+        </summary>
         <Item key={item.text} {...item} />
       </details>
     ))}
