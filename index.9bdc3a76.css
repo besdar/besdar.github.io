@@ -1,0 +1,12 @@
+@media (prefers-color-scheme: dark) {
+  html {
+    --highlight-color: dodgerblue;
+    --hover-color: deepskyblue;
+    --background-color: black;
+    --main-color: white;
+    background-color: var(--background-color);
+    color: var(--main-color);
+  }
+}
+
+/*# sourceMappingURL=index.9bdc3a76.css.map */
