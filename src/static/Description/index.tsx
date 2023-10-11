@@ -12,7 +12,7 @@ const Component: React.FC<DescriptionProps> = ({
   title,
   showMoreTitle,
 }) => (
-  <article className="description">
+  <article className="description" id={title.trim().replace(' ', '-').toLowerCase()}>
     <div className="description-title-container">
       <h2 className="description-title">{title}</h2>
     </div>

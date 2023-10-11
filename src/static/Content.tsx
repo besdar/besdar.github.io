@@ -58,7 +58,7 @@ const Component: React.FC<PageDataType & ContentProps> = ({
       <header className="body-header">
         <div className="header-title">
           <h1 className="header-title-employee-name">{employee}</h1>
-          <h2 style={{ display: "none" }} className="header-title-job-position">
+          <h2 className="header-title-job-position">
             Frontend developer
           </h2>
         </div>

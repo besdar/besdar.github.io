@@ -32,12 +32,12 @@ const Component: React.FC<StackProps> = ({ stack, title }) => {
             role="button"
             tabIndex={0}
           >
-            {stackTitle}
+            {stackTitle + (stackLength - 1 !== index ? ',' : '')}
             {description && (
               <span className="tech-stack-item tooltip">{description}</span>
             )}
           </span>
-          {stackLength - 1 !== index && <>,&nbsp;&#8203;</>}
+          &nbsp;
         </Fragment>
       ))}
     </p>

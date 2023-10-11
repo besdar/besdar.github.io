@@ -22,11 +22,16 @@
   }
 
   .title-contacts-email,
-  .title-contacts-divider {
+  .title-contacts-divider,
+  .title-contacts-website {
     display: block;
   }
 
   .history-tech-stack span {
     text-decoration: none!important;
+  }
+
+  article#summary p.history-tech-stack.tech-stack {
+    display: none;
   }
 }

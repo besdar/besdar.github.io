@@ -60,7 +60,7 @@
     },
     "clientBuild": {
       "context": "browser",
-      "publicUrl": "./",
+      "publicUrl": "/",
       "distDir": "dist/"
     }
   }

@@ -19,12 +19,16 @@ main {
   margin-top: 2em;
 }
 
-.header-title-employee-name {
+.header-title-employee-name, .header-title-job-position {
   text-align: center;
   position: relative;
   color: var(--highlight-color);
   margin-bottom: 0;
   margin-top: 0;
+}
+
+.header-title-job-position {
+  font-size: medium;
 }
 
 .title-contacts,
@@ -44,7 +48,8 @@ main {
 }
 
 .title-contacts-email,
-.title-contacts-divider {
+.title-contacts-divider,
+.title-contacts-website {
   display: none;
 }
 

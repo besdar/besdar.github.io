@@ -29,6 +29,9 @@ const stack = [
     title: "Gulp",
   },
   {
+    title: "GraphQL",
+  },
+  {
     title: "PWA",
   },
   {
@@ -79,7 +82,7 @@ export const ENGLISH_DATA: PageDataType = {
   },
   summary: {
     overview:
-      "I'm a React frontend developer. When I work, I usually point out the weak points of the company and can make some suggestions to make our daily work more effective, more fun and/or easier. I also try to fix code issues that I see on a regular basis. I really love what I do and I want to continue to grow in the frontend and to create something great and special.",
+      "I'm a React front-end developer. When I work, I usually point out the weaknesses in the company's processes and projects, and make suggestions to make our daily work more effective, fun and/or easier. I also try to fix code issues that I see on a regular basis. I really love what I do and I want to continue to grow in the frontend and create something great and special.",
     english:
       "English (B2): I'm ok with writing and speaking, but I make mistakes sometimes.",
     stack: {
@@ -101,9 +104,11 @@ export const ENGLISH_DATA: PageDataType = {
         },
         position: "Software Developer",
         activity:
-          "Created and updated various submodules for client's account pages, internal admin pages",
+          "Created and updated and was a maintainer for various sub-modules for client account pages, internal admin pages",
         achivements: [
-          "Created a chrome extension for the company greatly facilitating the daily work of both QA and development",
+          "Was involved in the recruitment process and developed a technical interview knowledge base for all roles across the company, which improved our interview process and made it easier to prepare for the technical interview",
+          "Created an account generation chrome extension for the company which greatly facilitates the daily work of both QA engineers and developers",
+          "Mentored junior front-end developers through code reviews and JS&TS syntax and code design explanation meetings",
           "Simultaneously worked in several teams and on several projects, never missed deadlines",
         ],
         stack: [
@@ -118,6 +123,9 @@ export const ENGLISH_DATA: PageDataType = {
             description:
               "If necessary, worked with backend projects with new languages",
           },
+          {
+            title: 'GraphQL'
+          }
         ],
       },
       Foxford: {
