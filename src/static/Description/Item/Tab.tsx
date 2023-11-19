@@ -1,12 +1,7 @@
 import React from "react";
+import { HeaderType } from "../../data-types";
 
-export type TabProps = {
-  title: string;
-  link: string;
-  dates: string;
-};
-
-const Component: React.FC<TabProps> = ({ dates, link, title }) => (
+const Component: React.FC<HeaderType> = ({ dates, link, title }) => (
   <div className="history-list">
     <h3 className="history-company-name">
       <a title={title} rel="noopener noreferrer" href={link} target="_blank">

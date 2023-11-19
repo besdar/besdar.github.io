@@ -32,4 +32,8 @@
   .history-title {
     margin-top: 10px;
   }
+
+  .header-title-job-position {
+    margin-bottom: revert;
+  }
 }

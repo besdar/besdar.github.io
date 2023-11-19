@@ -1,10 +1,6 @@
 import React from "react";
 
-export type AchievementsProps = {
-  achievements?: Array<string>;
-};
-
-const Component: React.FC<AchievementsProps> = ({ achievements }) => {
+const Component: React.FC<{achievements?: string[]}> = ({ achievements }) => {
   if (!achievements?.length) {
     return null;
   }

@@ -1,9 +1,10 @@
 import React from "react";
-import { Item, ItemProps } from "./Item";
+import { Item } from "./Item";
+import { DescriptionType } from "../data-types";
 
 type DescriptionProps = {
   title: string;
-  items: Array<ItemProps>;
+  items: Array<DescriptionType>;
   showMoreTitle: string;
 };
 

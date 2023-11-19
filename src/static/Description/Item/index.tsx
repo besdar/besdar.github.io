@@ -1,34 +1,29 @@
 import React from "react";
-import { Achievements, AchievementsProps } from "../Achivements";
-import { Stack, StackProps } from "../Stack";
-import { Tab, TabProps } from "./Tab";
+import { Achievements } from "../Achivements";
+import { Stack } from "../Stack";
+import { Tab } from "./Tab";
+import { DescriptionType } from "../../data-types";
 
-export type ItemProps = {
-  tab?: TabProps;
-  title?: string;
-  achievements?: AchievementsProps;
-  stack?: StackProps;
-  text: string;
-};
-
-const Component: React.FC<ItemProps> = ({
-  tab,
+const Component: React.FC<DescriptionType> = ({
+  header,
   achievements,
   text,
   stack,
   title,
+  subtitle
 }) => {
-  const sectionClasses = ["history", tab && "description-item"]
+  const sectionClasses = ["history", header && "description-item"]
     .filter(Boolean)
     .join(" ");
 
   return (
     <section className={sectionClasses}>
-      {tab && <Tab {...tab} />}
+      {header && <Tab {...header} />}
       <div className="history-description">
         {title && <h3 className="history-title">{title}</h3>}
+        {subtitle && <h4 className="history-subtitle">{subtitle}</h4>}
         <div className="history-about">
-          {achievements && <Achievements {...achievements} />}
+          <Achievements achievements={achievements} />
           <p className="history-activity">{text}</p>
           {stack && <Stack {...stack} />}
         </div>

@@ -1,17 +1,9 @@
 import React, { Fragment } from "react";
+import { StackType } from "../data-types";
 
-export type StackData = {
-  title: string;
-  description?: string;
-};
 
-export type StackProps = {
-  stack?: Array<StackData>;
-  title: string;
-};
-
-const Component: React.FC<StackProps> = ({ stack, title }) => {
-  const stackLength = stack?.length;
+const Component: React.FC<StackType> = ({ items, title }) => {
+  const stackLength = items?.length;
 
   if (!stackLength) {
     return null;
@@ -23,7 +15,7 @@ const Component: React.FC<StackProps> = ({ stack, title }) => {
         {title}
         :&nbsp;&#8203;
       </span>
-      {stack.map(({ title: stackTitle, description }, index) => (
+      {items.map(({ title: stackTitle, description }, index) => (
         <Fragment key={stackTitle}>
           <span
             className="tech-stack-item"

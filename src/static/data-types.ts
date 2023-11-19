@@ -1,15 +1,26 @@
-import { StackData } from "./Description/Stack";
+type StackItemType = {
+  title: string;
+  description?: string;
+};
 
-export type CompanyData = {
-  company: {
-    name: string;
-    link: string;
-    dates: string;
-  };
-  position: string;
-  achivements: Array<string>;
-  activity: string;
-  stack: Array<StackData>;
+export type StackType = {
+  items?: Array<StackItemType>;
+  title: string;
+};
+
+export type HeaderType = {
+  title: string;
+  link?: string;
+  dates: string;
+};
+
+export type DescriptionType = {
+  header?: HeaderType;
+  title?: string;
+  subtitle?: string;
+  achievements?: Array<string>;
+  stack?: StackType;
+  text?: string;
 };
 
 export type PageDataType = {
@@ -19,25 +30,14 @@ export type PageDataType = {
     title: string;
     stackTitle: string;
     showMoreTitle: string;
-    jobs: {
-      [key: string]: CompanyData;
-    };
+    jobs: DescriptionType[];
   };
   education: {
-    title: string;
-    link: string;
-    university: string;
-    dates: string;
-    program: string;
-    faculty: string;
+    title: string,
+    university: DescriptionType
   };
   summary: {
     title: string;
     overview: string;
-    stack: {
-      title: string;
-      technologies: Array<StackData>;
-    };
-    english: string;
   };
 };
