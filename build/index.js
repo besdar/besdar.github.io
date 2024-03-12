@@ -20,4 +20,5 @@ const buildPage = (content) => {
   });
 };
 
+// eslint-disable-next-line react/jsx-filename-extension
 buildPage(ReactDOMServer.renderToStaticMarkup(<App />));

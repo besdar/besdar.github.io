@@ -1,7 +1,7 @@
 import React from "react";
 import { PageDataType } from "./data-types";
-import { Description } from "./Description";
-import { Contacts } from "./Contacts";
+import { Description } from "./components/Description";
+import { Contacts } from "./components/Contacts";
 
 const Component: React.FC<PageDataType> = ({ address, education, employee, jobHistory, summary }) => (
     <>

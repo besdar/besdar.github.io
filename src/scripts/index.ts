@@ -3,7 +3,7 @@ document.querySelectorAll<HTMLSpanElement>(".tech-stack-item").forEach((tooltipC
         if (window.innerWidth < 700) {
             return;
         }
-        
+
         const windowPadding = 10;
         const tooltipElement = (currentTarget as HTMLSpanElement)?.querySelector<HTMLSpanElement>(".tooltip");
         if (!tooltipElement) {
