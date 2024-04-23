@@ -32,17 +32,18 @@ export const ENGLISH_DATA: PageDataType = {
         jobs: [
             {
                 header: {
-                    dates: "May 2022 - Now",
+                    dates: "2022 - 2024",
                     link: "https://www.jettycloud.com/",
                     title: "JettyCloud (UCaaS)",
                 },
-                title: "Software Developer",
-                text: "In this role I usually creating, updating and maintaining various sub-modules for client account pages, internal admin pages",
+                title: "Senior Software Developer",
+                text: "In this role, I was usually responsible for the creation, updating and maintenance of various sub-modules for customer account pages and internal administration pages.",
                 achievements: [
-                    "Participating in the recruitment process and have developed a technical interview knowledge base for all roles across the company, which improved our interview process and made it easier to prepare for the technical interview",
-                    "Have created an account generation chrome extension for the company which greatly facilitates the daily work of both QA engineers and developers",
-                    "Mentoring junior front-end developers through code reviews and JS&TS syntax and code design explanation meetings",
-                    "Simultaneously working in several teams and on several projects, never missed deadlines",
+                    "Was consistently scored 3 out of 5 as exceeding expectations in a performance review process, and received only positive feedbacks from my colleagues",
+                    "Worked simultaneously in more than 4 teams (about 30 people) with more than 3 projects",
+                    "Was the author of more than 50 technical tasks designed to improve the performance and quality of the code",
+                    "Was involved in the recruitment process and developed a technical interview knowledge base for all roles across the company, which improved our interview process",
+                    "Created an account generation Chrome extension tool for the company, which made the daily work of both QA engineers and developers much easier"
                 ],
                 stack: {
                     title: "Stack",
@@ -65,7 +66,7 @@ export const ENGLISH_DATA: PageDataType = {
             },
             {
                 header: {
-                    dates: "December 2020 - May 2022",
+                    dates: "2020 - 2022",
                     link: "https://foxford.ru/",
                     title: "Foxford (EdTech)",
                 },
@@ -107,7 +108,7 @@ export const ENGLISH_DATA: PageDataType = {
             },
             {
                 header: {
-                    dates: "April 2019 - December 2020",
+                    dates: "2019 - 2020",
                     title: "BIOS (B2B, startup)",
                 },
                 text: "Was assigned and successfully resolved the most responsible and fundamental tasks, strictly followed the prescribed project timing, found solutions for various business tasks, independently set personal goals for further business improvement",
@@ -160,7 +161,7 @@ export const ENGLISH_DATA: PageDataType = {
             {
                 header: {
                     title: "Russian utility systems",
-                    dates: "December 2018 - March 2019",
+                    dates: "2018 - 2019",
                 },
                 title: "Software developer",
                 achievements: [
