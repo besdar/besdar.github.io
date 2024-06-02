@@ -1,5 +1,5 @@
 import React from "react";
-import { Item } from "./components/Item";
+import { DescriptionItem } from "./components/DescriptionItem";
 import { DescriptionType } from "../../data-types";
 
 type DescriptionProps = {
@@ -14,16 +14,18 @@ const Component: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) 
             <h2 className="description-title">{title}</h2>
         </div>
         {items.slice(0, 3).map((item) => (
-            <Item key={item.text} {...item} />
+            <DescriptionItem key={item.text} {...item} />
         ))}
-        {items.slice(3).map((item) => (
-            <details className="description-details" key={item.text}>
-                <summary className="description-summary-title" key={item.text}>
+        {items.length > 3 && (
+            <details className="description-details">
+                <summary className="description-summary-title">
                     {showMoreTitle}
                 </summary>
-                <Item key={item.text} {...item} />
+                {items.slice(3).map((item) => (
+                    <DescriptionItem key={item.text} {...item} />
+                ))}
             </details>
-        ))}
+        )}
     </article>
 );
 

@@ -23,4 +23,4 @@ const Component: React.FC<DescriptionType> = ({ header, achievements, text, stac
     );
 };
 
-export const Item = React.memo(Component);
+export const DescriptionItem = React.memo(Component);

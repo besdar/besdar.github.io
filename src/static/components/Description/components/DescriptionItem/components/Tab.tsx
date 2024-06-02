@@ -1,7 +1,12 @@
 import React from "react";
-import { HeaderType } from "../../../../../data-types";
 
-const Component: React.FC<HeaderType> = ({ dates, link, title }) => (
+type Props = {
+    title: string;
+    link?: string;
+    dates: string;
+};
+
+const Component: React.FC<Props> = ({ dates, link, title }) => (
     <div className="history-list">
         <h3 className="history-company-name">
             <a title={title} rel="noopener noreferrer" href={link} target="_blank">

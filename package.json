@@ -3,18 +3,18 @@
   "author": "besdar",
   "description": "Personal CV",
   "scripts": {
-    "build:prepare": "rm -rf dist/* && cp public/manifest.json public/robots.txt public/404.html dist",
+    "build:prepare": "rm -rf dist/* && cp public/manifest.json public/robots.txt public/404.html public/*.pdf dist",
     "dev": "npm run build:script && npm run build:prepare && parcel ./public/index.html",
     "build:script": "parcel build build/index.js --no-source-maps --target serverBuild --no-cache && node dist/serverBuild/index.js",
     "build:browser": "parcel build ./public/index.html --target clientBuild",
     "build:all": "npm run build:script && npm run build:prepare && npm run build:browser",
     "deploy": "gh-pages -d dist",
-    "check-js": "eslint --cache --ext .ts,.tsx ./src",
+    "check-js": "eslint --cache ./src",
     "check-styles": "stylelint \"./public/css/**/*.css\"",
     "check-types": "tsc --noEmit .src/**/*",
     "project-checking": "concurrently \"npm:check-*\"",
     "update-css-types": "tcm src --namedExports",
-    "eslint:fix": "eslint --fix --ext .ts,.tsx ./src && prettier --write src/"
+    "eslint:fix": "eslint --fix ./src && prettier --write src/"
   },
   "browserslist": {
     "production": [
@@ -35,7 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "concurrently": "^8.2.2",
-    "eslint": "^8.56.0",
+    "eslint": "^9.3.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",

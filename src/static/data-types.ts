@@ -1,25 +1,12 @@
-type StackItemType = {
-    title: string;
-    description?: string;
-};
+import { Tab } from "./components/Description/components/DescriptionItem/components/Tab";
+import { Stack } from "./components/Description/components/Stack";
 
-export type StackType = {
-    items?: Array<StackItemType>;
-    title: string;
-};
-
-export type HeaderType = {
-    title: string;
-    link?: string;
-    dates: string;
-};
-
-export type DescriptionType = {
-    header?: HeaderType;
+type DescriptionType = {
+    header?: React.ComponentProps<typeof Tab>;
     title?: string;
     subtitle?: string;
     achievements?: Array<string>;
-    stack?: StackType;
+    stack?: React.ComponentProps<typeof Stack>;
     text?: string;
 };
 
@@ -28,8 +15,8 @@ export type PageDataType = {
     address: string;
     jobHistory: {
         title: string;
-        stackTitle: string;
-        showMoreTitle: string;
+        stackTitle: "Stack";
+        showMoreTitle: "Earlier work experience";
         jobs: DescriptionType[];
     };
     education: {

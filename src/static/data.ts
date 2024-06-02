@@ -1,6 +1,6 @@
 import { PageDataType } from "./data-types";
 
-export const ENGLISH_DATA: PageDataType = {
+export const LANG_DATA: Readonly<PageDataType> = {
     employee: "Dmitry Beskov",
     address: "Tbilisi, Georgia",
     education: {
@@ -10,7 +10,7 @@ export const ENGLISH_DATA: PageDataType = {
                 link: "https://etu.ru/en/university/",
                 title: "Saint Petersburg State Electrotechnical University",
             },
-            title: "«Communication Technologies and Communication Systems»",
+            title: "Communication Technologies and Communication Systems",
             subtitle: "Faculty of Radio Engineering and Telecommunications",
             achievements: [
                 "I once created a presentation about video codecs for a seminar and got an A+ not only for my homework but for the whole semester",
@@ -22,7 +22,7 @@ export const ENGLISH_DATA: PageDataType = {
     },
     summary: {
         overview:
-            "I'm a React front-end developer with over 4 years of experience. When I work, I usually point out the weaknesses in the company's processes and projects, and make suggestions to make our daily work more effective, fun and/or easier. I also try to fix code issues that I see on a regular basis. I really love what I do and I want to continue to grow in the frontend and create something great and special.",
+            "I'm an experienced React frontend developer. During my work I often make suggestions to a project's codebase to make the team's daily work more effective, more fun and/or easier. I also try to fix code issues that I see on a regular basis. I really love what I do and I want to continue to grow in the frontend to create something great and special.",
         title: "Summary",
     },
     jobHistory: {
@@ -37,13 +37,13 @@ export const ENGLISH_DATA: PageDataType = {
                     title: "JettyCloud (UCaaS)",
                 },
                 title: "Senior Software Developer",
-                text: "In this role, I was usually responsible for the creation, updating and maintenance of various sub-modules for customer account pages and internal administration pages.",
+                text: "In this role, I was usually responsible for the creating, updating and maintenaning various sub-modules for customer account pages and internal administration pages.",
                 achievements: [
-                    "Was consistently scored 3 out of 5 as exceeding expectations in a performance review process, and received only positive feedbacks from my colleagues",
-                    "Worked simultaneously in more than 4 teams (about 30 people) with more than 3 projects",
+                    "Worked simultaneously in more than 4 teams (around 30 people) on more than 3 projects and received only positive feedbacks from my colleagues during a performance review process",
+                    "Was noticed as one of the fastest employees in the team",
                     "Was the author of more than 50 technical tasks designed to improve the performance and quality of the code",
-                    "Was involved in the recruitment process and developed a technical interview knowledge base for all roles across the company, which improved our interview process",
-                    "Created an account generation Chrome extension tool for the company, which made the daily work of both QA engineers and developers much easier"
+                    "Was involved in the recruitment process and as a result developed a technical interviewing knowledge base for all roles across the company, which improved our interviewing process",
+                    "Created a Chrome extension tool to generate test accounts, which made the daily work of both QA engineers and developers much easier",
                 ],
                 stack: {
                     title: "Stack",
@@ -56,7 +56,7 @@ export const ENGLISH_DATA: PageDataType = {
                         },
                         {
                             title: "Java&Kotlin",
-                            description: "If necessary, worked with backend projects with new languages",
+                            description: "When it was necessary, I worked with backend projects and these new languages for me",
                         },
                         {
                             title: "GraphQL",
@@ -66,42 +66,91 @@ export const ENGLISH_DATA: PageDataType = {
             },
             {
                 header: {
-                    dates: "2020 - 2022",
+                    dates: "2021 - 2022",
                     link: "https://foxford.ru/",
                     title: "Foxford (EdTech)",
                 },
                 title: "Frontend developer",
-                text: "Practically was a team leader, worked a lot with HTML&CSS and performed managerial activities like teamwork process optimization on various development stages",
+                text: "Practically was a team leader (4 developers), worked a lot with HTML&CSS and performed managerial activities like teamwork process optimization on various development stages",
                 achievements: [
-                    "Implemented code review for the team, was an organizer of frontend meetings",
-                    "Added large adjustment to the ESLint of a team project, added Stylelint, adjusted bundling and CI of the project",
-                    "Optimized JS code of the project and work process of the team - developers now are writing faster and more stable code",
+                    "Started a code review process for the team, was an organizer of weekly frontend meetings",
+                    "Added many new rules to the ESLint to make it stricter in the project, added Stylelint, created code style guides for the team. As a result, the development process became faster and our product became more stable",
+                    "Enchanced the Rollup building script and configuration to deliver less data to our customers: added code splitting for production builds, CSS modules support, source maps and much more",
+                    "Improved our Lighthouse perfomance and SEO metrics by 30%, and started an epic task of moving from a 3rd party website builder to React template based development"
                 ],
                 stack: {
                     title: "Stack",
                     items: [
                         {
-                            title: "JS&FlowType",
+                            title: "JS&Flow",
                             description:
-                                "ES5 and ES6+, formed development rules for the team (including ones in linters), added code review process, reduced typing issues in the project",
+                                "Formed development rules for the team (including ones in linters), added code review process, reduced typing issues in the project",
                         },
                         {
                             title: "JQuery",
-                            description: "Rewrote parts of legacy code into modern language stack or adjusted its functionality",
+                            description: "Implemented simple animations and scripts",
                         },
                         {
                             title: "HTML&CSS",
-                            description: "Wrote CSS using BEM design and developed style guides for the team",
+                            description: "Wrote CSS classes using BEM design and developed style guides for the team",
                         },
                         {
                             title: "React&Effector",
-                            description:
-                                "Made large-scale refactoring of existing code including architecture refactoring, wrote large modules for thousands lines",
                         },
                         {
                             title: "NodeJS",
+                            description: "Added Puppeteer to the project and made several SEO reports with it for managers",
+                        },
+                    ],
+                },
+            },
+            {
+                header: {
+                    title: "Adsterra (AdTech)",
+                    dates: "2020 - 2021",
+                    link: "https://adsterra.com/",
+                },
+                text: "Main areas of work were development of the advertising JS scripts, internal admin tools and the company's client account pages. Formerly I worked in another company, but for Adsterra's projects",
+                title: "Frontend developer",
+                achievements: [
+                    "Was noticed as one of the fastest employees in our department",
+                    "Offered JS linter and Styleint improvements and integration techniques, minification of JS and CSS; took active part in writing our frontend style guide; played a significant role in the refactoring process of our legacy code to modern syntax",
+                    "Successfully and confidently worked with PHP and PostgreSQL backends when the company was understaffed and was needed a backend boost",
+                    "Was praised for being self-sufficient during the onboarding process",
+                ],
+                stack: {
+                    title: "Stack",
+                    items: [
+                        {
+                            title: "JS",
                             description:
-                                "Added Puppeteer to the project and made several SEO reports with it; enchanced Rollup building script and config: added code splitting for production build, CSS support, debugging features and much more.",
+                                "ES5 and ES6+, TS, took part in the JS linter and task-runner (gulp) adjustment, wrote rules for YouTrack workflows, solved various tasks (websites adjustment, adjustment invisible advertising scripts, etc.) and many other things.",
+                        },
+                        {
+                            title: "JQuery",
+                            description: "Rewrote legacy code into modern language stack or adjusted its functionality",
+                        },
+                        {
+                            title: "HTML&CSS",
+                            description: "Participated in the HTML and CSS code style standarts discussions, made refactoring HTML layout in the phtml files.",
+                        },
+                        {
+                            title: "PHP",
+                            description: "Rewrote and refactored existing code in accordance with the company's standards",
+                        },
+                        {
+                            title: "PostgreSQL",
+                            description: "Rewrote functions, writing queries for updating and getting various data.",
+                        },
+                        {
+                            title: "React&Redux",
+                            description:
+                                "Made large-scale refactoring of existing code including architecture refactoring, rewrote large modules with thousands of lines.",
+                        },
+                        {
+                            title: "Vue",
+                            description:
+                                "Made small fixes in existing functionality, took part in working with Vue and succesfully handled tasks on time regardless of the lack of experience in working with Vue.",
                         },
                     ],
                 },
@@ -160,7 +209,7 @@ export const ENGLISH_DATA: PageDataType = {
             },
             {
                 header: {
-                    title: "Russian utility systems",
+                    title: "Russian utility company",
                     dates: "2018 - 2019",
                 },
                 title: "Software developer",

@@ -1,7 +1,16 @@
 import React, { Fragment } from "react";
-import { StackType } from "../../../data-types";
 
-const Component: React.FC<StackType> = ({ items, title }) => {
+type StackItemType = {
+    title: string;
+    description?: string;
+};
+
+type Props = {
+    items?: Array<StackItemType>;
+    title: string;
+};
+
+const Component: React.FC<Props> = ({ items, title }) => {
     const stackLength = items?.length;
 
     if (!stackLength) {
