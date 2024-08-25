@@ -24,11 +24,7 @@ export const App: React.FC = () => (
                 ]}
             />
             <Description showMoreTitle={LANG_DATA.jobHistory.showMoreTitle} title={LANG_DATA.jobHistory.title} items={LANG_DATA.jobHistory.jobs} />
-            <Description
-                showMoreTitle={LANG_DATA.jobHistory.showMoreTitle}
-                title={LANG_DATA.education.title}
-                items={[LANG_DATA.education.university]}
-            />
+            <Description showMoreTitle={LANG_DATA.jobHistory.showMoreTitle} title={LANG_DATA.education.title} items={[LANG_DATA.education.university]} />
         </main>
         <aside className="body-aside-content aside-content">
             <PDFButton />

@@ -18,9 +18,7 @@ const Component: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) 
         ))}
         {items.length > 3 && (
             <details className="description-details">
-                <summary className="description-summary-title">
-                    {showMoreTitle}
-                </summary>
+                <summary className="description-summary-title">{showMoreTitle}</summary>
                 {items.slice(3).map((item) => (
                     <DescriptionItem key={item.text} {...item} />
                 ))}

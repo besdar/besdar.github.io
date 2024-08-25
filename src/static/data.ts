@@ -76,7 +76,7 @@ export const LANG_DATA: Readonly<PageDataType> = {
                     "Started a code review process for the team, was an organizer of weekly frontend meetings",
                     "Added many new rules to the ESLint to make it stricter in the project, added Stylelint, created code style guides for the team. As a result, the development process became faster and our product became more stable",
                     "Enchanced the Rollup building script and configuration to deliver less data to our customers: added code splitting for production builds, CSS modules support, source maps and much more",
-                    "Improved our Lighthouse perfomance and SEO metrics by 30%, and started an epic task of moving from a 3rd party website builder to React template based development"
+                    "Improved our Lighthouse perfomance and SEO metrics by 30%, and started an epic task of moving from a 3rd party website builder to React template based development",
                 ],
                 stack: {
                     title: "Stack",
