@@ -31,7 +31,7 @@
     text-decoration: none!important;
   }
 
-  article#summary p.history-tech-stack.tech-stack, div.history-about:nth-child(3) {
+  article#summary, div.history-about:nth-child(3) {
     display: none;
   }
 

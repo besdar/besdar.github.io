@@ -1,7 +1,7 @@
 import { Tab } from "./components/Description/components/DescriptionItem/components/Tab";
 import { Stack } from "./components/Description/components/Stack";
 
-type DescriptionType = {
+export type DescriptionType = {
     header?: React.ComponentProps<typeof Tab>;
     title?: string;
     subtitle?: string;

@@ -22,7 +22,7 @@ export const LANG_DATA: Readonly<PageDataType> = {
     },
     summary: {
         overview:
-            "I'm an experienced React frontend developer. During my work I often make suggestions to a project's codebase to make the team's daily work more effective, more fun and/or easier. I also try to fix code issues that I see on a regular basis. I really love what I do and I want to continue to grow in the frontend to create something great and special.",
+            "I am an experienced React frontend developer with over 5 years of experience. Known for my ability to quickly learn and adapt to new technologies, I have been recognized by colleagues and supervisors alike and consistently exceed expectations. My passion for building new and meaningful applications fuels my work, and I am eager to join a company that aligns with my values and is committed to delivering products that make a positive difference in people's lives.",
         title: "Summary",
     },
     jobHistory: {
@@ -37,29 +37,33 @@ export const LANG_DATA: Readonly<PageDataType> = {
                     title: "JettyCloud (UCaaS)",
                 },
                 title: "Senior Software Developer",
-                text: "In this role, I was usually responsible for the creating, updating and maintenaning various sub-modules for customer account pages and internal administration pages.",
+                text: "In this role, I was usually responsible for creating, updating and maintaining countless billing sub-modules for customer account pages and internal administration pages, enhancing user experience",
                 achievements: [
-                    "Worked simultaneously in more than 4 teams (around 30 people) on more than 3 projects and received only positive feedbacks from my colleagues during a performance review process",
+                    "Contributed simultaneously with more than 4 teams (around 30 people) on more than 3 projects and received only positive feedback from my colleagues and supervisors alike during a performance review process",
                     "Was noticed as one of the fastest employees in the team",
                     "Was the author of more than 50 technical tasks designed to improve the performance and quality of the code",
-                    "Was involved in the recruitment process and as a result developed a technical interviewing knowledge base for all roles across the company, which improved our interviewing process",
+                    "Designed a centralized repository of technical interview questions and evaluation criteria, enhancing the recruitment process; this repository is now utilized by several teams to ensure consistency and quality in technical interviews",
                     "Created a Chrome extension tool to generate test accounts, which made the daily work of both QA engineers and developers much easier",
                 ],
                 stack: {
                     title: "Stack",
                     items: [
                         {
-                            title: "TS",
+                            title: "TypeScript",
                         },
                         {
-                            title: "React&Redux",
+                            title: "React",
+                        },
+                        {
+                            title: "Jest&RTL",
                         },
                         {
                             title: "Java&Kotlin",
-                            description: "When it was necessary, I worked with backend projects and these new languages for me",
+                            description: "When it was necessary, I worked with backend projects and these were new languages for me",
                         },
                         {
                             title: "GraphQL",
+                            description: "I have created couple of GraphQL requests in an exiting project",
                         },
                     ],
                 },
@@ -74,9 +78,9 @@ export const LANG_DATA: Readonly<PageDataType> = {
                 text: "Practically was a team leader (4 developers), worked a lot with HTML&CSS and performed managerial activities like teamwork process optimization on various development stages",
                 achievements: [
                     "Started a code review process for the team, was an organizer of weekly frontend meetings",
-                    "Added many new rules to the ESLint to make it stricter in the project, added Stylelint, created code style guides for the team. As a result, the development process became faster and our product became more stable",
-                    "Enchanced the Rollup building script and configuration to deliver less data to our customers: added code splitting for production builds, CSS modules support, source maps and much more",
-                    "Improved our Lighthouse perfomance and SEO metrics by 30%, and started an epic task of moving from a 3rd party website builder to React template based development",
+                    "Proposed many new rules to the ESLint to make it stricter in the project, integrated Stylelint, created code style guides for the team. As a result, the development process became faster and our product became more stable",
+                    "Enhanced the Rollup building script and configuration to deliver less data to our customers: implemented code splitting for production builds, CSS modules support, source maps and much more",
+                    "Improved our Lighthouse performance and SEO metrics by 30%, and started an epic task of moving from a 3rd party website builder to React template based development",
                 ],
                 stack: {
                     title: "Stack",
@@ -110,12 +114,12 @@ export const LANG_DATA: Readonly<PageDataType> = {
                     dates: "2020 - 2021",
                     link: "https://adsterra.com/",
                 },
-                text: "Main areas of work were development of the advertising JS scripts, internal admin tools and the company's client account pages. Formerly I worked in another company, but for Adsterra's projects",
+                text: "My main areas of work included the development of the advertising JS scripts, internal admin tools and the company's client account pages. Formerly I was employed at another company, but I worked on Adsterra's projects",
                 title: "Frontend developer",
                 achievements: [
                     "Was noticed as one of the fastest employees in our department",
-                    "Offered JS linter and Styleint improvements and integration techniques, minification of JS and CSS; took active part in writing our frontend style guide; played a significant role in the refactoring process of our legacy code to modern syntax",
-                    "Successfully and confidently worked with PHP and PostgreSQL backends when the company was understaffed and was needed a backend boost",
+                    "Offered JS linter and Stylelint improvements and integration techniques, minification of JS and CSS; took active part in writing our frontend style guide; played a significant role in the refactoring process of our legacy code to modern syntax",
+                    "Successfully and confidently worked with PHP and PostgreSQL backends when the company was understaffed and needed a backend boost",
                     "Was praised for being self-sufficient during the onboarding process",
                 ],
                 stack: {
@@ -233,7 +237,7 @@ export const LANG_DATA: Readonly<PageDataType> = {
                         },
                         {
                             title: "HTTP",
-                            description: "Enchanced and made new web-services in the 1C programming platform",
+                            description: "Enhanced and made new web-services in the 1C programming platform",
                         },
                     ],
                 },
