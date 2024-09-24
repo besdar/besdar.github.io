@@ -11,8 +11,7 @@
   }
 
   .body-aside-content,
-  .contacts-links-not-printed,
-  .description-details {
+  .contacts-links-not-printed {
     display: none;
   }
 
@@ -37,5 +36,17 @@
 
   .header-title-job-position {
     margin-bottom: revert;
+  }
+
+  .description-details {
+    display: contents; 
+  }
+
+  .description-summary-title {
+    display: none;
+  }
+
+  .description-details .history-description {
+    display: none;
   }
 }

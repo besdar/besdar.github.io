@@ -3,7 +3,7 @@
   "author": "besdar",
   "description": "Personal CV",
   "scripts": {
-    "build:prepare": "rm -rf dist/* && cp public/manifest.json public/robots.txt public/404.html public/*.pdf dist",
+    "build:prepare": "rm -rf dist/* && cp public/manifest.json public/robots.txt public/*.pdf dist",
     "dev": "npm run build:script && npm run build:prepare && parcel ./public/index.html",
     "build:script": "parcel build build/index.js --no-source-maps --target serverBuild --no-cache && node dist/serverBuild/index.js",
     "build:browser": "parcel build ./public/index.html --target clientBuild",
@@ -34,7 +34,7 @@
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.0.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
