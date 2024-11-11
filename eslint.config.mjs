@@ -1,38 +1,35 @@
 import js from "@eslint/js";
-import eslintConfigAirbnb from "eslint-config-airbnb";
-import eslintPluginReact from "eslint-plugin-react";
-import eslintPluginReactHooks from "eslint-plugin-react-hooks";
+import importPlugin from "eslint-plugin-import";
+// import eslintConfigAirbnb from "eslint-config-airbnb";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintConfigPrettier from "eslint-config-prettier";
 import typescriptParser from "@typescript-eslint/parser";
-import React from "react";
-import typescriptPlugin from "@typescript-eslint/eslint-plugin";
+import tseslint from "typescript-eslint";
 import globals from "globals";
+import reactPlugin from "eslint-plugin-react";
 
-export default [
+export default tseslint.config(
     js.configs.recommended,
-    eslintConfigAirbnb,
-    eslintPluginReact.configs.recommended,
-    eslintPluginReactHooks.configs.recommended,
-    eslintPluginJsxA11y.configs.recommended,
+    importPlugin.flatConfigs.recommended,
+    // eslintConfigAirbnb,
+    reactPlugin.configs.flat.recommended, // This is not a plugin object, but a shareable config object
+    reactPlugin.configs.flat["jsx-runtime"], // Add this if you are using React 17+
+    eslintPluginJsxA11y.flatConfigs.recommended,
+    ...tseslint.configs.recommended,
     eslintConfigPrettier,
     {
         files: ["src/**/*.ts", "src/**/*.tsx"],
-        plugins: {
-            React,
-            typescriptPlugin,
-        },
         languageOptions: {
             parser: typescriptParser,
-            ecmaFeatures: {
-                jsx: true,
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true,
+                },
             },
             ecmaVersion: "latest",
             sourceType: "module",
             globals: {
                 ...globals.browser,
-                ...globals.es2021,
-                myCustomGlobal: "readonly",
             },
         },
         rules: {
@@ -65,5 +62,13 @@ export default [
             ],
             "react/jsx-props-no-spreading": "off",
         },
+        settings: {
+            react: {
+                version: "detect", // React version. "detect" automatically picks the version you have installed.
+                // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+                // Defaults to the "defaultVersion" setting and warns if missing, and to "detect" in the future
+                defaultVersion: "18.2.0", // Default React version to use when the version you have installed cannot be detected.
+            },
+        },
     },
-];
+);
