@@ -9,9 +9,13 @@ type Props = {
 export const Tab: React.FC<Props> = ({ dates, link, title }) => (
     <div className="history-list">
         <h3 className="history-company-name">
-            <a title={title} rel="noopener noreferrer" href={link} target="_blank">
-                {title}
-            </a>
+            {link ? (
+                <a title={title} rel="noopener noreferrer" href={link} target="_blank">
+                    {title}
+                </a>
+            ) : (
+                title
+            )}
         </h3>
         <span className="history-dates">{dates}</span>
     </div>

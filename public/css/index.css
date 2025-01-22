@@ -97,7 +97,7 @@ main {
   color: var(--hover-color);
 }
 
-a {
+.history-company-name {
   font-style: italic;
   text-decoration: none;
   color: var(--highlight-color);

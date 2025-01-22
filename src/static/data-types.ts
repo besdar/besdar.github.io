@@ -3,11 +3,11 @@ import { Stack } from "./components/Description/components/Stack";
 
 export type DescriptionType = {
     header?: React.ComponentProps<typeof Tab>;
-    title?: string;
+    title: {label: string, link?: string};
     subtitle?: string;
-    achievements?: Array<string>;
-    stack?: React.ComponentProps<typeof Stack>;
-    text?: string;
+    achievements: Array<string>;
+    stack: React.ComponentProps<typeof Stack>['items'];
+    summary?: string;
 };
 
 export type PageDataType = {
@@ -15,8 +15,6 @@ export type PageDataType = {
     address: string;
     jobHistory: {
         title: string;
-        stackTitle: "Stack";
-        showMoreTitle: "Earlier work experience";
         jobs: DescriptionType[];
     };
     education: {
@@ -26,5 +24,9 @@ export type PageDataType = {
     summary: {
         title: string;
         overview: string;
+    };
+    foss: {
+        title: string;
+        projects: DescriptionType[];
     };
 };

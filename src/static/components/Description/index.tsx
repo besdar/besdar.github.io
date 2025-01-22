@@ -1,28 +1,27 @@
 import React from "react";
 import { DescriptionItem } from "./components/DescriptionItem";
 import { DescriptionType } from "../../data-types";
+import { LANG } from "../../lang";
+import { DescriptionWrapper } from "./DescriptionWrapper";
 
 type DescriptionProps = {
     title: string;
     items: Array<DescriptionType>;
-    showMoreTitle: string;
+    showMoreTitle?: boolean;
 };
 
 export const Description: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) => (
-    <article className="description" id={title.trim().replace(" ", "-").toLowerCase()}>
-        <div className="description-title-container">
-            <h2 className="description-title">{title}</h2>
-        </div>
+    <DescriptionWrapper title={title}>
         {items.slice(0, 3).map((item) => (
-            <DescriptionItem key={item.text} {...item} />
+            <DescriptionItem key={item.summary} {...item} />
         ))}
-        {items.length > 3 && (
+        {items.length > 3 && Boolean(showMoreTitle) && (
             <details className="description-details">
-                <summary className="description-summary-title">{showMoreTitle}</summary>
+                <summary className="description-summary-title">{LANG.EarlierWorkExperience}</summary>
                 {items.slice(3).map((item) => (
-                    <DescriptionItem key={item.text} {...item} />
+                    <DescriptionItem key={item.summary} {...item} />
                 ))}
             </details>
         )}
-    </article>
+    </DescriptionWrapper>
 );
