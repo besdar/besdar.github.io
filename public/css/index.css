@@ -1,8 +1,15 @@
+:root {
+  color-scheme: light dark;
+
+  --main-color: light-dark(black, white);
+  --highlight-color: light-dark(midnightblue, dodgerblue);
+  --hover-color: light-dark(dodgerblue, deepskyblue);
+  --background-color: light-dark(white, black);
+}
+
 html {
-  --main-color: black;
-  --highlight-color: midnightblue;
-  --hover-color: dodgerblue;
-  --background-color: white;
+  background-color: var(--background-color);
+  color: var(--main-color);
 }
 
 header,
