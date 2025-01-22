@@ -1,6 +1,6 @@
 import React from "react";
 
-const Component: React.FC = () => (
+export const PDFButton: React.FC = () => (
     <a className="aside-content-download-button" href="./Dmitry_Beskov.pdf" download target="_blank" rel="noreferrer">
         <svg className="aside-content-download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>PDF</title>
@@ -8,5 +8,3 @@ const Component: React.FC = () => (
         </svg>
     </a>
 );
-
-export const PDFButton = React.memo(Component);

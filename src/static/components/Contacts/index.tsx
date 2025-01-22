@@ -6,7 +6,7 @@ type ContactsProps = {
     address: PageDataType["address"];
 };
 
-const Component: React.FC<ContactsProps> = ({ address }) => (
+export const Contacts: React.FC<ContactsProps> = ({ address }) => (
     <div className="title-contacts">
         <a rel="noopener noreferrer" href={`https://duckduckgo.com/?q=${encodeURIComponent(address)}&iaxm=maps`} target="_blank">
             <address className="title-contacts-contact">{address}</address>
@@ -18,5 +18,3 @@ const Component: React.FC<ContactsProps> = ({ address }) => (
         <Links />
     </div>
 );
-
-export const Contacts = React.memo(Component);

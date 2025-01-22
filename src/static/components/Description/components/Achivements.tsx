@@ -1,6 +1,6 @@
 import React from "react";
 
-const Component: React.FC<{ achievements?: string[] }> = ({ achievements }) => {
+export const Achievements: React.FC<{ achievements?: string[] }> = ({ achievements }) => {
     if (!achievements?.length) {
         return null;
     }
@@ -15,5 +15,3 @@ const Component: React.FC<{ achievements?: string[] }> = ({ achievements }) => {
         </ul>
     );
 };
-
-export const Achievements = React.memo(Component);

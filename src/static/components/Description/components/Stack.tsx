@@ -10,7 +10,7 @@ type Props = {
     title: string;
 };
 
-const Component: React.FC<Props> = ({ items, title }) => {
+export const Stack: React.FC<Props> = ({ items, title }) => {
     const stackLength = items?.length;
 
     if (!stackLength) {
@@ -35,5 +35,3 @@ const Component: React.FC<Props> = ({ items, title }) => {
         </p>
     );
 };
-
-export const Stack = React.memo(Component);

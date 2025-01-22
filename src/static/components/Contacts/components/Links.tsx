@@ -1,6 +1,6 @@
 import React from "react";
 
-const Component: React.FC = () => (
+export const Links: React.FC = () => (
     <div className="title-contacts-contact contacts-links contacts-links-margin-top contacts-links-not-printed">
         <a className="contacts-link-link" rel="noopener" href="mailto:dmitry.beskov@outlook.com">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -60,5 +60,3 @@ const Component: React.FC = () => (
         </a>
     </div>
 );
-
-export const Links = Component;

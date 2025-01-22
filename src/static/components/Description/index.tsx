@@ -8,7 +8,7 @@ type DescriptionProps = {
     showMoreTitle: string;
 };
 
-const Component: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) => (
+export const Description: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) => (
     <article className="description" id={title.trim().replace(" ", "-").toLowerCase()}>
         <div className="description-title-container">
             <h2 className="description-title">{title}</h2>
@@ -26,5 +26,3 @@ const Component: React.FC<DescriptionProps> = ({ items, title, showMoreTitle }) 
         )}
     </article>
 );
-
-export const Description = React.memo(Component);

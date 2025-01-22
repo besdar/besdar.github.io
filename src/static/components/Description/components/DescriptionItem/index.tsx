@@ -4,7 +4,7 @@ import { Stack } from "../Stack";
 import { Tab } from "./components/Tab";
 import { DescriptionType } from "../../../../data-types";
 
-const Component: React.FC<DescriptionType> = ({ header, achievements, text, stack, title, subtitle }) => {
+export const DescriptionItem: React.FC<DescriptionType> = ({ header, achievements, text, stack, title, subtitle }) => {
     const sectionClasses = ["history", header && "description-item"].filter(Boolean).join(" ");
 
     return (
@@ -22,5 +22,3 @@ const Component: React.FC<DescriptionType> = ({ header, achievements, text, stac
         </section>
     );
 };
-
-export const DescriptionItem = React.memo(Component);
