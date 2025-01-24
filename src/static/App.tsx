@@ -3,7 +3,7 @@ import { PDFButton } from "./components/PDFButton";
 import { LANG_DATA } from "./data";
 import { Contacts } from "./components/Contacts";
 import { Description } from "./components/Description";
-import { DescriptionWrapper } from "./components/Description/DescriptionWrapper";
+import { DescriptionWrapper } from "./components/Description/components/DescriptionWrapper";
 
 export const App: React.FC = () => (
     <React.StrictMode>
@@ -18,9 +18,9 @@ export const App: React.FC = () => (
             <DescriptionWrapper title={LANG_DATA.summary.title}>
                 <p>{LANG_DATA.summary.overview}</p>
             </DescriptionWrapper>
-            <Description showMoreTitle title={LANG_DATA.jobHistory.title} items={LANG_DATA.jobHistory.jobs} />
-            <Description title={LANG_DATA.education.title} items={[LANG_DATA.education.university]} />
-            <Description title={LANG_DATA.foss.title} items={LANG_DATA.foss.projects} />
+            <Description showMoreTitle title={LANG_DATA.jobs.title} items={LANG_DATA.jobs.items} />
+            <Description title={LANG_DATA.education.title} items={LANG_DATA.education.items} />
+            <Description title={LANG_DATA.projects.title} items={LANG_DATA.projects.items} />
         </main>
         <aside className="body-aside-content aside-content">
             <PDFButton />

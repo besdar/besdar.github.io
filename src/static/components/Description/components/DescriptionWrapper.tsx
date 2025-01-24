@@ -1,7 +1,4 @@
 import React from "react";
-import { DescriptionItem } from "./components/DescriptionItem";
-import { DescriptionType } from "../../data-types";
-import { LANG } from "../../lang";
 
 type DescriptionProps = {
     title: string;

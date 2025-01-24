@@ -2,7 +2,7 @@ import React from "react";
 import { DescriptionItem } from "./components/DescriptionItem";
 import { DescriptionType } from "../../data-types";
 import { LANG } from "../../lang";
-import { DescriptionWrapper } from "./DescriptionWrapper";
+import { DescriptionWrapper } from "./components/DescriptionWrapper";
 
 type DescriptionProps = {
     title: string;

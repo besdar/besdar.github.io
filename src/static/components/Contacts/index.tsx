@@ -8,7 +8,7 @@ type ContactsProps = {
 
 export const Contacts: React.FC<ContactsProps> = ({ address }) => (
     <div className="title-contacts">
-        <a rel="noopener noreferrer" href={`https://duckduckgo.com/?q=${encodeURIComponent(address)}&iaxm=maps`} target="_blank">
+        <a className="link" rel="noopener noreferrer" href={`https://duckduckgo.com/?q=${encodeURIComponent(address)}&iaxm=maps`} target="_blank">
             <address className="title-contacts-contact">{address}</address>
         </a>
         <div className="title-contacts-divider">|</div>

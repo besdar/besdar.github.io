@@ -10,7 +10,7 @@ export const Tab: React.FC<Props> = ({ dates, link, title }) => (
     <div className="history-list">
         <h3 className="history-company-name">
             {link ? (
-                <a title={title} rel="noopener noreferrer" href={link} target="_blank">
+                <a className="link" title={title} rel="noopener noreferrer" href={link} target="_blank">
                     {title}
                 </a>
             ) : (

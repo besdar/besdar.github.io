@@ -4,7 +4,7 @@ export const LANG_DATA: Readonly<PageDataType> = {
     employee: "Dmitry Beskov",
     address: "Tbilisi, Georgia",
     education: {
-        university: {
+        items: [{
             header: {
                 dates: "2014 - 2018",
                 link: "https://etu.ru/en/university/",
@@ -17,7 +17,7 @@ export const LANG_DATA: Readonly<PageDataType> = {
                 "At the end of my studies, I gave all my materials for the four years to all the first-year students and got a lot of positive feedback from them",
             ],
             stack: [{ title: "HTTP" }, { title: "OSI Model" }, { title: "C++" }, { title: "Git" }],
-        },
+        }],
         title: "Education",
     },
     summary: {
@@ -25,9 +25,9 @@ export const LANG_DATA: Readonly<PageDataType> = {
             "I am an experienced React frontend developer with over 5 years of experience. Known for my ability to quickly learn and adapt to new technologies, I have been recognized by colleagues and supervisors alike and consistently exceed expectations. My passion for building new and meaningful applications fuels my work, and I am eager to join a company that aligns with my values and is committed to delivering products that make a positive difference in people's lives.",
         title: "Summary",
     },
-    jobHistory: {
+    jobs: {
         title: "Work experience",
-        jobs: [
+        items: [
             {
                 header: {
                     dates: "2022 - 2024",
@@ -35,6 +35,11 @@ export const LANG_DATA: Readonly<PageDataType> = {
                     title: "JettyCloud (UCaaS)",
                 },
                 title: { label: "Senior Software Developer" },
+                projectsDescriptions: [
+                    "A cutting-edge micro-frontend architecture project aimed to unify business logic across multiple company projects through a single JavaScript link. Each micro-frontend was initialized within a dedicated portal, combining to form a personalized page with user data and management tools for clients. The project leveraged the latest versions of React, TypeScript, and other JavaScript libraries. As a key contributor to the project's early stages, I played a pivotal role in shaping its architectural decisions and led the development of the most complex micro-frontend modules. Additionally, I mentored fellow frontend developers, helping to drive the project's success.",
+                    "A long-term project utilizing modern technologies like React, TypeScript, GraphQL, and Kotlin was designed to deliver a robust and scalable solution. The project had a strict test coverage policy, which ensured the development of a comprehensive testing framework. This framework included unit, integration, and end-to-end tests, allowing the team to ensure the quality and reliability of the solution. As a full-stack developer, I worked on both the frontend and backend, utilizing Kotlin to develop the backend API and integrating it with the frontend components. My involvement in this project allowed me to develop my skills in writing effective tests and engaging in discussions with the frontend team on best practices for testing.",
+                    "A large-scale, monolithic project with over 100 team members presented a unique set of challenges, including working with a mix of outdated and modern technologies, such as TypeScript, vanilla JavaScript, React, plain HTML and CSS, Java, and other backend technologies. Despite these complexities, the project required careful planning, collaboration, and effective communication to drive positive change. As a contributor to this project, I successfully navigated the process of updating legacy code, convincing stakeholders of necessary changes, and participating in cross-team refactoring initiatives, developing my skills in collaborating with large teams, managing technical debt, and working with multiple technologies."
+                ],
                 summary:
                     "In this role, I was usually responsible for creating, updating and maintaining countless billing sub-modules for customer account pages and internal administration pages, enhancing user experience",
                 achievements: [
@@ -61,7 +66,7 @@ export const LANG_DATA: Readonly<PageDataType> = {
                     {
                         title: "GraphQL",
                         description: "I have created couple of GraphQL requests in an exiting project",
-                    },
+                    }
                 ],
             },
             {
@@ -232,9 +237,9 @@ export const LANG_DATA: Readonly<PageDataType> = {
             },
         ],
     },
-    foss: {
+    projects: {
         title: "Projects",
-        projects: [
+        items: [
             {
                 summary: "Wordum is a language learning application designed to enhance vocabulary acquisition through interactive flashcards. This project was inspired by my own language learning experience, where I sought a more efficient way to incorporate audio and contextual information into my studies. To date, there are 10+ versions of the app, with bi-weekly updates based on user feedback and feature requests.",
                 title: { label: "Wordum", link: "https://github.com/besdar/wordum" },

@@ -8,25 +8,26 @@ export type DescriptionType = {
     achievements: Array<string>;
     stack: React.ComponentProps<typeof Stack>['items'];
     summary?: string;
+    projectsDescriptions?: string[];
 };
 
 export type PageDataType = {
     employee: string;
     address: string;
-    jobHistory: {
+    jobs: {
         title: string;
-        jobs: DescriptionType[];
+        items: DescriptionType[];
     };
     education: {
         title: string;
-        university: DescriptionType;
+        items: DescriptionType[];
     };
     summary: {
         title: string;
         overview: string;
     };
-    foss: {
+    projects: {
         title: string;
-        projects: DescriptionType[];
+        items: DescriptionType[];
     };
 };

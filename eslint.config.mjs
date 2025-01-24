@@ -3,35 +3,24 @@ import importPlugin from "eslint-plugin-import";
 // import eslintConfigAirbnb from "eslint-config-airbnb";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintConfigPrettier from "eslint-config-prettier";
-import typescriptParser from "@typescript-eslint/parser";
-import tseslint from "typescript-eslint";
-import globals from "globals";
+import tseslint from 'typescript-eslint';
 import reactPlugin from "eslint-plugin-react";
 
 export default tseslint.config(
     js.configs.recommended,
-    importPlugin.flatConfigs.recommended,
     // eslintConfigAirbnb,
     reactPlugin.configs.flat.recommended, // This is not a plugin object, but a shareable config object
     reactPlugin.configs.flat["jsx-runtime"], // Add this if you are using React 17+
     eslintPluginJsxA11y.flatConfigs.recommended,
-    ...tseslint.configs.recommended,
+    tseslint.configs.recommended,
     eslintConfigPrettier,
     {
-        files: ["src/**/*.ts", "src/**/*.tsx"],
+        files: ['src/**/*.{ts,tsx}'],
         languageOptions: {
-            parser: typescriptParser,
-            parserOptions: {
-                ecmaFeatures: {
-                    jsx: true,
-                },
-            },
             ecmaVersion: "latest",
             sourceType: "module",
-            globals: {
-                ...globals.browser,
-            },
         },
+        extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
         rules: {
             "react/jsx-filename-extension": [
                 "error",

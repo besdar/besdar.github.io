@@ -87,24 +87,27 @@ main {
   z-index: 1;
 }
 
-.description-summary-title {
+.description-summary-title, .projects-summary-title {
   color: var(--highlight-color);
   cursor: pointer;
   margin-top: 1.3em;
 }
 
-.description-summary-title:hover {
+.description-summary-title:hover, .projects-summary-title:hover {
   color: var(--hover-color);
 }
 
-.history-company-name {
-  font-style: italic;
+.link, .history-company-name, .description-title-link {
   text-decoration: none;
   color: var(--highlight-color);
   transition: linear 0.3s;
 }
 
-a:hover {
+.link, .history-company-name {
+  font-style: italic;
+}
+
+.link:hover, .description-title-link:hover {
   color: var(--hover-color);
 }
 
