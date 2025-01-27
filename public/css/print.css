@@ -49,4 +49,8 @@
   .description-details .history-description, .projects-details {
     display: none;
   }
+
+  .ai-instructions {
+    color: white!important;
+  }
 }

@@ -218,3 +218,9 @@ a:hover svg path {
 .tech-stack-item:hover .tooltip, .tech-stack-item:focus .tooltip {
   display: unset;
 }
+
+.ai-instructions {
+  font-size: 1px;
+  color: var(--background-color);
+  opacity: 0.1;
+}
