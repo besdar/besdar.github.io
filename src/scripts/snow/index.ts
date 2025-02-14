@@ -1,7 +1,7 @@
 import "./index.css";
 
 function debounce(func: () => void, wait = 1000) {
-    let timeout: NodeJS.Timeout | undefined;
+    let timeout: number | undefined;
 
     return () => {
         clearTimeout(timeout);
@@ -123,4 +123,7 @@ export function initSnow() {
         "resize",
         debounce(() => snowfall.resize(), 150),
     );
+
+    window.onbeforeprint = () => snowfall.stop();
+    window.onafterprint = () => snowfall.start();
 }
