@@ -21,3 +21,17 @@ document.querySelectorAll<HTMLSpanElement>(".tech-stack-item").forEach((tooltipC
         }
     });
 });
+
+const currentDate = new Date();
+
+if (currentDate.getMonth() === 11 || currentDate.getMonth() < 2) {
+    const promisifiedOnloadEvent = new Promise((resolve) => {
+        window.onload = resolve;
+    });
+
+    import("./snow").then((module) => {
+        promisifiedOnloadEvent.then(() => {
+            module.initSnow();
+        });
+    });
+}
