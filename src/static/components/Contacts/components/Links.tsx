@@ -31,7 +31,7 @@ export const Links: React.FC = () => (
                 />
             </svg>
         </a>
-        <a className="contacts-link-link" rel="noopener noreferrer" href="https://join.skype.com/invite/l8SmzmSqe4fD" target="_blank">
+        <a className="contacts-link-link" rel="noopener noreferrer" href="https://join.skype.com/invite/NJFkepadgKY9" target="_blank">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                 <title>Skype</title>
                 <path
