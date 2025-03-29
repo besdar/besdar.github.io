@@ -114,7 +114,11 @@ class Snowfall {
 }
 
 export function initSnow() {
-    const canvas = document.getElementById("snow-canvas") as HTMLCanvasElement;
+    const canvas = document.createElement("canvas");
+    canvas.role = "presentation";
+    canvas.id = "snow-canvas";
+    document.body.appendChild(canvas);
+
     const snowfall = new Snowfall(canvas);
 
     snowfall.start();

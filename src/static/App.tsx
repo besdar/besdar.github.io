@@ -32,6 +32,5 @@ export const App: React.FC = () => (
         <aside className="body-aside-content aside-content">
             <PDFButton />
         </aside>
-        <canvas id="snow-canvas" role="presentation"></canvas>
     </React.StrictMode>
 );
