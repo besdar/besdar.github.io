@@ -2,7 +2,7 @@ import { PageDataType } from "./data-types";
 
 export const LANG_DATA: Readonly<PageDataType> = {
     employee: "Dmitry Beskov",
-    address: "Tbilisi, Georgia",
+    address: "Kutaisi, Georgia",
     education: {
         items: [{
             header: {
