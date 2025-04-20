@@ -30,7 +30,7 @@ export const LANG_DATA: Readonly<PageDataType> = {
         items: [
             {
                 header: {
-                    dates: "2022 - 2024",
+                    dates: "2022 - now",
                     link: "https://www.jettycloud.com/",
                     title: "JettyCloud (UCaaS)",
                 },
@@ -41,13 +41,13 @@ export const LANG_DATA: Readonly<PageDataType> = {
                     "A large-scale, monolithic project with over 100 team members presented a unique set of challenges, including working with a mix of outdated and modern technologies, such as TypeScript, vanilla JavaScript, React, plain HTML and CSS, Java, and other backend technologies. Despite these complexities, the project required careful planning, collaboration, and effective communication to drive positive change. As a contributor to this project, I successfully navigated the process of updating legacy code, convincing stakeholders of necessary changes, and participating in cross-team refactoring initiatives, developing my skills in collaborating with large teams, managing technical debt, and working with multiple technologies."
                 ],
                 summary:
-                    "In this role, I was usually responsible for creating, updating and maintaining countless billing sub-modules for customer account pages and internal administration pages, enhancing user experience",
+                    "In this role, I am responsible for creating, updating, and maintaining countless billing sub-modules for customer account pages and internal administration pages, enhancing user experience.",
                 achievements: [
-                    "Contributed simultaneously with more than 4 teams (around 30 people) on more than 3 projects and received only positive feedback from my colleagues and supervisors alike during a performance review process",
-                    "Was noticed as one of the fastest employees in the team",
-                    "Was the author of more than 50 technical tasks designed to improve the performance and quality of the code",
+                    "Contribute simultaneously with more than 4 teams (around 30 people) on more than 3 projects and receive positive feedback from my colleagues and supervisors alike during performance review processes.",
+                    "Recognized as one of the fastest employees in the team",
+                    "Author more than 50 technical tasks designed to improve the performance and quality of the code",
                     "Designed a centralized repository of technical interview questions and evaluation criteria, enhancing the recruitment process; this repository is now utilized by several teams to ensure consistency and quality in technical interviews",
-                    "Created a Chrome extension tool to generate test accounts, which made the daily work of both QA engineers and developers much easier",
+                    "Created and maintain a Chrome extension tool to generate test accounts, which makes the daily work of both QA engineers and developers much easier",
                 ],
                 stack: [
                     {
