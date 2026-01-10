@@ -31,8 +31,8 @@ export const LANG_DATA: Readonly<PageDataType> = {
             {
                 header: {
                     dates: "2022 - now",
-                    link: "https://www.jettycloud.com/",
-                    title: "JettyCloud (UCaaS)",
+                    link: "https://www.ringcentral.com/",
+                    title: "RingCentral (UCaaS)",
                 },
                 title: { label: "Senior Software Developer" },
                 projectsDescriptions: [
@@ -48,6 +48,11 @@ export const LANG_DATA: Readonly<PageDataType> = {
                     "Author more than 50 technical tasks designed to improve the performance and quality of the code",
                     "Designed a centralized repository of technical interview questions and evaluation criteria, enhancing the recruitment process; this repository is now utilized by several teams to ensure consistency and quality in technical interviews",
                     "Created and maintain a Chrome extension tool to generate test accounts, which makes the daily work of both QA engineers and developers much easier",
+                    "Updated a big project's codebase from ES5 to ES2017",
+                    "Created AI guidlines for the team, added more than 10 ESLint rules",
+                    "Introduced Feature Sliced Design for the team",
+                    "Optimized CI/CD reducing tests pipeline execution by 1 minute",
+                    "Introduced knip for the team, removed more than 5000 unused lines from the codebase"
                 ],
                 stack: [
                     {
