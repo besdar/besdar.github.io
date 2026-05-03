@@ -3,7 +3,7 @@ import importPlugin from "eslint-plugin-import";
 // import eslintConfigAirbnb from "eslint-config-airbnb";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintConfigPrettier from "eslint-config-prettier";
-import tseslint from 'typescript-eslint';
+import tseslint from "typescript-eslint";
 import reactPlugin from "eslint-plugin-react";
 
 export default tseslint.config(
@@ -15,7 +15,7 @@ export default tseslint.config(
     tseslint.configs.recommended,
     eslintConfigPrettier,
     {
-        files: ['src/**/*.{ts,tsx}'],
+        files: ["src/**/*.{ts,tsx}"],
         languageOptions: {
             ecmaVersion: "latest",
             sourceType: "module",
@@ -50,14 +50,6 @@ export default tseslint.config(
                 },
             ],
             "react/jsx-props-no-spreading": "off",
-        },
-        settings: {
-            react: {
-                version: "detect", // React version. "detect" automatically picks the version you have installed.
-                // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
-                // Defaults to the "defaultVersion" setting and warns if missing, and to "detect" in the future
-                defaultVersion: "18.2.0", // Default React version to use when the version you have installed cannot be detected.
-            },
         },
     },
 );
