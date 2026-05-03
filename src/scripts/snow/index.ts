@@ -1,7 +1,7 @@
 import "./index.css";
 
 function debounce(func: () => void, wait = 1000) {
-    let timeout: number | undefined;
+    let timeout: ReturnType<typeof setTimeout> | undefined;
 
     return () => {
         clearTimeout(timeout);

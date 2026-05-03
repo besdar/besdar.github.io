@@ -1,66 +1,72 @@
 {
-  "name": "besdar.github.io",
-  "author": "besdar",
-  "description": "Personal CV",
-  "homepage": "https://besdar.github.io",
-  "scripts": {
-    "build:prepare": "rm -rf dist/* && cp public/manifest.json public/robots.txt public/*.pdf dist",
-    "dev": "npm run build:script && npm run build:prepare && parcel ./public/index.html",
-    "build:script": "parcel build build/index.js --no-source-maps --target serverBuild --no-cache && node dist/serverBuild/index.js",
-    "build:browser": "parcel build ./public/index.html --target clientBuild",
-    "build:all": "npm run build:script && npm run build:prepare && npm run build:browser",
-    "deploy": "gh-pages -d dist",
-    "check-js": "eslint --cache ./src/**/*",
-    "check-styles": "stylelint \"./public/css/**/*.css\"",
-    "check-types": "tsc --noEmit ./src/**/*",
-    "project-checking": "concurrently \"npm:check-*\"",
-    "update-css-types": "tcm src --namedExports",
-    "eslint:fix": "eslint --fix ./src && prettier --write src/"
-  },
-  "browserslist": {
-    "production": [
-      ">1%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.18.0",
-    "@types/node": "^22.10.7",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
-    "concurrently": "^9.1.2",
-    "eslint": "^9.18.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.37.4",
-    "gh-pages": "^6.3.0",
-    "node-html-parser": "^7.0.1",
-    "parcel": "^2.13.3",
-    "prettier": "^3.4.2",
-    "process": "^0.11.10",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "stylelint": "^16.13.2",
-    "stylelint-config-standard": "^37.0.0",
-    "svgo": "^3.3.2",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.21.0"
-  },
-  "targets": {
-    "serverBuild": {
-      "context": "node"
+    "name": "besdar.github.io",
+    "author": "besdar",
+    "description": "Personal CV",
+    "homepage": "https://besdar.github.io",
+    "scripts": {
+        "build:prepare": "rm -rf dist/* && cp public/manifest.json public/robots.txt public/*.pdf dist",
+        "dev": "npm run build:script && npm run build:prepare && parcel ./public/index.html",
+        "build:script": "parcel build build/index.js --no-source-maps --target serverBuild --no-cache && node dist/serverBuild/index.js",
+        "build:browser": "parcel build ./public/index.html --target clientBuild",
+        "build:all": "npm run build:script && npm run build:prepare && npm run build:browser",
+        "deploy": "gh-pages -d dist",
+        "check:js": "eslint --cache ./src/**/*",
+        "check:styles": "stylelint \"./public/css/**/*.css\"",
+        "check:types": "tsc --noEmit",
+        "check:all": "npm run check:js && npm run check:styles && npm run check:types",
+        "project-checking": "concurrently \"npm:check-*\"",
+        "update-css-types": "tcm src --namedExports",
+        "eslint:fix": "eslint --fix ./src && prettier --write src/",
+        "styles:fix": "stylelint --fix \"./public/css/**/*.css\"",
+        "lint:fix": "npm run eslint:fix && npm run styles:fix"
     },
-    "clientBuild": {
-      "context": "browser",
-      "publicUrl": "/",
-      "distDir": "dist/"
+    "browserslist": {
+        "production": [
+            ">1%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.4",
+        "@types/node": "^24.1.0",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "concurrently": "^9.2.1",
+        "eslint": "^9.39.4",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-jsx-a11y": "^6.8.0",
+        "eslint-plugin-react": "^7.37.5",
+        "gh-pages": "^6.3.0",
+        "node-html-parser": "^7.1.0",
+        "parcel": "^2.16.4",
+        "prettier": "^3.8.3",
+        "process": "^0.11.10",
+        "react": "^19.2.5",
+        "react-dom": "^19.2.5",
+        "stylelint": "^17.10.0",
+        "stylelint-config-standard": "^40.0.0",
+        "svgo": "^4.0.1",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.59.1"
+    },
+    "targets": {
+        "serverBuild": {
+            "context": "node"
+        },
+        "clientBuild": {
+            "context": "browser",
+            "publicUrl": "/",
+            "distDir": "dist/"
+        }
+    },
+    "engines": {
+        "node": ">=24.0.0"
     }
-  }
 }
