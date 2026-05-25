@@ -15,7 +15,7 @@ export const CvPage = () => (
             <div className="header-aside">
                 <Contacts address={cvMetadata.address} email={cvMetadata.email} website={cvMetadata.website} />
                 <nav aria-label="Site navigation" className="site-nav contacts-links-not-printed">
-                    <BlogLink href="./blog/">Blog</BlogLink>
+                    <BlogLink href="./blog/">Articles</BlogLink>
                 </nav>
             </div>
         </header>

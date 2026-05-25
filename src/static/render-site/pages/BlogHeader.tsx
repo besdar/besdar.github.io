@@ -15,7 +15,7 @@ export const BlogHeader = ({ blogHref, cvHref }: BlogHeaderProps) => (
         </div>
         <nav aria-label="Site navigation" className="site-nav">
             <BlogLink href={cvHref}>CV</BlogLink>
-            <BlogLink href={blogHref}>Blog</BlogLink>
+            <BlogLink href={blogHref}>Articles</BlogLink>
         </nav>
     </header>
 );
