@@ -30,7 +30,8 @@
     text-decoration: none!important;
   }
 
-  article#summary, div.history-about:nth-child(3), article#projects {
+  body.cv-page article#summary,
+  body.cv-page article#projects {
     display: none;
   }
 
@@ -46,11 +47,10 @@
     display: none;
   }
 
-  .description-details .history-description, .projects-details {
+  .description-details .history-description,
+  .projects-details,
+  .site-nav {
     display: none;
   }
 
-  .ai-instructions {
-    color: white!important;
-  }
 }

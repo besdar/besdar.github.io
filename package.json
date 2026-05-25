@@ -4,18 +4,16 @@
     "description": "Personal CV",
     "homepage": "https://besdar.github.io",
     "scripts": {
-        "build:prepare": "rm -rf dist/* && cp public/manifest.json public/robots.txt public/*.pdf dist",
-        "dev": "npm run build:script && npm run build:prepare && parcel ./public/index.html",
-        "build:script": "parcel build build/index.js --no-source-maps --target serverBuild --no-cache && node dist/serverBuild/index.js",
-        "build:browser": "parcel build ./public/index.html --target clientBuild",
-        "build:all": "npm run build:script && npm run build:prepare && npm run build:browser",
+        "dev": "npm run build:all && vite preview --host 0.0.0.0",
+        "build:site": "node build/build-site.mjs",
+        "build:browser": "vite build",
+        "build:all": "npm run build:site && npm run build:browser",
         "deploy": "gh-pages -d dist",
-        "check:js": "eslint --cache ./src/**/*",
-        "check:styles": "stylelint \"./public/css/**/*.css\"",
+        "check:js": "eslint --cache .",
+        "check:styles": "stylelint \"./public/css/**/*.css\" \"./src/**/*.css\"",
         "check:types": "tsc --noEmit",
         "check:all": "npm run check:js && npm run check:styles && npm run check:types",
         "project-checking": "concurrently \"npm:check-*\"",
-        "update-css-types": "tcm src --namedExports",
         "eslint:fix": "eslint --fix ./src && prettier --write src/",
         "styles:fix": "stylelint --fix \"./public/css/**/*.css\"",
         "lint:fix": "npm run eslint:fix && npm run styles:fix"
@@ -33,40 +31,27 @@
         ]
     },
     "devDependencies": {
-        "@eslint/js": "^9.39.4",
-        "@types/node": "^24.1.0",
-        "@types/react": "^19.2.14",
+        "@eslint/js": "^10.0.1",
+        "@mdx-js/rollup": "^3.1.1",
+        "@types/mdx": "^2.0.13",
+        "@types/node": "^25.9.1",
+        "@types/react": "^19.2.15",
         "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^6.0.2",
         "concurrently": "^9.2.1",
-        "eslint": "^9.39.4",
-        "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-import": "^2.32.0",
-        "eslint-plugin-jsx-a11y": "^6.8.0",
-        "eslint-plugin-react": "^7.37.5",
+        "eslint": "^10.4.0",
         "gh-pages": "^6.3.0",
-        "node-html-parser": "^7.1.0",
-        "parcel": "^2.16.4",
         "prettier": "^3.8.3",
-        "process": "^0.11.10",
-        "react": "^19.2.5",
-        "react-dom": "^19.2.5",
-        "stylelint": "^17.10.0",
+        "react": "^19.2.6",
+        "react-dom": "^19.2.6",
+        "stylelint": "^17.12.0",
         "stylelint-config-standard": "^40.0.0",
         "svgo": "^4.0.1",
-        "typescript": "^5.9.3",
-        "typescript-eslint": "^8.59.1"
-    },
-    "targets": {
-        "serverBuild": {
-            "context": "node"
-        },
-        "clientBuild": {
-            "context": "browser",
-            "publicUrl": "/",
-            "distDir": "dist/"
-        }
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.59.4",
+        "vite": "^8.0.13"
     },
     "engines": {
-        "node": ">=24.0.0"
+        "node": ">=22.0.0"
     }
 }

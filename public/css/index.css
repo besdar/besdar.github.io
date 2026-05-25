@@ -1,226 +1,370 @@
 :root {
-  color-scheme: light dark;
+    color-scheme: light dark;
 
-  --main-color: light-dark(black, white);
-  --highlight-color: light-dark(midnightblue, dodgerblue);
-  --hover-color: light-dark(dodgerblue, deepskyblue);
-  --background-color: light-dark(white, black);
+    --main-color: light-dark(black, white);
+    --highlight-color: light-dark(midnightblue, dodgerblue);
+    --hover-color: light-dark(dodgerblue, deepskyblue);
+    --background-color: light-dark(white, black);
 }
 
 html {
-  background-color: var(--background-color);
-  color: var(--main-color);
+    background-color: var(--background-color);
+    color: var(--main-color);
 }
 
 header,
 main {
-  width: 60%;
-  margin: auto;
-  min-width: 700px;
-  max-width: 1000px;
+    width: 60%;
+    margin: auto;
+    min-width: 700px;
+    max-width: 1000px;
 }
 
 .body-header {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
 }
 
-.header-title-employee-name, .header-title-job-position {
-  text-align: center;
-  position: relative;
-  color: var(--highlight-color);
-  margin-bottom: 0;
-  margin-top: 0;
+.header-title-employee-name,
+.header-title-job-position {
+    text-align: center;
+    position: relative;
+    color: var(--highlight-color);
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .header-title-job-position {
-  font-size: medium;
+    font-size: medium;
 }
 
 .title-contacts,
-.header-title {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.header-title,
+.header-aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .contacts-links-margin-top {
-  margin-top: 0.5em;
+    margin-top: 0.5em;
 }
 
 .title-contacts-contact {
-  font-size: small;
+    font-size: small;
 }
 
 .title-contacts-email,
 .title-contacts-divider,
 .title-contacts-website {
-  display: none;
+    display: none;
 }
 
 .description-title {
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--highlight-color);
-  background-color: var(--background-color);
-  position: relative;
-  z-index: 2;
-  padding: 0 5%;
-  margin-bottom: 0;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--highlight-color);
+    background-color: var(--background-color);
+    position: relative;
+    z-index: 2;
+    padding: 0 5%;
+    margin-bottom: 0;
 }
 
 .description-title-container {
-  position: relative;
-  text-align: center;
+    position: relative;
+    text-align: center;
 }
 
 .description-title-container::after {
-  position: absolute;
-  content: '';
-  width: 100%;
-  top: 50%;
-  left: 0;
-  border-top: 1px solid var(--highlight-color);
-  z-index: 1;
+    position: absolute;
+    content: "";
+    width: 100%;
+    top: 50%;
+    left: 0;
+    border-top: 1px solid var(--highlight-color);
+    z-index: 1;
 }
 
-.description-summary-title, .projects-summary-title {
-  color: var(--highlight-color);
-  cursor: pointer;
-  margin-top: 1.3em;
+.description-summary-title,
+.projects-summary-title {
+    color: var(--highlight-color);
+    cursor: pointer;
+    margin-top: 1.3em;
+    min-height: 24px;
+    line-height: 24px;
 }
 
-.description-summary-title:hover, .projects-summary-title:hover {
-  color: var(--hover-color);
+.description-summary-title:hover,
+.projects-summary-title:hover {
+    color: var(--hover-color);
 }
 
-.link, .history-company-name, .description-title-link {
-  text-decoration: none;
-  color: var(--highlight-color);
-  transition: linear 0.3s;
+.link,
+.history-company-name,
+.description-title-link {
+    text-decoration: none;
+    color: var(--highlight-color);
+    transition: linear 0.3s;
 }
 
-.link, .history-company-name {
-  font-style: italic;
+.link,
+.history-company-name {
+    font-style: italic;
 }
 
-.link:hover, .description-title-link:hover {
-  color: var(--hover-color);
+.link:hover,
+.description-title-link:hover {
+    color: var(--hover-color);
 }
 
 .history-dates {
-  font-size: smaller;
+    font-size: smaller;
 }
 
 .history-tech-stack,
 .history-faculty-title {
-  margin-bottom: 0;
-  margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .history-title-without-margin {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .contacts-links svg {
-  width: 20px;
+    width: 20px;
 }
 
 a:not(:hover) svg path {
-  fill: var(--highlight-color);
-  transition: linear 0.6s;
+    fill: var(--highlight-color);
+    transition: linear 0.6s;
 }
 
 a:hover svg path {
-  transition: linear 0.3s;
+    transition: linear 0.3s;
 }
 
 .contacts-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contacts-link-link {
-  margin-right: 10px;
+    margin-right: 10px;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 0.6em;
+    font-size: small;
+}
+
+.site-nav-link {
+    font-style: normal;
+}
+
+.header-title-home-link {
+    text-decoration: none;
 }
 
 .achivements-item {
-  padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 .aside-content-download-button {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
 }
 
 .aside-content-download-icon {
-  width: 50px;
-  height: 50px;
-  opacity: 0.8;
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
 }
 
 .aside-content-tooltip {
-  position: absolute;
-  background-color: var(--highlight-color);
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-  max-width: 250px;
+    position: absolute;
+    background-color: var(--highlight-color);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 250px;
 }
 
 .history-tech-stack span:not(:first-child) {
-  text-decoration: underline;
-  text-decoration-style: dashed;
-  cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    cursor: pointer;
 }
 
 .history-tech-stack span:not(:first-child):hover {
-  color: var(--hover-color);
+    color: var(--hover-color);
 }
 
 .language-button {
-  position: fixed;
-  bottom: 90px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 .tech-stack-item {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
+}
+
+.tech-stack-item[role="button"] {
+    line-height: 24px;
 }
 
 .tech-stack-item .tooltip {
-  bottom: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
-  display: none;
-  width: 16vw;
-  min-width: 200px;
-  background-color: var(--hover-color);
-  color: var(--main-color);
-  text-align: center;
-  padding: 10px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    width: 16vw;
+    min-width: 200px;
+    background-color: var(--hover-color);
+    color: var(--main-color);
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
 }
 
-.tech-stack-item:hover .tooltip, .tech-stack-item:focus .tooltip {
-  display: unset;
+.tech-stack-item:hover .tooltip,
+.tech-stack-item:focus .tooltip {
+    display: unset;
 }
 
-.ai-instructions {
-  font-size: 1px;
-  color: var(--background-color);
-  opacity: 0.1;
+.history-activity {
+    margin: 1em 0;
+}
+
+.history-activity > p {
+    margin: 0;
+}
+
+.blog-content {
+    max-width: 760px;
+}
+
+.blog-index {
+    margin-top: 2em;
+}
+
+.blog-card {
+    display: block;
+    margin-top: 1.5em;
+    padding: 1.2em 0;
+    text-decoration: none;
+    color: var(--main-color);
+    border-top: 1px solid var(--highlight-color);
+    border-bottom: 1px solid var(--highlight-color);
+}
+
+.blog-card-title {
+    margin: 0.3em 0;
+    color: var(--highlight-color);
+    transition: linear 0.3s;
+}
+
+.blog-card:hover .blog-card-title {
+    color: var(--hover-color);
+}
+
+.blog-article {
+    margin-top: 2em;
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.blog-title {
+    color: var(--highlight-color);
+    line-height: 1.2;
+    margin-bottom: 0.3em;
+}
+
+.blog-heading {
+    color: var(--highlight-color);
+    margin-top: 1.8em;
+}
+
+.blog-subheading,
+.blog-minor-heading {
+    color: var(--highlight-color);
+    margin-top: 1.5em;
+}
+
+.blog-minor-heading {
+    font-size: 1em;
+}
+
+.blog-list {
+    padding-left: 1.3em;
+}
+
+.blog-ordered-list {
+    padding-left: 1.5em;
+}
+
+.blog-list-item {
+    margin-bottom: 0.4em;
+}
+
+.blog-code {
+    border: 1px solid color-mix(in srgb, var(--highlight-color) 30%, transparent);
+    border-radius: 4px;
+    padding: 0.08em 0.25em;
+    font-size: 0.95em;
+}
+
+.blog-code-block {
+    overflow-x: auto;
+    border-left: 3px solid var(--highlight-color);
+    padding: 0.9em 1em;
+    background-color: color-mix(in srgb, var(--highlight-color) 8%, transparent);
+}
+
+.blog-code-block .blog-code {
+    border: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.blog-table-scroll {
+    overflow-x: auto;
+}
+
+.blog-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 0.95em;
+}
+
+.blog-table th,
+.blog-table td {
+    border: 1px solid color-mix(in srgb, var(--highlight-color) 30%, transparent);
+    padding: 0.55em 0.65em;
+    vertical-align: top;
+}
+
+.blog-table th {
+    color: var(--highlight-color);
+    text-align: left;
 }

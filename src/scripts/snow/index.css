@@ -1,7 +1,7 @@
 #snow-canvas {
-	position: fixed;
-	inset: 0;
+    position: fixed;
+    inset: 0;
     z-index: 100;
-	display: block;
-	pointer-events: none;
+    display: block;
+    pointer-events: none;
 }
