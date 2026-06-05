@@ -15,7 +15,6 @@
         "check:types": "tsc --noEmit",
         "check:tests": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
         "check:all": "npm run check:js && npm run check:styles && npm run check:types && npm run check:tests",
-        "project-checking": "concurrently \"npm:check-*\"",
         "eslint:fix": "eslint --fix ./src && prettier --write src/",
         "styles:fix": "stylelint --fix \"./src/**/*.css\"",
         "lint:fix": "npm run eslint:fix && npm run styles:fix"
@@ -41,7 +40,6 @@
         "@types/react": "^19.2.15",
         "@types/react-dom": "^19.2.3",
         "@vitejs/plugin-react": "^6.0.2",
-        "concurrently": "^9.2.1",
         "eslint": "^10.4.0",
         "gh-pages": "^6.3.0",
         "identity-obj-proxy": "^3.0.0",
