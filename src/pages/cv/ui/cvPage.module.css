@@ -1,0 +1,7 @@
+@media print {
+    .body-aside-content,
+    body.cv-page article[id="summary"],
+    body.cv-page article[id="projects"] {
+        display: none;
+    }
+}

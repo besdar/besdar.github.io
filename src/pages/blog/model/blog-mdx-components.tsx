@@ -1,0 +1,28 @@
+import React from "react";
+import cn from "classnames";
+import { baseStyles } from "../../../shared/ui";
+import blogStyles from "../ui/blog.module.css";
+
+export const isExternalHref = (href: unknown): href is string => typeof href === "string" && /^https?:\/\//.test(href);
+
+export const blogMdxComponents = {
+    a: ({ children, href }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+        const isExternal = isExternalHref(href);
+
+        return (
+            <a className={baseStyles.link} href={href} rel={isExternal ? "noopener noreferrer" : undefined} target={isExternal ? "_blank" : undefined}>
+                {children}
+            </a>
+        );
+    },
+    code: ({ children }: React.PropsWithChildren) => <code className={blogStyles["blog-code"]}>{children}</code>,
+    h1: ({ children }: React.PropsWithChildren) => <h1 className={blogStyles["blog-title"]}>{children}</h1>,
+    h2: ({ children }: React.PropsWithChildren) => <h2 className={blogStyles["blog-heading"]}>{children}</h2>,
+    h3: ({ children }: React.PropsWithChildren) => <h3 className={blogStyles["blog-subheading"]}>{children}</h3>,
+    h4: ({ children }: React.PropsWithChildren) => <h4 className={blogStyles["blog-minor-heading"]}>{children}</h4>,
+    li: ({ children }: React.PropsWithChildren) => <li className={blogStyles["blog-list-item"]}>{children}</li>,
+    ol: ({ children }: React.PropsWithChildren) => <ol className={cn(blogStyles["blog-list"], blogStyles["blog-ordered-list"])}>{children}</ol>,
+    p: ({ children }: React.PropsWithChildren) => <p>{children}</p>,
+    pre: ({ children }: React.PropsWithChildren) => <pre className={blogStyles["blog-code-block"]}>{children}</pre>,
+    ul: ({ children }: React.PropsWithChildren) => <ul className={blogStyles["blog-list"]}>{children}</ul>,
+};

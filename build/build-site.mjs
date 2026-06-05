@@ -32,7 +32,7 @@ const build = async () => {
     });
 
     try {
-        const { renderSite } = await vite.ssrLoadModule("/src/static/render-site/index.tsx");
+        const { renderSite } = await vite.ssrLoadModule("/src/app/render-site/index.tsx");
         const pages = renderSite();
 
         await Promise.all(

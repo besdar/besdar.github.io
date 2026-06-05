@@ -1,0 +1,49 @@
+.impact-evidence {
+    margin: 1em 0;
+}
+
+.impact-evidence-summary {
+    color: var(--highlight-color);
+    cursor: pointer;
+    margin-top: 1.3em;
+    min-height: 24px;
+    line-height: 24px;
+}
+
+.impact-evidence-summary:hover {
+    color: var(--hover-color);
+}
+
+.impact-evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.8em;
+    margin: 0.7em 0 0;
+}
+
+.impact-evidence-item {
+    border-left: 2px solid var(--highlight-color);
+    padding-left: 0.7em;
+}
+
+.impact-evidence-label,
+.impact-evidence-note {
+    margin: 0;
+}
+
+.impact-evidence-value {
+    display: block;
+    color: var(--highlight-color);
+    font-size: 1.15em;
+}
+
+.impact-evidence-note {
+    margin-top: 0.25em;
+    font-size: smaller;
+}
+
+@media print {
+    .impact-evidence {
+        display: none;
+    }
+}

@@ -1,0 +1,116 @@
+.blog-content {
+    max-width: 760px;
+}
+
+.blog-index {
+    margin-top: 2em;
+}
+
+.blog-card {
+    display: block;
+    color: var(--main-color);
+    border-top: 1px solid var(--highlight-color);
+    border-bottom: 1px solid var(--highlight-color);
+    margin-top: 1.5em;
+    padding: 1.2em 0;
+    text-decoration: none;
+}
+
+.blog-card-title {
+    color: var(--highlight-color);
+    margin: 0.3em 0;
+    transition: linear 0.3s;
+}
+
+.blog-card:hover .blog-card-title {
+    color: var(--hover-color);
+}
+
+.blog-article {
+    margin-top: 2em;
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.blog-title {
+    color: var(--highlight-color);
+    line-height: 1.2;
+    margin-bottom: 0.3em;
+}
+
+.blog-heading {
+    color: var(--highlight-color);
+    margin-top: 1.8em;
+}
+
+.blog-subheading,
+.blog-minor-heading {
+    color: var(--highlight-color);
+    margin-top: 1.5em;
+}
+
+.blog-minor-heading {
+    font-size: 1em;
+}
+
+.blog-list {
+    padding-left: 1.3em;
+}
+
+.blog-ordered-list {
+    padding-left: 1.5em;
+}
+
+.blog-list-item {
+    margin-bottom: 0.4em;
+}
+
+.blog-code {
+    border: 1px solid color-mix(in srgb, var(--highlight-color) 30%, transparent);
+    border-radius: 4px;
+    padding: 0.08em 0.25em;
+    font-size: 0.95em;
+}
+
+.blog-code-block {
+    overflow-x: auto;
+    border-left: 3px solid var(--highlight-color);
+    padding: 0.9em 1em;
+    background-color: color-mix(in srgb, var(--highlight-color) 8%, transparent);
+}
+
+.blog-code-block .blog-code {
+    border: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.blog-table-scroll {
+    overflow-x: auto;
+}
+
+.blog-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 0.95em;
+}
+
+.blog-table th,
+.blog-table td {
+    border: 1px solid color-mix(in srgb, var(--highlight-color) 30%, transparent);
+    padding: 0.55em 0.65em;
+    vertical-align: top;
+}
+
+.blog-table th {
+    color: var(--highlight-color);
+    text-align: left;
+}
+
+@media screen and (width <= 700px), print {
+    .blog-article {
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+}

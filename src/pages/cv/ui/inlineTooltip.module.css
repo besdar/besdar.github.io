@@ -1,0 +1,59 @@
+.inline-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.inline-tooltip-trigger {
+    appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    text-align: inherit;
+}
+
+.inline-tooltip-label {
+    color: var(--highlight-color);
+    cursor: help;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 0.15em;
+}
+
+.inline-tooltip-popup {
+    position: absolute;
+    z-index: 2;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    display: none;
+    width: 20vw;
+    min-width: min(220px, calc(100vw - 20px));
+    max-width: min(320px, calc(100vw - 20px));
+    box-sizing: border-box;
+    color: var(--main-color);
+    background-color: var(--hover-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: smaller;
+    transform: translateX(-50%);
+}
+
+.inline-tooltip:hover .inline-tooltip-popup,
+.inline-tooltip:focus-within .inline-tooltip-popup {
+    display: unset;
+}
+
+@media print {
+    .inline-tooltip-label {
+        color: black;
+        text-decoration: none;
+    }
+
+    .inline-tooltip-popup {
+        display: none !important;
+    }
+}

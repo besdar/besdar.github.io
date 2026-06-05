@@ -1,0 +1,22 @@
+.description-summary-title {
+    color: var(--highlight-color);
+    cursor: pointer;
+    margin-top: 1.3em;
+    min-height: 24px;
+    line-height: 24px;
+}
+
+.description-summary-title:hover {
+    color: var(--hover-color);
+}
+
+@media print {
+    .description-details {
+        display: contents;
+    }
+
+    .description-summary-title,
+    .description-details [data-history-description] {
+        display: none;
+    }
+}

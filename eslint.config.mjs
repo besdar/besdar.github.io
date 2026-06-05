@@ -20,6 +20,7 @@ export default tseslint.config(
                 clearTimeout: "readonly",
                 console: "readonly",
                 document: "readonly",
+                process: "readonly",
                 requestAnimationFrame: "readonly",
                 setTimeout: "readonly",
                 window: "readonly",

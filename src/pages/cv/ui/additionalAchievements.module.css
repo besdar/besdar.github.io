@@ -1,0 +1,38 @@
+.additional-achievements {
+    margin-block: -1em 1em;
+}
+
+.additional-achievements ul {
+    margin-block-start: 0.6em;
+}
+
+.additional-achievements-summary {
+    color: var(--highlight-color);
+    cursor: pointer;
+    display: list-item;
+    line-height: 24px;
+    list-style-position: outside;
+    margin-inline-start: 40px;
+    min-block-size: 24px;
+    padding-block-end: 5px;
+}
+
+.additional-achievements-summary::marker {
+    color: var(--highlight-color);
+}
+
+.additional-achievements-summary:hover {
+    color: var(--hover-color);
+}
+
+.additional-achievements-summary:focus-visible {
+    outline: 2px solid var(--hover-color);
+    outline-offset: 2px;
+}
+
+@media print {
+    .additional-achievements,
+    .additional-achievements-summary {
+        display: none;
+    }
+}

@@ -1,0 +1,41 @@
+.history-company-name {
+    color: var(--highlight-color);
+    font-style: italic;
+    text-decoration: none;
+    transition: linear 0.3s;
+}
+
+.history-dates {
+    font-size: smaller;
+}
+
+@media screen and (width <= 700px), print {
+    .history-list {
+        display: flex;
+        align-items: center;
+        margin-top: 1.3em;
+    }
+
+    .history-company-name {
+        border-right: 1px solid midnightblue;
+        margin: 0;
+        padding-right: 10px;
+    }
+
+    .history-dates {
+        padding-left: 10px;
+    }
+}
+
+@media screen and (width >= 701px) {
+    .history-list {
+        text-align: center;
+    }
+
+    .history-company-name {
+        border: 1px solid midnightblue;
+        border-radius: 5px;
+        margin-bottom: 0.5em;
+        padding: 15px;
+    }
+}

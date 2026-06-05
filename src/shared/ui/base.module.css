@@ -1,0 +1,71 @@
+:root {
+    color-scheme: light dark;
+
+    --main-color: light-dark(black, white);
+    --highlight-color: light-dark(midnightblue, dodgerblue);
+    --hover-color: light-dark(dodgerblue, deepskyblue);
+    --background-color: light-dark(white, black);
+}
+
+html {
+    background-color: var(--background-color);
+    color: var(--main-color);
+}
+
+header,
+main {
+    width: 60%;
+    min-width: 700px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.link {
+    color: var(--highlight-color);
+    font-style: italic;
+    text-decoration: none;
+    transition: linear 0.3s;
+}
+
+.link:hover {
+    color: var(--hover-color);
+}
+
+:where(a, button):focus-visible {
+    outline: 3px solid var(--highlight-color);
+    outline-offset: 3px;
+}
+
+:target {
+    scroll-margin-top: 1rem;
+}
+
+a:not(:hover) svg path {
+    fill: var(--highlight-color);
+    transition: linear 0.6s;
+}
+
+a:hover svg path {
+    transition: linear 0.3s;
+}
+
+@media screen and (width <= 700px), print {
+    header,
+    main {
+        width: 100%;
+        min-width: 300px;
+    }
+}
+
+@media print {
+    html {
+        --highlight-color: black;
+        --hover-color: black;
+        --background-color: white;
+        --main-color: black;
+    }
+
+    .not-printed {
+        display: none;
+    }
+}

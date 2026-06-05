@@ -1,0 +1,22 @@
+.projects-details {
+    display: inline;
+}
+
+.projects-summary-title {
+    display: inline;
+    color: var(--highlight-color);
+    cursor: pointer;
+    line-height: inherit;
+    margin-left: 0.35em;
+}
+
+.projects-summary-title:hover {
+    color: var(--hover-color);
+}
+
+@media print {
+    .projects-details,
+    .projects-summary-title {
+        display: none;
+    }
+}

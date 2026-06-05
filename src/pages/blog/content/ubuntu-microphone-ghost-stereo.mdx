@@ -1,0 +1,110 @@
+export const metadata = {
+    title: "Fixing Selective Microphone Failure on Ubuntu 24.04",
+    description: "Fix a Lenovo and Ubuntu microphone channel mismatch where Sound Recorder works but WebRTC apps hear silence or static.",
+};
+
+# Fixing Selective Microphone Failure on Ubuntu 24.04: The "Ghost Stereo" Problem
+
+If you've recently installed Ubuntu 24.04 on a Lenovo laptop, particularly the IdeaPad 320 series, and found that your microphone works perfectly in **GNOME Sound Recorder** but fails completely in **Telegram**, **Chromium**, or **Google Meet**, you are likely dealing with a "Ghost Stereo" mismatch.
+
+This guide explains why this happens and how to fix it permanently using PipeWire.
+
+## The Problem: One App Works, Others Don't
+
+The symptoms are often baffling:
+
+1. **GNOME Sound Recorder** records clear audio, but usually only at low sensitivity, around 30%.
+2. **Telegram** or **Chromium** show no sound levels at all.
+3. If you turn sensitivity up to 100% to "fix" it, you hear nothing but loud **white noise** or static.
+
+### Why does this happen?
+
+Most modern laptops use an internal microphone that the Linux kernel identifies as a stereo device. However, many Lenovo models actually have only **one physical microphone**.
+
+The system creates two channels: a **Left** channel, which has your voice, and a **Right** channel, which is either floating, inverted, or capturing electrical noise.
+
+- Sophisticated apps like **GNOME Sound Recorder** or **Zoom** are often smart enough to identify the single clean channel.
+- WebRTC-based apps such as Chromium, Discord, and Telegram often try to average the two channels or apply **Automatic Gain Control (AGC)**. When they average a clean signal with a noisy "ghost" channel, the result is silence or static.
+
+## The Diagnosis: Finding the Working Channel
+
+Before applying the fix, verify your optimal sensitivity.
+
+1. Open **GNOME Sound Recorder**.
+2. Slowly lower your system input volume in **Settings -> Sound** to around **30%**.
+3. If your voice becomes clear and the white noise disappears, your hardware is fine. You just need to force the system to use that clean signal as a mono source.
+
+## The Solution: Creating a Virtual Mono Microphone
+
+We will create a virtual microphone that takes only the working channel, usually the left channel, and presents it to the entire system as a high-quality mono source.
+
+### Step 1: Find your microphone's name
+
+Open your terminal and run:
+
+```bash
+pactl list short sources
+```
+
+Look for a line containing `analog-stereo`. It will look something like this:
+
+```text
+alsa_input.pci-0000_00_1f.3.analog-stereo
+```
+
+Copy this name.
+
+### Step 2: Temporary test
+
+Run the following command, replacing `YOUR_DEVICE_NAME` with the name you copied:
+
+```bash
+pactl load-module module-remap-source source_name=mono_mic master=YOUR_DEVICE_NAME master_channel_map=front-left channel_map=mono
+```
+
+Now go to **Sound Settings** and select the new "Remapped Source" as your input. Test it in Telegram or Google Meet. It should work cleanly.
+
+### Step 3: Permanent fix with PipeWire
+
+Since Ubuntu 24.04 uses **PipeWire** by default, we can make this permanent by adding a configuration snippet.
+
+1. Create the config directory:
+
+```bash
+mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d/
+```
+
+2. Create the fix file:
+
+```bash
+nano ~/.config/pipewire/pipewire-pulse.conf.d/10-mono-mic.conf
+```
+
+3. Paste the following configuration, using the actual device name found in step 1:
+
+```text
+pulse.cmd = [
+{
+cmd = "load-module"
+args = "module-remap-source source_name=mono_mic master=alsa_input.pci-0000_00_1f.3.analog-stereo master_channel_map=front-left channel_map=mono"
+flags = [ ]
+}
+{
+cmd = "set-default-source"
+args = "mono_mic"
+flags = [ ]
+}
+]
+```
+
+4. Save and reboot.
+
+## Bonus: Stop Chromium from Ruining Your Volume
+
+Even with a mono mic, Chromium often tries to auto-adjust your volume, which can reintroduce noise. To stop this:
+
+1. Open Chromium and go to `chrome://flags/#enable-webrtc-allow-input-volume-adjustment`.
+2. Set it to **Disabled**.
+3. Restart the browser.
+
+By remapping the channel to mono, you provide a clean master signal that applications cannot misinterpret, finally giving you reliable audio for work and calls.
