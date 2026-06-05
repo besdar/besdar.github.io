@@ -1,0 +1,23 @@
+@media screen and (width >= 701px) {
+  .header-aside {
+    border-left: 1px solid lightgray;
+    padding-left: 10px;
+  }
+
+  .description-item {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    column-gap: 20px;
+  }
+
+  .history-list {
+    text-align: center;
+  }
+
+  .history-company-name {
+    border: 1px solid midnightblue;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 0.5em;
+  }
+}

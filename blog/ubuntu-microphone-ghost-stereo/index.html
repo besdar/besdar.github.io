@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Fixing Selective Microphone Failure on Ubuntu 24.04 - Dmitry Beskov</title>
+    <meta name="description" content="Fix a Lenovo and Ubuntu microphone channel mismatch where Sound Recorder works but WebRTC apps hear silence or static.">
+    <meta name="author" content="Dmitry Beskov">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/cvPage.css">
+    <link rel="stylesheet" href="../../css/contacts.css">
+    <link rel="stylesheet" href="../../css/sectionTitle.css">
+    <link rel="stylesheet" href="../../css/achievementItem.css">
+    <link rel="stylesheet" href="../../css/moreDetails.css">
+    <link rel="stylesheet" href="../../css/additionalAchievements.css">
+    <link rel="stylesheet" href="../../css/impactEvidence.css">
+    <link rel="stylesheet" href="../../css/projectDetails.css">
+    <link rel="stylesheet" href="../../css/timelineHeader.css">
+    <link rel="stylesheet" href="../../css/timelineItem.css">
+    <link rel="stylesheet" href="../../css/historyActivity.css">
+    <link rel="stylesheet" href="../../css/techStack.css">
+    <link rel="stylesheet" href="../../css/inlineTooltip.css">
+    <link rel="stylesheet" href="../../css/pdfButton.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+</head>
+
+<body class="">
+    <header class="body-header_am3jfI"><div class="header-title_FK1dGI"><a class="header-title-home-link_TJrQnn" href="../../"><h1 class="header-title-employee-name_zKT-NU">Dmitry Beskov</h1></a><h2 class="header-title-job-position_htkKrW">Frontend Developer</h2></div><nav aria-label="Site navigation" class="site-nav_mCUNwU"><a class="site-nav-link_ImJAoI link_sbG9tI" href="../../">CV</a><a class="site-nav-link_ImJAoI link_sbG9tI" href="../">Articles</a></nav></header><main class="blog-content_oKGG3K" id="main-content" tabindex="-1"><article class="blog-article_skCMyk"><h1 class="blog-title_E7TyjS">Fixing Selective Microphone Failure on Ubuntu 24.04: The &quot;Ghost Stereo&quot; Problem</h1>
+<p>If you&#x27;ve recently installed Ubuntu 24.04 on a Lenovo laptop, particularly the IdeaPad 320 series, and found that your microphone works perfectly in <strong>GNOME Sound Recorder</strong> but fails completely in <strong>Telegram</strong>, <strong>Chromium</strong>, or <strong>Google Meet</strong>, you are likely dealing with a &quot;Ghost Stereo&quot; mismatch.</p>
+<p>This guide explains why this happens and how to fix it permanently using PipeWire.</p>
+<h2 class="blog-heading_4rqRAY">The Problem: One App Works, Others Don&#x27;t</h2>
+<p>The symptoms are often baffling:</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA"><strong>GNOME Sound Recorder</strong> records clear audio, but usually only at low sensitivity, around 30%.</li>
+<li class="blog-list-item_HQsiiA"><strong>Telegram</strong> or <strong>Chromium</strong> show no sound levels at all.</li>
+<li class="blog-list-item_HQsiiA">If you turn sensitivity up to 100% to &quot;fix&quot; it, you hear nothing but loud <strong>white noise</strong> or static.</li>
+</ol>
+<h3 class="blog-subheading_YPkIht">Why does this happen?</h3>
+<p>Most modern laptops use an internal microphone that the Linux kernel identifies as a stereo device. However, many Lenovo models actually have only <strong>one physical microphone</strong>.</p>
+<p>The system creates two channels: a <strong>Left</strong> channel, which has your voice, and a <strong>Right</strong> channel, which is either floating, inverted, or capturing electrical noise.</p>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA">Sophisticated apps like <strong>GNOME Sound Recorder</strong> or <strong>Zoom</strong> are often smart enough to identify the single clean channel.</li>
+<li class="blog-list-item_HQsiiA">WebRTC-based apps such as Chromium, Discord, and Telegram often try to average the two channels or apply <strong>Automatic Gain Control (AGC)</strong>. When they average a clean signal with a noisy &quot;ghost&quot; channel, the result is silence or static.</li>
+</ul>
+<h2 class="blog-heading_4rqRAY">The Diagnosis: Finding the Working Channel</h2>
+<p>Before applying the fix, verify your optimal sensitivity.</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Open <strong>GNOME Sound Recorder</strong>.</li>
+<li class="blog-list-item_HQsiiA">Slowly lower your system input volume in <strong>Settings -&gt; Sound</strong> to around <strong>30%</strong>.</li>
+<li class="blog-list-item_HQsiiA">If your voice becomes clear and the white noise disappears, your hardware is fine. You just need to force the system to use that clean signal as a mono source.</li>
+</ol>
+<h2 class="blog-heading_4rqRAY">The Solution: Creating a Virtual Mono Microphone</h2>
+<p>We will create a virtual microphone that takes only the working channel, usually the left channel, and presents it to the entire system as a high-quality mono source.</p>
+<h3 class="blog-subheading_YPkIht">Step 1: Find your microphone&#x27;s name</h3>
+<p>Open your terminal and run:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">pactl list short sources
+</code></pre>
+<p>Look for a line containing <code class="blog-code_So286B">analog-stereo</code>. It will look something like this:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">alsa_input.pci-0000_00_1f.3.analog-stereo
+</code></pre>
+<p>Copy this name.</p>
+<h3 class="blog-subheading_YPkIht">Step 2: Temporary test</h3>
+<p>Run the following command, replacing <code class="blog-code_So286B">YOUR_DEVICE_NAME</code> with the name you copied:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">pactl load-module module-remap-source source_name=mono_mic master=YOUR_DEVICE_NAME master_channel_map=front-left channel_map=mono
+</code></pre>
+<p>Now go to <strong>Sound Settings</strong> and select the new &quot;Remapped Source&quot; as your input. Test it in Telegram or Google Meet. It should work cleanly.</p>
+<h3 class="blog-subheading_YPkIht">Step 3: Permanent fix with PipeWire</h3>
+<p>Since Ubuntu 24.04 uses <strong>PipeWire</strong> by default, we can make this permanent by adding a configuration snippet.</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Create the config directory:</li>
+</ol>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d/
+</code></pre>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Create the fix file:</li>
+</ol>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">nano ~/.config/pipewire/pipewire-pulse.conf.d/10-mono-mic.conf
+</code></pre>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Paste the following configuration, using the actual device name found in step 1:</li>
+</ol>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">pulse.cmd = [
+{
+cmd = &quot;load-module&quot;
+args = &quot;module-remap-source source_name=mono_mic master=alsa_input.pci-0000_00_1f.3.analog-stereo master_channel_map=front-left channel_map=mono&quot;
+flags = [ ]
+}
+{
+cmd = &quot;set-default-source&quot;
+args = &quot;mono_mic&quot;
+flags = [ ]
+}
+]
+</code></pre>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Save and reboot.</li>
+</ol>
+<h2 class="blog-heading_4rqRAY">Bonus: Stop Chromium from Ruining Your Volume</h2>
+<p>Even with a mono mic, Chromium often tries to auto-adjust your volume, which can reintroduce noise. To stop this:</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Open Chromium and go to <code class="blog-code_So286B">chrome://flags/#enable-webrtc-allow-input-volume-adjustment</code>.</li>
+<li class="blog-list-item_HQsiiA">Set it to <strong>Disabled</strong>.</li>
+<li class="blog-list-item_HQsiiA">Restart the browser.</li>
+</ol>
+<p>By remapping the channel to mono, you provide a clean master signal that applications cannot misinterpret, finally giving you reliable audio for work and calls.</p></article></main>
+    <script async type="module" src="../../assets/index.js"></script>
+</body>
+
+</html>

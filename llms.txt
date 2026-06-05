@@ -1,0 +1,10 @@
+# Dmitry Beskov CV
+
+This is the static CV and blog for Dmitry Beskov. The CV is authored in MDX and rendered to static HTML for browsers, printing, and PDF generation.
+
+- [CV](https://besdar.github.io/)
+- [CV Markdown](https://besdar.github.io/Dmitry_Beskov.md)
+- [CV PDF](https://besdar.github.io/Dmitry_Beskov.pdf)
+- [Blog](https://besdar.github.io/blog/)
+- [GitHub](https://github.com/besdar)
+- [LinkedIn](https://www.linkedin.com/in/besdar/)

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Resolving HP LaserJet CM1015 49 Error on Ubuntu 24.04 - Dmitry Beskov</title>
+    <meta name="description" content="Diagnose and work around HP CM1015 49 errors on Ubuntu 24.04 when image print jobs crash the printer firmware.">
+    <meta name="author" content="Dmitry Beskov">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/cvPage.css">
+    <link rel="stylesheet" href="../../css/contacts.css">
+    <link rel="stylesheet" href="../../css/sectionTitle.css">
+    <link rel="stylesheet" href="../../css/achievementItem.css">
+    <link rel="stylesheet" href="../../css/moreDetails.css">
+    <link rel="stylesheet" href="../../css/additionalAchievements.css">
+    <link rel="stylesheet" href="../../css/impactEvidence.css">
+    <link rel="stylesheet" href="../../css/projectDetails.css">
+    <link rel="stylesheet" href="../../css/timelineHeader.css">
+    <link rel="stylesheet" href="../../css/timelineItem.css">
+    <link rel="stylesheet" href="../../css/historyActivity.css">
+    <link rel="stylesheet" href="../../css/techStack.css">
+    <link rel="stylesheet" href="../../css/inlineTooltip.css">
+    <link rel="stylesheet" href="../../css/pdfButton.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+</head>
+
+<body class="">
+    <header class="body-header_am3jfI"><div class="header-title_FK1dGI"><a class="header-title-home-link_TJrQnn" href="../../"><h1 class="header-title-employee-name_zKT-NU">Dmitry Beskov</h1></a><h2 class="header-title-job-position_htkKrW">Frontend Developer</h2></div><nav aria-label="Site navigation" class="site-nav_mCUNwU"><a class="site-nav-link_ImJAoI link_sbG9tI" href="../../">CV</a><a class="site-nav-link_ImJAoI link_sbG9tI" href="../">Articles</a></nav></header><main class="blog-content_oKGG3K" id="main-content" tabindex="-1"><article class="blog-article_skCMyk"><h1 class="blog-title_E7TyjS">Resolving HP LaserJet CM1015 &quot;49 Error&quot; on Ubuntu 24.04</h1>
+<h2 class="blog-heading_4rqRAY">Executive Summary</h2>
+<p>A reproducible <strong>49 error</strong> on an HP Color LaserJet CM1015 MFP when printing image files from Ubuntu 24.04, while document printing and scanning still work, points to an interoperability conflict between a modern operating system and legacy printer firmware. The error is not a simple connectivity failure. It is a crash of the printer&#x27;s internal firmware, triggered by a data stream it cannot process.</p>
+<p>This guide lays out a systematic strategy for diagnosing and resolving the fault. The approach is organized into three pillars, from least to most invasive:</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA"><strong>Print data manipulation:</strong> alter the print job before it is sent to the printer. Converting complex image data into a simpler document format such as PDF can bypass the commands that trigger the firmware crash.</li>
+<li class="blog-list-item_HQsiiA"><strong>Driver and communication layer reconfiguration:</strong> audit the HPLIP driver and try a generic PostScript driver, using the printer&#x27;s native PostScript support instead of the suspected raster path.</li>
+<li class="blog-list-item_HQsiiA"><strong>Deep hardware state resets:</strong> clear the printer&#x27;s internal state. If firmware memory has become corrupted, restore defaults or perform a full NVRAM initialization.</li>
+</ol>
+<p>By following these steps in order, you can diagnose the root cause and restore image-printing functionality on Ubuntu 24.04.</p>
+<h2 class="blog-heading_4rqRAY">Section 1: Deconstructing the &quot;49 Error&quot; and Initial Diagnostics</h2>
+<p>Before advanced fixes, establish a reliable baseline. These checks verify hardware integrity and rule out simpler causes like stuck print jobs or faulty connections.</p>
+<h3 class="blog-subheading_YPkIht">1.1 Understanding the firmware communication fault</h3>
+<p>A <strong>49 error</strong> on an HP LaserJet printer signifies a critical firmware exception. It is analogous to a blue screen or kernel panic on a computer. It occurs when the printer&#x27;s formatter receives a print job containing data, commands, or an operation sequence that its firmware cannot handle.</p>
+<p>Probable causes include unsupported printer commands, corrupted data in the print job, or a specific combination of driver behavior and device state.</p>
+<p>The fact that documents print successfully while image files trigger the error is the key diagnostic clue. A text document is mostly vector data: characters, lines, and page layout instructions. An image must be converted into a larger raster data stream. That rasterization path is more demanding on both the computer driver and the printer&#x27;s older 300 MHz processor with 96 MB of memory.</p>
+<p>The issue is probably not the connection itself. It is the specific language being sent over that connection when an image is printed.</p>
+<h3 class="blog-subheading_YPkIht">1.2 Establishing a baseline with internal test pages</h3>
+<p>First, isolate the printer from the computer and any queued print jobs. This validates the printer&#x27;s internal hardware independently of Ubuntu or CUPS.</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA"><strong>Isolate the printer:</strong> turn the printer off and disconnect the USB or network cable from the Ubuntu computer. This prevents residual queued data from being sent when the printer starts.</li>
+<li class="blog-list-item_HQsiiA"><strong>Bypass surge protectors:</strong> if the printer is connected through a surge protector or power strip, plug it directly into a wall outlet. HP service guidance often recommends this when troubleshooting intermittent hardware errors.</li>
+<li class="blog-list-item_HQsiiA"><strong>Print an internal report:</strong> turn the printer on and wait for it to reach <strong>Ready</strong>. Use the control panel to print a Configuration Report or Demo Page from the reports or information menu.</li>
+</ol>
+<p>If the internal page prints successfully, the core print engine is working. The fault can then be attributed to the interaction between Ubuntu, the driver, and the image print data.</p>
+<h3 class="blog-subheading_YPkIht">1.3 Clearing the CUPS queue and checking connections</h3>
+<p>A corrupted print job can become stuck in the CUPS queue. Every time the printer reconnects, Ubuntu may try to resend it, repeatedly triggering the 49 error.</p>
+<p>Stop CUPS:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo systemctl stop cups
+</code></pre>
+<p>Clear lingering spool files:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo rm /var/spool/cups/c*
+sudo rm /var/spool/cups/d*
+</code></pre>
+<p>Restart CUPS:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo systemctl start cups
+</code></pre>
+<p>While the printer is disconnected, inspect the USB cable for damage. When reconnecting, try a different USB port if available.</p>
+<p>After these steps, the system is in a clean state. Any later 49 error can be tied to a new print job rather than a residual queue problem.</p>
+<h2 class="blog-heading_4rqRAY">Section 2: Mitigating File-Specific Triggers</h2>
+<p>Because image files trigger the 49 error, the fastest solution is often to modify the print data before it reaches the printer firmware. These workarounds simplify the data stream generated by the modern driver.</p>
+<h3 class="blog-subheading_YPkIht">2.1 Why images fail when documents succeed</h3>
+<p>Printing a document and printing a high-resolution image exercise different parts of the driver and firmware stack.</p>
+<p>A normal document is mostly vector instructions and font references: draw a line, place a glyph, position text. The printer&#x27;s interpreter can render these instructions efficiently.</p>
+<p>A photograph or complex graphic has to be turned into a grid of dots. Raster image processing can happen in the computer&#x27;s driver or in the printer formatter. When the driver sends a complex compressed image stream, the CM1015&#x27;s older processor and memory buffer may be overwhelmed, or the firmware may encounter a compression or color-profile command it was not designed to handle.</p>
+<h3 class="blog-subheading_YPkIht">2.2 Workaround 1: Convert images to PDF before printing</h3>
+<p>This is usually the most effective workaround because it uses document printing, which is already known to work. Converting the image into a single-page PDF changes the job from a raw image print path into a standard document print path.</p>
+<h4 class="blog-minor-heading_smJoS5">Method A: ImageMagick in the terminal</h4>
+<p>Install ImageMagick if needed:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo apt install imagemagick
+</code></pre>
+<p>Navigate to the image directory and convert the image:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">cd ~/Pictures
+convert photo.jpg photo.pdf
+</code></pre>
+<p>Open <code class="blog-code_So286B">photo.pdf</code> with Ubuntu&#x27;s document viewer and print it. The printer should handle it as a standard document.</p>
+<h4 class="blog-minor-heading_smJoS5">Method B: Print to file from the graphical interface</h4>
+<p>Most Ubuntu image applications can print to a PDF file.</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Open the image in GIMP or Image Viewer.</li>
+<li class="blog-list-item_HQsiiA">Select <strong>Print</strong> from the file menu, or press <code class="blog-code_So286B">Ctrl+P</code>.</li>
+<li class="blog-list-item_HQsiiA">Choose <strong>Print to File</strong> instead of the HP CM1015.</li>
+<li class="blog-list-item_HQsiiA">Set the output format to PDF and save the file.</li>
+<li class="blog-list-item_HQsiiA">Open the generated PDF and print it to the HP CM1015.</li>
+</ol>
+<h3 class="blog-subheading_YPkIht">2.3 Workaround 2: Use &quot;Print as Image&quot;</h3>
+<p>Some document viewers offer a <strong>Print as Image</strong> option in advanced print settings. This shifts rasterization fully to the computer. The viewer pre-renders the page into a simple bitmap and sends that to the printer.</p>
+<p>The transfer may be larger, but the data is simpler. It contains no complex fonts, vectors, or page-description commands.</p>
+<p>To try it:</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Convert the image to PDF as described above.</li>
+<li class="blog-list-item_HQsiiA">Open the PDF in a viewer that exposes advanced print options.</li>
+<li class="blog-list-item_HQsiiA">Open the print dialog and locate advanced settings.</li>
+<li class="blog-list-item_HQsiiA">Enable <strong>Print as Image</strong>.</li>
+<li class="blog-list-item_HQsiiA">Send the job to the HP CM1015.</li>
+</ol>
+<p>Converting to PDF is the better first step, but <strong>Print as Image</strong> is a useful fallback if the PDF still triggers the error.</p>
+<h2 class="blog-heading_4rqRAY">Section 3: A Deep Dive into the Ubuntu Driver Stack</h2>
+<p>If file-level workarounds are not enough, address the driver. The issue may be a corrupted HPLIP setup, or a regression in the modern HPLIP path for this legacy printer.</p>
+<h3 class="blog-subheading_YPkIht">3.1 Audit and reinstall HPLIP on Ubuntu 24.04</h3>
+<p>HPLIP is HP&#x27;s official Linux driver suite. A faulty installation can cause many printer issues. A purge and reinstall removes misconfigured files and starts over cleanly.</p>
+<p>Purge existing packages:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo apt purge hplip hplip-data hplip-gui printer-driver-hpcups libsane-hpaio libhpmud0
+</code></pre>
+<p>Clean residual packages and reinstall:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo apt autoremove
+sudo apt install hplip hplip-gui
+</code></pre>
+<p>Optionally, install the latest HPLIP from HP:</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Download the automatic installer from the HPLIP downloads page. It will be named something like <code class="blog-code_So286B">hplip-3.25.6.run</code>.</li>
+<li class="blog-list-item_HQsiiA">In a terminal, run:</li>
+</ol>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">cd ~/Downloads
+chmod +x hplip-3.25.6.run
+./hplip-3.25.6.run
+</code></pre>
+<p>Do not run the installer with <code class="blog-code_So286B">sudo</code>. The installer will ask for your <code class="blog-code_So286B">sudo</code> password when required.</p>
+<p>If the proprietary plugin download fails with checksum errors, download the plugin and signature files manually from OpenPrinting&#x27;s HP plugin directory and run the downloaded <code class="blog-code_So286B">.run</code> file.</p>
+<p>After installation, reconfigure the printer:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">hp-setup
+</code></pre>
+<p>Then test image printing again. If the 49 error persists, the problem is probably not installation integrity. It is more likely the HPLIP raster driver path.</p>
+<h3 class="blog-subheading_YPkIht">3.2 The PostScript advantage</h3>
+<p>The HP Color LaserJet CM1015 supports <strong>HP PCL 6</strong>, <strong>HP PostScript level 3 emulation</strong>, and <strong>PostScript Printer Description (PPD)</strong> files.</p>
+<p>That matters because the default HPLIP <code class="blog-code_So286B">hpcups</code> driver is a CUPS raster driver. It performs rasterization and sends an HP-specific data stream to the printer. That is the path most likely to be failing.</p>
+<p>A generic PostScript driver bypasses the <code class="blog-code_So286B">hpcups</code> filter. Ubuntu converts the job to standard PostScript and sends it directly to the printer&#x27;s built-in PostScript interpreter. This can provide a more stable communication path for image printing.</p>
+<h3 class="blog-subheading_YPkIht">3.3 Reconfigure the printer with a generic PostScript driver</h3>
+<p>This creates a second printer queue, leaving the HPLIP-managed queue intact for comparison.</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Open <strong>Settings -&gt; Printers</strong> in Ubuntu.</li>
+<li class="blog-list-item_HQsiiA">Click <strong>Add Printer</strong> and select the HP CM1015 when it appears.</li>
+<li class="blog-list-item_HQsiiA">Instead of accepting the default HPLIP driver, choose the manual driver selection option, such as <strong>Select from Database</strong>, <strong>Provide PPD file</strong>, or <strong>Select Driver Manually</strong>.</li>
+<li class="blog-list-item_HQsiiA">Select <strong>Generic</strong> as the manufacturer.</li>
+<li class="blog-list-item_HQsiiA">Choose <strong>Generic PostScript Printer</strong> or a similar entry.</li>
+<li class="blog-list-item_HQsiiA">Name the queue something descriptive, such as <code class="blog-code_So286B">HP CM1015 (PostScript)</code>.</li>
+<li class="blog-list-item_HQsiiA">Print a test page.</li>
+<li class="blog-list-item_HQsiiA">Try printing the problematic image through the new PostScript queue.</li>
+</ol>
+<p>This directly targets the suspected failure point by substituting a different, more standardized software pipeline.</p>
+<div class="blog-table-scroll_GqH4kD"><table class="blog-table_f1glgt" aria-label="Comparison between the HPLIP and generic PostScript driver options"><thead><tr><th scope="col">Feature</th><th scope="col">HPLIP Driver (hpcups)</th><th scope="col">Generic PostScript Driver</th></tr></thead><tbody><tr><td>Installation Method</td><td>Automatic detection or <code class="blog-code_So286B">hp-setup</code> utility</td><td>Manual setup through Ubuntu Settings</td></tr><tr><td>Core Technology</td><td>HP-specific CUPS raster filter</td><td>Standardized PostScript page description language</td></tr><tr><td>Potential for Image Printing Bug</td><td>High, because it is the suspected source of the 49 error</td><td>Low, because it bypasses the suspected faulty component</td></tr><tr><td>Access to Advanced Features</td><td>Full feature set, including scanning and toner levels through HP tools</td><td>Basic printing only</td></tr><tr><td>Recommended Use Case</td><td>General use, scanning, and feature-complete management when everything works</td><td>Primary long-term workaround for image-triggered 49 errors</td></tr></tbody></table></div>
+<h2 class="blog-heading_4rqRAY">Section 4: Advanced Printer State Management</h2>
+<p>If file-level and driver-level fixes fail, investigate the printer&#x27;s internal state. Outdated or corrupted firmware is a common cause of 49 errors. For legacy devices, firmware updates may not be available, which makes reset procedures the main remaining tool.</p>
+<h3 class="blog-subheading_YPkIht">4.1 Firmware updates for the CM1015</h3>
+<p>Firmware is the embedded operating system that controls the printer. A firmware bug can mishandle valid print jobs, leading to 49 errors.</p>
+<p>However, the HP Color LaserJet CM1015 is a legacy product from the mid-2000s. HP support and driver pages list drivers for several operating systems, but no downloadable firmware updates for this model. That means the firmware should be treated as a fixed variable.</p>
+<p>The practical option is to clear printer state that may have become corrupted.</p>
+<h3 class="blog-subheading_YPkIht">4.2 Restore factory defaults from the service menu</h3>
+<p>Restoring defaults clears user-configured settings such as paper tray settings and network configuration. It is less invasive than a full NVRAM initialization.</p>
+<p>Use the printer control panel:</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Press <strong>Menu</strong>.</li>
+<li class="blog-list-item_HQsiiA">Navigate to <strong>Service</strong> and press <strong>OK</strong>.</li>
+<li class="blog-list-item_HQsiiA">Navigate to <strong>Restore defaults</strong> and press <strong>OK</strong>.</li>
+<li class="blog-list-item_HQsiiA">Confirm with <strong>OK</strong>.</li>
+</ol>
+<p>After the printer restarts, try printing an image again.</p>
+<h3 class="blog-subheading_YPkIht">4.3 Perform a full NVRAM initialization</h3>
+<p>NVRAM stores fundamental settings including serial number, page counts, and service-level calibration data. Corruption in NVRAM can cause persistent errors that survive power cycles and normal resets.</p>
+<p><strong>Important:</strong> an NVRAM reset erases all settings, including network configuration and custom calibration. Before proceeding, print a Configuration Page from the control panel and keep it for reference.</p>
+<p>To initialize NVRAM on the HP CM1015:</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Turn the printer off using the power switch.</li>
+<li class="blog-list-item_HQsiiA">Press and hold <strong>Right Arrow</strong> and <strong>Cancel</strong> (red X) at the same time.</li>
+<li class="blog-list-item_HQsiiA">While holding both buttons, turn the printer on.</li>
+<li class="blog-list-item_HQsiiA">Keep holding until <strong>Permanent Storage Init.</strong> appears on the control panel, then release.</li>
+</ol>
+<p>The initialization takes longer than a normal startup. When the printer returns to <strong>Ready</strong>, reconfigure any needed settings and try printing an image from Ubuntu.</p>
+<h2 class="blog-heading_4rqRAY">Section 5: Prioritized Action Plan</h2>
+<p>Perform these steps in order, moving to the next only if the previous one fails.</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA"><strong>Initial diagnostics and clearing</strong>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA">Disconnect the printer and print an internal Configuration Report.</li>
+<li class="blog-list-item_HQsiiA">Stop CUPS, clear <code class="blog-code_So286B">/var/spool/cups/</code>, and restart CUPS.</li>
+</ul>
+</li>
+<li class="blog-list-item_HQsiiA"><strong>Convert the image to PDF</strong>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA">Use ImageMagick, <code class="blog-code_So286B">convert image.jpg image.pdf</code>, or <strong>Print to File</strong> from an image viewer.</li>
+<li class="blog-list-item_HQsiiA">Print the PDF.</li>
+</ul>
+</li>
+<li class="blog-list-item_HQsiiA"><strong>Create a generic PostScript queue</strong>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA">Add a new CM1015 printer in <strong>Settings -&gt; Printers</strong>.</li>
+<li class="blog-list-item_HQsiiA">Manually select <strong>Generic PostScript Printer</strong>.</li>
+<li class="blog-list-item_HQsiiA">Print the image through that queue.</li>
+</ul>
+</li>
+<li class="blog-list-item_HQsiiA"><strong>Restore defaults</strong>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA">Use <strong>Menu -&gt; Service -&gt; Restore defaults</strong> on the printer.</li>
+</ul>
+</li>
+<li class="blog-list-item_HQsiiA"><strong>Perform NVRAM initialization</strong>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA">Print a configuration page first.</li>
+<li class="blog-list-item_HQsiiA">Hold <strong>Right Arrow</strong> and <strong>Cancel</strong> while powering on.</li>
+<li class="blog-list-item_HQsiiA">Release when <strong>Permanent Storage Init.</strong> appears.</li>
+</ul>
+</li>
+</ol>
+<h3 class="blog-subheading_YPkIht">Final hardware consideration</h3>
+<p>If every software, driver, and reset procedure fails, and the printer still fails only when printing images from a known-good configuration such as a generic PostScript driver, the formatter board may be failing.</p>
+<p>That conclusion should come last. Given the age of the HP CM1015, replacement may not be economical, but all practical software and state-reset paths should be exhausted first.</p>
+<h2 class="blog-heading_4rqRAY">Appendix</h2>
+<h3 class="blog-subheading_YPkIht">Technical specifications relevant to this issue</h3>
+<div class="blog-table-scroll_GqH4kD"><table class="blog-table_f1glgt" aria-label="Technical specifications relevant to the HP CM1015 printing issue"><thead><tr><th scope="col">Specification</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Functions</td><td>Print, copy, scan</td></tr><tr><td>Print Technology</td><td>Laser</td></tr><tr><td>Processor Speed</td><td>300 MHz</td></tr><tr><td>Memory</td><td>96 MB, non-expandable</td></tr><tr><td>Print Languages</td><td>HP PCL 6, HP PostScript level 3 emulation, PPD</td></tr><tr><td>Compatible Operating Systems</td><td>Windows, macOS, Linux through HPLIP</td></tr></tbody></table></div>
+<h3 class="blog-subheading_YPkIht">Glossary</h3>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA"><strong>CUPS (Common Unix Printing System):</strong> the core printing subsystem used by Ubuntu and other Linux distributions.</li>
+<li class="blog-list-item_HQsiiA"><strong>Formatter:</strong> the printer&#x27;s main logic board. It processes incoming print data and controls the print engine.</li>
+<li class="blog-list-item_HQsiiA"><strong>HPLIP (HP Linux Imaging and Printing):</strong> HP&#x27;s open-source Linux software suite for printers and multifunction devices.</li>
+<li class="blog-list-item_HQsiiA"><strong>NVRAM (Non-Volatile Random-Access Memory):</strong> printer memory that keeps critical configuration data after power-off.</li>
+<li class="blog-list-item_HQsiiA"><strong>PPD (PostScript Printer Description):</strong> a file that describes a printer&#x27;s capabilities to the operating system.</li>
+<li class="blog-list-item_HQsiiA"><strong>PostScript:</strong> Adobe&#x27;s page description language, supported by many laser printers.</li>
+</ul>
+<h2 class="blog-heading_4rqRAY">Works Cited</h2>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h30434.www3.hp.com/t5/Printing-Errors-or-Lights-Stuck-Print-Jobs/continuous-service-error-49-appears-and-won-t-go-away-HP/td-p/9249398" rel="noopener noreferrer" target="_blank">Continuous service error 49 appears and will not go away</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.hp.com/lt-en/document/c05026822" rel="noopener noreferrer" target="_blank">HP LaserJet, HP PageWide - 49 Error Displays On the Control Panel</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.hp.com/us-en/document/c04024079" rel="noopener noreferrer" target="_blank">HP LaserJet Pro and Color LaserJet Pro Printer and MFP 49 errors</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://www.amexclusive.com/faq/49-error" rel="noopener noreferrer" target="_blank">How do I clear a 49 Error on an HP Laser Printer?</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h30434.www3.hp.com/t5/Printing-Errors-or-Lights-Stuck-Print-Jobs/please-explain-HP-Printer-error-code-49/td-p/9036541" rel="noopener noreferrer" target="_blank">HP Support Community: printer error code 49</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.hp.com/us-en/product/setup-user-guides/hp-color-laserjet-cm1015-cm1017-multifunction-printer-series/1846080" rel="noopener noreferrer" target="_blank">HP Color LaserJet CM1015/CM1017 Multifunction Printer series</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.hp.com/au-en/document/ish_1797278-1746685-16" rel="noopener noreferrer" target="_blank">49 Error, Turn off then on</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://www.laserexpressinc.com/manuals/HP/hp-clj-cm1015-cm1017-mfp-user-manual.pdf" rel="noopener noreferrer" target="_blank">HP Color LaserJet CM1015/CM1017 MFP User Guide</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h30434.www3.hp.com/t5/Printing-Errors-or-Lights-Stuck-Print-Jobs/continuous-service-error-49-appears-and-won-t-go-away-HP/td-p/9249398" rel="noopener noreferrer" target="_blank">Continuous service error 49 appears and will not go away - HP LaserJet M236dw</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://askubuntu.com/questions/303849/create-a-single-pdf-from-multiple-text-images-or-pdf-files" rel="noopener noreferrer" target="_blank">Create a single PDF from multiple text, images, or PDF files</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://help.ubuntu.com/stable/ubuntu-help/printing-to-file.html.en" rel="noopener noreferrer" target="_blank">Print to file - Ubuntu Documentation</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://discourse.ubuntu.com/t/how-can-i-save-a-file-and-or-print-to-pdf-from-ubuntu-running-on-usb/58099" rel="noopener noreferrer" target="_blank">Print to PDF from Ubuntu running on USB</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h30434.www3.hp.com/t5/Printing-Errors-or-Lights-Stuck-Print-Jobs/49-Error-when-printing-a-specific-pdf-file/td-p/9298269" rel="noopener noreferrer" target="_blank">49 Error when printing a specific PDF file</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://www.openprinting.org/driver/HPLIP" rel="noopener noreferrer" target="_blank">Driver: HPLIP - OpenPrinting</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://askubuntu.com/questions/1519394/printing-not-working-on-ubuntu-24-04" rel="noopener noreferrer" target="_blank">Printing not working on Ubuntu 24.04</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://developers.hp.com/hp-linux-imaging-and-printing/install" rel="noopener noreferrer" target="_blank">Installing HPLIP</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://developers.hp.com/hp-linux-imaging-and-printing/release_notes" rel="noopener noreferrer" target="_blank">HPLIP release notes</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://developers.hp.com/hp-linux-imaging-and-printing/downloads" rel="noopener noreferrer" target="_blank">HPLIP downloads</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.system76.com/articles/add-a-printer-ubuntu/" rel="noopener noreferrer" target="_blank">Printer Setup on Ubuntu - System76 Support</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://help.ubuntu.com/stable/ubuntu-help/printing-setup.html.en" rel="noopener noreferrer" target="_blank">Set up a local printer - Ubuntu Documentation</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://www.openprinting.org/printer/Generic/Generic-PostScript_Printer" rel="noopener noreferrer" target="_blank">Generic PostScript Printer - OpenPrinting</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://answers.uillinois.edu/illinois.engineering/page.php?id=85135" rel="noopener noreferrer" target="_blank">How to add an Engineering printer on Linux</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.hp.com/in-en/document/ish_1776648-1643972-16" rel="noopener noreferrer" target="_blank">Update the firmware on an HP printer</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.hp.com/za-en/drivers/hp-color-laserjet-cm1015-cm1017-multifunction-printer-series/model/1846081" rel="noopener noreferrer" target="_blank">HP Color LaserJet CM1015 Multifunction Printer drivers</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.hp.com/be-nl/product/drivers/hp-color-laserjet-cm1015-cm1017-multifunction-printer-series/1846080" rel="noopener noreferrer" target="_blank">HP Color LaserJet CM1015/CM1017 software and driver downloads</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://support.hp.com/us-en/drivers/hp-color-laserjet-cm1015-cm1017-multifunction-printer-series/model/1846081" rel="noopener noreferrer" target="_blank">HP Color LaserJet CM1015/CM1017 US driver page</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://www.metrofuser.com/post/nvram-reset-for-hp-laser-printers" rel="noopener noreferrer" target="_blank">NVRAM Reset For HP Laser Printers</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h30434.www3.hp.com/t5/LaserJet-Printing/NVRAM-reset-and-cold-reset-does-not-work/td-p/5775687" rel="noopener noreferrer" target="_blank">HP Support Community: NVRAM reset and cold reset</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://www.printertechs.com/printer-troubleshooting/339-nvram-initialization-hp-laserjets" rel="noopener noreferrer" target="_blank">NVRAM Initialization HP LaserJets</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h30434.www3.hp.com/psg/attachments/psg/Printing/3310463/1/5225nvram.pdf" rel="noopener noreferrer" target="_blank">NVRAM initialization attachment</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h10032.www1.hp.com/ctg/Manual/c00773929.pdf" rel="noopener noreferrer" target="_blank">HP Color LaserJet CM1015MFP/CM1017MFP Software Technical Reference</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h30434.www3.hp.com/t5/Premier-Managed-Print-Specialists-Forum/NVRAM-resets-on-Laserjet-Pro-products/td-p/7217481" rel="noopener noreferrer" target="_blank">NVRAM resets on LaserJet Pro products</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://h30434.www3.hp.com/t5/Printing-Errors-or-Lights-Stuck-Print-Jobs/I-am-getting-a-49-error-how-do-I-fix-this/td-p/8653907" rel="noopener noreferrer" target="_blank">HP Support Community: I am getting a 49 error</a></li>
+</ol></article></main>
+    <script async type="module" src="../../assets/index.js"></script>
+</body>
+
+</html>

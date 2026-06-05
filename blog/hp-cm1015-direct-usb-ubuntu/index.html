@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Printing and Scanning on Ubuntu 24.04 with HP CM1015 MFP - Dmitry Beskov</title>
+    <meta name="description" content="Configure an HP Color LaserJet CM1015 MFP on Ubuntu 24.04 with direct USB, HPLIP, CUPS, and SANE.">
+    <meta name="author" content="Dmitry Beskov">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/cvPage.css">
+    <link rel="stylesheet" href="../../css/contacts.css">
+    <link rel="stylesheet" href="../../css/sectionTitle.css">
+    <link rel="stylesheet" href="../../css/achievementItem.css">
+    <link rel="stylesheet" href="../../css/moreDetails.css">
+    <link rel="stylesheet" href="../../css/additionalAchievements.css">
+    <link rel="stylesheet" href="../../css/impactEvidence.css">
+    <link rel="stylesheet" href="../../css/projectDetails.css">
+    <link rel="stylesheet" href="../../css/timelineHeader.css">
+    <link rel="stylesheet" href="../../css/timelineItem.css">
+    <link rel="stylesheet" href="../../css/historyActivity.css">
+    <link rel="stylesheet" href="../../css/techStack.css">
+    <link rel="stylesheet" href="../../css/inlineTooltip.css">
+    <link rel="stylesheet" href="../../css/pdfButton.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+</head>
+
+<body class="">
+    <header class="body-header_am3jfI"><div class="header-title_FK1dGI"><a class="header-title-home-link_TJrQnn" href="../../"><h1 class="header-title-employee-name_zKT-NU">Dmitry Beskov</h1></a><h2 class="header-title-job-position_htkKrW">Frontend Developer</h2></div><nav aria-label="Site navigation" class="site-nav_mCUNwU"><a class="site-nav-link_ImJAoI link_sbG9tI" href="../../">CV</a><a class="site-nav-link_ImJAoI link_sbG9tI" href="../">Articles</a></nav></header><main class="blog-content_oKGG3K" id="main-content" tabindex="-1"><article class="blog-article_skCMyk"><h1 class="blog-title_E7TyjS">Printing and Scanning on Ubuntu 24.04 with HP CM1015 MFP via Direct USB</h1>
+<p>This guide explains how to configure an HP Color LaserJet CM1015 MFP for full printing and scanning functionality on a PC running Ubuntu 24.04.2. The CM1015 MFP connects through USB 2.0, so a previous network-based solution through a router USB port is not applicable.</p>
+<p>The central issue is the reliance on the <strong>TP-Link USB Printer Controller Utility</strong> in the previous Windows setup. That utility is available for Windows and macOS, but not Linux. Since the CM1015 MFP does not have a built-in Ethernet port, the reliable solution is a direct USB connection to the computer.</p>
+<p>This process uses Ubuntu&#x27;s standard printing and scanning frameworks, <strong>CUPS</strong> and <strong>SANE</strong>, plus HP&#x27;s official Linux driver suite, <strong>HPLIP</strong>.</p>
+<div class="blog-table-scroll_GqH4kD"><table class="blog-table_f1glgt" aria-label="Previous and target HP CM1015 printer connection configuration"><thead><tr><th scope="col">Component</th><th scope="col">Model / Version</th><th scope="col">Previous Configuration</th><th scope="col">Target Configuration</th></tr></thead><tbody><tr><td>PC Operating System</td><td>Ubuntu 24.04.2</td><td>Windows 10</td><td>Ubuntu 24.04.2</td></tr><tr><td>Printer</td><td>HP Color LaserJet CM1015 MFP</td><td>USB connection to router</td><td>Direct USB connection to PC</td></tr><tr><td>Connection Method</td><td>TP-Link USB Controller Utility</td><td>Router-mediated virtual USB</td><td>CUPS and SANE via USB</td></tr></tbody></table></div>
+<h2 class="blog-heading_4rqRAY">The Foundational Challenge: Proprietary Utilities vs. Linux Standards</h2>
+<p>Understanding why the previous configuration fails on Ubuntu is critical. The difference lies in the technology used to share the printer. Migrating to Ubuntu means abandoning the proprietary router-based method for a direct, locally managed approach that is robust and natively supported.</p>
+<h3 class="blog-subheading_YPkIht">Deconstructing the TP-Link &quot;Print Server&quot; Functionality</h3>
+<p>The &quot;Print Server&quot; feature of the TP-Link Archer C7 router&#x27;s USB port depends on the <strong>TP-Link USB Printer Controller Utility</strong>. This utility creates a software-based virtual USB connection over the network, making the operating system believe the printer is locally connected.</p>
+<p>TP-Link documentation describes this utility for Windows and macOS, with no Linux version available. Changing the operating system to Ubuntu removes that software bridge, so the router-based setup stops being usable.</p>
+<h3 class="blog-subheading_YPkIht">The Linux Printing and Scanning Ecosystem: CUPS and SANE</h3>
+<p>Linux uses a standardized architecture for peripherals:</p>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA"><strong>CUPS (Common Unix Printing System):</strong> the core printing service for Linux distributions. CUPS acts as a print spooler and manager, communicating with printers through standardized drivers and connection protocols.</li>
+<li class="blog-list-item_HQsiiA"><strong>SANE (Scanner Access Now Easy):</strong> the universal API for accessing scanners on Linux. Graphical scanning applications rely on the SANE backend to communicate with scanner hardware.</li>
+<li class="blog-list-item_HQsiiA"><strong>HPLIP (HP Linux Imaging and Printing):</strong> HP&#x27;s Linux software suite. HPLIP bridges CUPS/SANE and specific HP hardware, including multifunction devices.</li>
+</ul>
+<h3 class="blog-subheading_YPkIht">The Path Forward: A Direct and Reliable USB Connection</h3>
+<p>The proprietary USB tunneling of the TP-Link utility cannot interface with the standards-based CUPS and SANE frameworks. Since the HP CM1015 MFP lacks an Ethernet port, connect it directly to the Ubuntu PC with a USB cable.</p>
+<p>That allows HPLIP, CUPS, and SANE on the Ubuntu machine to discover and interact with the printer and scanner directly.</p>
+<h2 class="blog-heading_4rqRAY">Step 1: Physical Reconfiguration</h2>
+<p>Before installing software, correct the physical connection.</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Power down the HP CM1015 MFP printer.</li>
+<li class="blog-list-item_HQsiiA">Disconnect the USB cable from the TP-Link router&#x27;s USB port.</li>
+<li class="blog-list-item_HQsiiA">Connect the printer directly to an available USB port on your Ubuntu 24.04.2 PC using a standard USB A-to-B cable.</li>
+<li class="blog-list-item_HQsiiA">Power the printer back on and allow it to fully initialize.</li>
+</ol>
+<h2 class="blog-heading_4rqRAY">Step 2: Installing and Configuring HPLIP on Ubuntu</h2>
+<p>With the printer directly connected, install and configure the HP driver software on the Ubuntu machine.</p>
+<h3 class="blog-subheading_YPkIht">HPLIP installation and verification</h3>
+<p>Ubuntu&#x27;s official repositories contain a well-integrated version of HPLIP, which is the recommended installation method for stability and easy maintenance.</p>
+<p>First, update the system package list:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo apt update
+</code></pre>
+<p>Next, install the HPLIP software suite and its graphical interface:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo apt install hplip hplip-gui
+</code></pre>
+<h3 class="blog-subheading_YPkIht">The hp-setup interactive wizard for USB configuration</h3>
+<p>HPLIP includes the <code class="blog-code_So286B">hp-setup</code> wizard, which simplifies printer configuration.</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">hp-setup
+</code></pre>
+<p>Follow the wizard prompts:</p>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA">Choose <strong>Universal Serial Bus (USB)</strong> as the connection type.</li>
+<li class="blog-list-item_HQsiiA">Select the discovered HP CM1015 MFP from the list.</li>
+<li class="blog-list-item_HQsiiA">Let the wizard search for the correct PPD file.</li>
+<li class="blog-list-item_HQsiiA">Enter a descriptive printer name and location if desired.</li>
+<li class="blog-list-item_HQsiiA">Print a test page when prompted.</li>
+</ul>
+<h3 class="blog-subheading_YPkIht">Managing the proprietary plugin for full functionality</h3>
+<p>The HP Color LaserJet CM1015 MFP requires a proprietary binary plugin for all features, especially scanning. The <code class="blog-code_So286B">hp-setup</code> wizard will try to download and install this plugin automatically.</p>
+<p>If the automatic download fails, install it manually:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">hp-plugin
+</code></pre>
+<p>Follow the prompts. If that also fails, download the plugin file directly from OpenPrinting and run the installer manually.</p>
+<h2 class="blog-heading_4rqRAY">Step 3: Verifying Printing with CUPS</h2>
+<p>After <code class="blog-code_So286B">hp-setup</code> completes, the print queue is configured in CUPS.</p>
+<h3 class="blog-subheading_YPkIht">Verifying the printer in CUPS</h3>
+<p>CUPS provides a web-based administration interface.</p>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Open a web browser on the Ubuntu machine and navigate to <code class="blog-code_So286B">http://localhost:631</code>.</li>
+<li class="blog-list-item_HQsiiA">Click the <strong>Printers</strong> tab. The newly configured HP CM1015 MFP should be listed.</li>
+<li class="blog-list-item_HQsiiA">Open the printer details. The connection or device URI should start with <code class="blog-code_So286B">hp:/usb/...</code>, confirming that CUPS is using the specialized HPLIP backend for a direct USB connection.</li>
+</ol>
+<h3 class="blog-subheading_YPkIht">Final validation: printing a test page</h3>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">In the CUPS web interface for the printer, select the <strong>Maintenance</strong> menu.</li>
+<li class="blog-list-item_HQsiiA">Choose <strong>Print Test Page</strong>.</li>
+<li class="blog-list-item_HQsiiA">The printer should output a standard CUPS test page, confirming that the software chain is working.</li>
+</ol>
+<h2 class="blog-heading_4rqRAY">Step 4: Enabling Full-Function Scanning with SANE</h2>
+<p>With printing confirmed, verify that the scanner is accessible through SANE.</p>
+<h3 class="blog-subheading_YPkIht">Verifying scanner detection</h3>
+<p>Use <code class="blog-code_So286B">scanimage</code> to check SANE device detection:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">scanimage -L
+</code></pre>
+<p>A successful detection should identify the scanner through the <code class="blog-code_So286B">hpaio</code> backend, the SANE component of HPLIP, via USB. The output should look similar to this:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">device `hpaio:/usb/HP_Color_LaserJet_cm1015?serial=xxxxxxxx&#x27; is a Hewlett-Packard HP_Color_LaserJet_cm1015 all-in-one
+</code></pre>
+<h3 class="blog-subheading_YPkIht">Troubleshooting scanner access and permissions</h3>
+<p>A common issue is that <code class="blog-code_So286B">scanimage -L</code> finds the scanner when run with <code class="blog-code_So286B">sudo</code>, but not as a regular user. Graphical applications may also fail to see it. This is usually a permissions problem.</p>
+<p>Add your user account to the <code class="blog-code_So286B">scanner</code> and <code class="blog-code_So286B">lp</code> groups:</p>
+<pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">sudo usermod -aG scanner,lp $(whoami)
+</code></pre>
+<p>After running this command, log out and log back in so the new group memberships take effect.</p>
+<h3 class="blog-subheading_YPkIht">Using standard Ubuntu scanning applications</h3>
+<p>Once permissions are correct, any SANE-compliant application can use the scanner.</p>
+<ul class="blog-list_nJOxSj">
+<li class="blog-list-item_HQsiiA"><strong>Document Scanner (Simple Scan):</strong> the default Ubuntu scanning application, which should automatically detect the HP CM1015 MFP.</li>
+<li class="blog-list-item_HQsiiA"><strong>XSane:</strong> a more advanced scanning tool, installable with <code class="blog-code_So286B">sudo apt install xsane</code>.</li>
+</ul>
+<p>Performing a test scan from either application confirms that the scanner is operational.</p>
+<h2 class="blog-heading_4rqRAY">Conclusion</h2>
+<p>The inability to print and scan from Ubuntu 24.04 was caused by the previous reliance on the proprietary TP-Link USB Printer Controller Utility, which is incompatible with Linux. The recommendation to use Ethernet was incorrect for this model because the HP CM1015 MFP does not have an Ethernet port.</p>
+<p>The definitive solution is to connect the printer directly to the Ubuntu PC via USB. This allows Ubuntu&#x27;s native CUPS and SANE systems, together with HPLIP, to manage the device correctly.</p>
+<h3 class="blog-subheading_YPkIht">Final configuration checklist</h3>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">Connect the printer directly to the PC&#x27;s USB port.</li>
+<li class="blog-list-item_HQsiiA">Install <code class="blog-code_So286B">hplip</code> and <code class="blog-code_So286B">hplip-gui</code>.</li>
+<li class="blog-list-item_HQsiiA">Run <code class="blog-code_So286B">hp-setup</code> and follow the wizard for a USB printer, ensuring the proprietary plugin is installed.</li>
+<li class="blog-list-item_HQsiiA">Verify printing through the CUPS web interface at <code class="blog-code_So286B">http://localhost:631</code>.</li>
+<li class="blog-list-item_HQsiiA">Add your user to the <code class="blog-code_So286B">scanner</code> and <code class="blog-code_So286B">lp</code> groups, then log out and back in.</li>
+<li class="blog-list-item_HQsiiA">Verify scanning with <code class="blog-code_So286B">scanimage -L</code> and a graphical application such as Document Scanner.</li>
+</ol>
+<h2 class="blog-heading_4rqRAY">Works Cited</h2>
+<ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
+<li class="blog-list-item_HQsiiA">HP Color LaserJet CM1015/CM1017 MFP User Guide.</li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://www.tp-link.com/cac/support/faq/779/" rel="noopener noreferrer" target="_blank">How to setup and share a printer on your local network with the Archer C7/C5 - TP-Link</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://www.tp-link.com/us/support/faq/779/" rel="noopener noreferrer" target="_blank">How to setup and share a printer on your local network with the Archer C7/C5 - TP-Link US</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://developers.hp.com/hp-color-laserjet-cm1015-multifunction-printer" rel="noopener noreferrer" target="_blank">HP Color LaserJet cm1015 Multifunction Printer - HP Developer Portal</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://ubuntuhandbook.org/index.php/2025/03/hp-printer-driver-hplip-3-25-2-added-ubuntu-24-04-new-printers-support/" rel="noopener noreferrer" target="_blank">HP Printer Driver HPLIP 3.25.2 Added Ubuntu 24.04 and New Printers Support</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://github.com/make-github-pseudonymous-again/blog/blob/master/content/post/2018-10-27-setup-a-hp-printer-scanner-with-cups-and-sane-on-arch-linux.md" rel="noopener noreferrer" target="_blank">Setup a HP printer/scanner with CUPS and SANE on Arch Linux</a></li>
+<li class="blog-list-item_HQsiiA"><a class="link_sbG9tI" href="https://medium.com/@anzaloquin/how-to-configure-an-hp-scanner-on-ubuntu-overcoming-common-challenges-and-exploring-free-software-bf0a876cda07" rel="noopener noreferrer" target="_blank">How to Configure an HP Scanner on Ubuntu</a></li>
+</ol></article></main>
+    <script async type="module" src="../../assets/index.js"></script>
+</body>
+
+</html>
