@@ -1,3 +1,7 @@
-import type { PropsWithChildren } from "react";
+import type { ComponentChildren } from "preact";
 
-export const HistoryActivity = ({ children }: PropsWithChildren) => <div className="history-activity">{children}</div>;
+type HistoryActivityProps = {
+    children?: ComponentChildren;
+};
+
+export const HistoryActivity = ({ children }: HistoryActivityProps) => <div className="history-activity">{children}</div>;

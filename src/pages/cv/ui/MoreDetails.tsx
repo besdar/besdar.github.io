@@ -1,7 +1,11 @@
-import type { PropsWithChildren } from "react";
+import type { ComponentChildren } from "preact";
 import styles from "./moreDetails.module.css";
 
-export const MoreDetails = ({ children }: PropsWithChildren) => (
+type MoreDetailsProps = {
+    children?: ComponentChildren;
+};
+
+export const MoreDetails = ({ children }: MoreDetailsProps) => (
     <details className={styles["description-details"]}>
         <summary className={styles["description-summary-title"]}>Earlier work experience</summary>
         {children}

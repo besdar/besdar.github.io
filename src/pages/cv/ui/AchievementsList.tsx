@@ -1,3 +1,7 @@
-import type { PropsWithChildren } from "react";
+import type { ComponentChildren } from "preact";
 
-export const AchievementsList = ({ children }: PropsWithChildren) => <ul>{children}</ul>;
+type AchievementsListProps = {
+    children?: ComponentChildren;
+};
+
+export const AchievementsList = ({ children }: AchievementsListProps) => <ul>{children}</ul>;

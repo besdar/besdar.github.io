@@ -1,11 +1,12 @@
-import type React from "react";
+import type { ComponentType } from "preact";
+import type { jsx } from "preact/jsx-runtime";
 
 export type SitePage = {
     bodyClass: string;
     description: string;
     outputPath: string;
     title: string;
-    content: React.ReactNode;
+    content: ReturnType<typeof jsx>;
 };
 
 export type RenderedPage = {
@@ -14,7 +15,7 @@ export type RenderedPage = {
 };
 
 export type BlogArticle = {
-    Content: React.ComponentType<{ components?: Record<string, unknown> }>;
+    Content: ComponentType<{ components?: Record<string, unknown> }>;
     metadata: Record<string, string>;
     slug: string;
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import { Links } from "./components/Links";
 
 type ContactsProps = {
@@ -7,7 +6,7 @@ type ContactsProps = {
     website: string;
 };
 
-export const Contacts: React.FC<ContactsProps> = ({ address, email, website }) => (
+export const Contacts = ({ address, email, website }: ContactsProps) => (
     <div className="title-contacts">
         <a className="link" rel="noopener noreferrer" href={`https://duckduckgo.com/?q=${encodeURIComponent(address)}&iaxm=maps`} target="_blank">
             <address className="title-contacts-contact">{address}</address>

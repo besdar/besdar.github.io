@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
-import ReactDOMServer from "react-dom/server";
+import { renderToStaticMarkup } from "preact-render-to-string";
 import type { AlternateLink, SitePage } from "../model/rendered-page";
 
 const documentTemplate = readFileSync(new URL("./documentTemplate.html", import.meta.url), "utf8");
@@ -74,7 +74,7 @@ const renderStyleSheets = (assetPrefix: string) =>
 
 export const renderDocument = ({ alternateLinks, bodyClass, content, description, outputPath, structuredData, title }: SitePage) => {
     const assetPrefix = getAssetPrefix(outputPath);
-    const markup = ReactDOMServer.renderToStaticMarkup(content);
+    const markup = renderToStaticMarkup(content);
     const structuredDataJson = serializeStructuredData(structuredData);
     const headLinks = [renderAlternateLinks(alternateLinks), renderStructuredData(structuredDataJson)].filter(Boolean).join("\n");
 

@@ -1,7 +1,12 @@
-import type { PropsWithChildren } from "react";
+import type { ComponentChildren } from "preact";
 import styles from "./projectDetails.module.css";
 
-export const ProjectDetails = ({ children, title = "Activity context" }: PropsWithChildren<{ title?: string }>) => (
+type ProjectDetailsProps = {
+    children?: ComponentChildren;
+    title?: string;
+};
+
+export const ProjectDetails = ({ children, title = "Activity context" }: ProjectDetailsProps) => (
     <details className={styles["projects-details"]}>
         <summary className={styles["projects-summary-title"]}>{title}</summary>
         {children}

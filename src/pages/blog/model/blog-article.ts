@@ -1,7 +1,7 @@
-import type React from "react";
+import type { ComponentType } from "preact";
 
 export type BlogArticle = {
-    Content: React.ComponentType<{ components?: Record<string, unknown> }>;
+    Content: ComponentType<{ components?: Record<string, unknown> }>;
     metadata: Record<string, string>;
     slug: string;
 };

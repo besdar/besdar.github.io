@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 import { describe, expect, it } from "@jest/globals";
-import { createElement } from "react";
+import { createElement } from "preact";
 import { escapeHtml, getAssetPrefix, renderContentSecurityPolicy, renderDocument, serializeStructuredData } from "./html";
 
 describe("HTML rendering helpers", () => {

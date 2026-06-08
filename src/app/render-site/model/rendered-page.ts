@@ -1,4 +1,4 @@
-import type React from "react";
+import type { jsx } from "preact/jsx-runtime";
 
 export type AlternateLink = {
     href: string;
@@ -10,7 +10,7 @@ export type AlternateLink = {
 export type SitePage = {
     alternateLinks?: AlternateLink[];
     bodyClass: string;
-    content: React.ReactNode;
+    content: ReturnType<typeof jsx>;
     description: string;
     outputPath: string;
     structuredData?: unknown;

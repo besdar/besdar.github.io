@@ -1,16 +1,20 @@
-import type { PropsWithChildren } from "react";
+import type { ComponentChildren } from "preact";
+
+type WithChildren<Props> = Props & {
+    children?: ComponentChildren;
+};
 
 export type StackItem = {
     description?: string;
     title: string;
 };
 
-export type CvSectionProps = PropsWithChildren<{
+export type CvSectionProps = WithChildren<{
     id: string;
     title: string;
 }>;
 
-export type TimelineItemProps = PropsWithChildren<{
+export type TimelineItemProps = WithChildren<{
     dates?: string;
     organization?: string;
     organizationUrl?: string;
@@ -23,6 +27,6 @@ export type TechStackProps = {
     items: StackItem[];
 };
 
-export type BlogLinkProps = PropsWithChildren<{
+export type BlogLinkProps = WithChildren<{
     href: string;
 }>;

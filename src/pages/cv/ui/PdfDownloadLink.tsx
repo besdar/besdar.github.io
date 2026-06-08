@@ -1,7 +1,6 @@
-import React from "react";
 import styles from "./pdfButton.module.css";
 
-export const PdfDownloadLink: React.FC = () => (
+export const PdfDownloadLink = () => (
     <a
         aria-label="Download Dmitry Beskov CV as PDF"
         className={styles["aside-content-download-button"]}

@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import CvContent, { metadata as cvMetadata } from "../../../content/cv.mdx";
 import { Contacts } from "../../components/Contacts";
 import { PDFButton } from "../../components/PDFButton";
@@ -6,7 +5,7 @@ import { BlogLink } from "../../site-components";
 import { cvComponents } from "../data/cvComponents";
 
 export const CvPage = () => (
-    <StrictMode>
+    <>
         <header className="body-header">
             <div className="header-title">
                 <h1 className="header-title-employee-name">{cvMetadata.employee}</h1>
@@ -25,5 +24,5 @@ export const CvPage = () => (
         <aside className="body-aside-content aside-content">
             <PDFButton />
         </aside>
-    </StrictMode>
+    </>
 );

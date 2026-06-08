@@ -1,6 +1,4 @@
-import React from "react";
-
-export const PDFButton: React.FC = () => (
+export const PDFButton = () => (
     <a className="aside-content-download-button" href="./Dmitry_Beskov.pdf" download target="_blank" rel="noreferrer">
         <svg className="aside-content-download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>PDF</title>

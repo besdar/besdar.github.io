@@ -22,7 +22,7 @@ PDF CV: [Dmitry_Beskov.pdf](https://besdar.github.io/Dmitry_Beskov.pdf)
 
 ## Summary
 
-I am an experienced front-end developer with 10+ years of experience building high-risk, customer-facing products. I specialize in React, TypeScript, and micro-frontend architecture. I have led the adoption of AI-powered code-review tools, tightened code-quality standards, and mentored teams to ship safer, faster releases. My passion is turning complex requirements into reliable, user-centric experiences that make a real difference.
+I am a front-end developer with 10+ years of experience building high-risk, customer-facing products. I specialize in React, TypeScript, and micro-frontend architecture. I have led the adoption of AI-powered code-review tools, tightened code-quality standards, and mentored teams to ship safer, faster releases. My passion is turning complex requirements into reliable, user-centric experiences that make a real difference.
 
 ## Work experience
 

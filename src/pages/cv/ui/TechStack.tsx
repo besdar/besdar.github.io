@@ -1,4 +1,5 @@
-import { Fragment, useId } from "react";
+import { Fragment } from "preact";
+import { useId } from "preact/hooks";
 import cn from "classnames";
 import type { TechStackProps } from "../model/cv-component-contracts";
 import styles from "./techStack.module.css";

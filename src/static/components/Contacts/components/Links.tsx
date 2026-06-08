@@ -1,6 +1,4 @@
-import React from "react";
-
-export const Links: React.FC = () => (
+export const Links = () => (
     <div className="title-contacts-contact contacts-links contacts-links-margin-top contacts-links-not-printed">
         <a className="contacts-link-link" rel="noopener" href="mailto:dmitry.beskov@outlook.com">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

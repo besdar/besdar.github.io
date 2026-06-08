@@ -1,11 +1,10 @@
-import { StrictMode } from "react";
 import { sectionTitleStyles } from "../../../shared/ui";
 import { blogArticles } from "../model/blog-articles";
 import blogStyles from "./blog.module.css";
 import { BlogHeader } from "./BlogHeader";
 
 export const BlogIndexPage = () => (
-    <StrictMode>
+    <>
         <BlogHeader blogHref="./" cvHref="../" />
         <main className={blogStyles["blog-content"]} id="main-content" tabIndex={-1}>
             <article className={blogStyles["blog-index"]}>
@@ -20,5 +19,5 @@ export const BlogIndexPage = () => (
                 ))}
             </article>
         </main>
-    </StrictMode>
+    </>
 );

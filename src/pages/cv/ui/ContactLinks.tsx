@@ -1,9 +1,8 @@
-import React from "react";
 import cn from "classnames";
 import { baseStyles } from "../../../shared/ui";
 import styles from "./contacts.module.css";
 
-export const ContactLinks: React.FC = () => (
+export const ContactLinks = () => (
     <nav
         aria-label="Contact links"
         className={cn(

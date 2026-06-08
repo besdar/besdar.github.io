@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment } from "preact";
 import type { TechStackProps } from "./types";
 
 export const TechStack = ({ items }: TechStackProps) => (

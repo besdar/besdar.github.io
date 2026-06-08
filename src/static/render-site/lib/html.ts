@@ -1,4 +1,4 @@
-import ReactDOMServer from "react-dom/server";
+import { renderToStaticMarkup } from "preact-render-to-string";
 import type { SitePage } from "../types";
 
 const documentTemplate =
@@ -18,7 +18,7 @@ export const escapeHtml = (value: string) => value.replaceAll("&", "&amp;").repl
 
 export const renderDocument = ({ bodyClass, content, description, outputPath, title }: SitePage) => {
     const assetPrefix = getAssetPrefix(outputPath);
-    const markup = ReactDOMServer.renderToStaticMarkup(content);
+    const markup = renderToStaticMarkup(content);
 
     return documentTemplate
         .replace("__TITLE__", escapeHtml(title))

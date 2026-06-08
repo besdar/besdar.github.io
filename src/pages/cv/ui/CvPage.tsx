@@ -1,5 +1,4 @@
 import cn from "classnames";
-import { StrictMode } from "react";
 import CvContent, { metadata as cvMetadata } from "../content/cv.mdx";
 import { SiteNavLink, baseStyles, headerStyles } from "../../../shared/ui";
 import cvPageStyles from "./cvPage.module.css";
@@ -8,7 +7,7 @@ import { Contacts } from "./Contacts";
 import { PdfDownloadLink } from "./PdfDownloadLink";
 
 export const CvPage = () => (
-    <StrictMode>
+    <>
         <header className={headerStyles["body-header"]}>
             <div className={headerStyles["header-title"]}>
                 <h1 className={headerStyles["header-title-employee-name"]}>{cvMetadata.employee}</h1>
@@ -27,5 +26,5 @@ export const CvPage = () => (
         <aside aria-label="CV download" className={cvPageStyles["body-aside-content"]}>
             <PdfDownloadLink />
         </aside>
-    </StrictMode>
+    </>
 );

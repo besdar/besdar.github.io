@@ -1,24 +1,28 @@
-import type { PropsWithChildren } from "react";
+import type { ComponentChildren } from "preact";
+
+type WithChildren<Props> = Props & {
+    children?: ComponentChildren;
+};
 
 export type StackItem = {
     description?: string;
     title: string;
 };
 
-export type CvSectionProps = PropsWithChildren<{
+export type CvSectionProps = WithChildren<{
     id: string;
     title: string;
 }>;
 
-export type AdditionalAchievementsProps = PropsWithChildren<{
+export type AdditionalAchievementsProps = WithChildren<{
     title?: string;
 }>;
 
-export type InlineTooltipProps = PropsWithChildren<{
+export type InlineTooltipProps = WithChildren<{
     note: string;
 }>;
 
-export type TimelineItemProps = PropsWithChildren<{
+export type TimelineItemProps = WithChildren<{
     dates?: string;
     organization?: string;
     organizationUrl?: string;

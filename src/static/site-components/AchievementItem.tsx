@@ -1,3 +1,7 @@
-import type { PropsWithChildren } from "react";
+import type { ComponentChildren } from "preact";
 
-export const AchievementItem = ({ children }: PropsWithChildren) => <li className="achivements-item">{children}</li>;
+type AchievementItemProps = {
+    children?: ComponentChildren;
+};
+
+export const AchievementItem = ({ children }: AchievementItemProps) => <li className="achivements-item">{children}</li>;

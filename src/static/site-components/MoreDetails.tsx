@@ -1,6 +1,10 @@
-import type { PropsWithChildren } from "react";
+import type { ComponentChildren } from "preact";
 
-export const MoreDetails = ({ children }: PropsWithChildren) => (
+type MoreDetailsProps = {
+    children?: ComponentChildren;
+};
+
+export const MoreDetails = ({ children }: MoreDetailsProps) => (
     <details className="description-details">
         <summary className="description-summary-title">Earlier work experience</summary>
         {children}

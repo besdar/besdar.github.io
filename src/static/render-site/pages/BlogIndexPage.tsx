@@ -1,9 +1,8 @@
-import { StrictMode } from "react";
 import { blogArticles } from "../data/blogArticles";
 import { BlogHeader } from "./BlogHeader";
 
 export const BlogIndexPage = () => (
-    <StrictMode>
+    <>
         <BlogHeader blogHref="./" cvHref="../" />
         <main className="body-content blog-content">
             <article className="description blog-index">
@@ -18,5 +17,5 @@ export const BlogIndexPage = () => (
                 ))}
             </article>
         </main>
-    </StrictMode>
+    </>
 );

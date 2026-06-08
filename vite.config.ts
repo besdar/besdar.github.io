@@ -1,5 +1,4 @@
 import mdx from "@mdx-js/rollup";
-import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
 import { getCssAssetFileName, getCssModuleClassName, styleEntryFiles, styleEntryNames } from "./vite.config.helpers";
 
@@ -21,13 +20,10 @@ export default defineConfig({
             generateScopedName: getCssModuleClassName,
         },
     },
-    plugins: [
-        { enforce: "pre", ...mdx() },
-        react({
-            include: /\.(jsx|js|mdx|md|tsx|ts)$/,
-        }),
-        removeStyleEntryChunks(),
-    ],
+    plugins: [{ enforce: "pre", ...mdx({ jsxImportSource: "preact" }) }, removeStyleEntryChunks()],
+    esbuild: {
+        jsxImportSource: "preact",
+    },
     build: {
         emptyOutDir: false,
         outDir: "dist",

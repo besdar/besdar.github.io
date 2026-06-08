@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId } from "preact/hooks";
 import type { InlineTooltipProps } from "../model/cv-component-contracts";
 import styles from "./inlineTooltip.module.css";
 
