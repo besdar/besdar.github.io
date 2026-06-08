@@ -4,12 +4,7 @@ const siteUrl = "https://besdar.github.io/";
 const markdownCvUrl = `${siteUrl}Dmitry_Beskov.md`;
 const pdfCvUrl = `${siteUrl}Dmitry_Beskov.pdf`;
 
-const professionalProfiles = [
-    "https://github.com/besdar",
-    "https://www.linkedin.com/in/besdar/",
-    "https://leetcode.com/besdar/",
-    "https://t.me/besdarrr",
-];
+const professionalProfiles = ["https://github.com/besdar", "https://www.linkedin.com/in/besdar/", "https://t.me/besdarrr"];
 
 const skills = [
     "TypeScript",
@@ -34,8 +29,7 @@ const skills = [
 
 const employmentHistory = [
     {
-        description:
-            "Builds and maintains billing, purchase, checkout, payment-method, trial-license, hardware-purchase, and customer self-service flows.",
+        description: "Builds and maintains billing, purchase, checkout, payment-method, trial-license, hardware-purchase, and customer self-service flows.",
         memberOf: {
             "@type": "Organization",
             name: "RingCentral (UCaaS)",
