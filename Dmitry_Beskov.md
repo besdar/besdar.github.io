@@ -22,7 +22,7 @@ PDF CV: [Dmitry_Beskov.pdf](https://besdar.github.io/Dmitry_Beskov.pdf)
 
 ## Summary
 
-I am an experienced front-end developer with 10+ years of experience building high-risk, customer-facing products. I specialize in React, TypeScript, and micro-frontend architecture. I have led the adoption of AI-powered code-review tools, tightened code-quality standards, and mentored teams to ship safer, faster releases. My passion is turning complex requirements into reliable, user-centric experiences that make a real difference.
+I am a front-end developer with 10+ years of experience building high-risk, customer-facing products. I specialize in React, TypeScript, and micro-frontend architecture. I have led the adoption of AI-powered code-review tools, tightened code-quality standards, and mentored teams to ship safer, faster releases. My passion is turning complex requirements into reliable, user-centric experiences that make a real difference.
 
 ## Work experience
 
@@ -59,8 +59,8 @@ More delivery evidence:
 - 640+ Completed tracked work items: Sustained delivery across billing, purchase, support tooling, and customer self-service workflows.
 - 310+ Technical and quality tasks: Architecture, tooling, code-quality, testing, and technical-debt work grouped together.
 - ~48% Technical work share: Nearly half of completed tracked work focused on engineering quality, test coverage, or technical foundations.
-- ~55% Authored MRs: Authored the majority of core-project code changes among a team of four developers.
-- 140+ Product and feature tasks: Shipped customer-facing and support-facing capability in billing, checkout, licensing, and purchase flows.
+- ~55% Authored MRs: Authored the majority of core-project code changes among a team of five developers.
+- ~160% LOC Commit Ratio: The most effective AI user on the team. Averages 22 PRs for every 100M tokens used.
 - 10+ Engineering areas supported: Worked across billing UI, customer web, admin/support flows, shared modules, automation, and API surfaces.
 
 Stack: TypeScript, React, Micro Frontends, Jest&RTL, GraphQL, Node.js, GitLab CI/CD, SonarQube, ESLint, Chrome extension.

@@ -32,9 +32,9 @@
 
 <body class="">
     <header class="body-header_am3jfI"><div class="header-title_FK1dGI"><a class="header-title-home-link_TJrQnn" href="../../"><h1 class="header-title-employee-name_zKT-NU">Dmitry Beskov</h1></a><h2 class="header-title-job-position_htkKrW">Frontend Developer</h2></div><nav aria-label="Site navigation" class="site-nav_mCUNwU"><a class="site-nav-link_ImJAoI link_sbG9tI" href="../../">CV</a><a class="site-nav-link_ImJAoI link_sbG9tI" href="../">Articles</a></nav></header><main class="blog-content_oKGG3K" id="main-content" tabindex="-1"><article class="blog-article_skCMyk"><h1 class="blog-title_E7TyjS">Fixing Selective Microphone Failure on Ubuntu 24.04: The &quot;Ghost Stereo&quot; Problem</h1>
-<p>If you&#x27;ve recently installed Ubuntu 24.04 on a Lenovo laptop, particularly the IdeaPad 320 series, and found that your microphone works perfectly in <strong>GNOME Sound Recorder</strong> but fails completely in <strong>Telegram</strong>, <strong>Chromium</strong>, or <strong>Google Meet</strong>, you are likely dealing with a &quot;Ghost Stereo&quot; mismatch.</p>
+<p>If you've recently installed Ubuntu 24.04 on a Lenovo laptop, particularly the IdeaPad 320 series, and found that your microphone works perfectly in <strong>GNOME Sound Recorder</strong> but fails completely in <strong>Telegram</strong>, <strong>Chromium</strong>, or <strong>Google Meet</strong>, you are likely dealing with a &quot;Ghost Stereo&quot; mismatch.</p>
 <p>This guide explains why this happens and how to fix it permanently using PipeWire.</p>
-<h2 class="blog-heading_4rqRAY">The Problem: One App Works, Others Don&#x27;t</h2>
+<h2 class="blog-heading_4rqRAY">The Problem: One App Works, Others Don't</h2>
 <p>The symptoms are often baffling:</p>
 <ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
 <li class="blog-list-item_HQsiiA"><strong>GNOME Sound Recorder</strong> records clear audio, but usually only at low sensitivity, around 30%.</li>
@@ -52,12 +52,12 @@
 <p>Before applying the fix, verify your optimal sensitivity.</p>
 <ol class="blog-list_nJOxSj blog-ordered-list_IKHK1n">
 <li class="blog-list-item_HQsiiA">Open <strong>GNOME Sound Recorder</strong>.</li>
-<li class="blog-list-item_HQsiiA">Slowly lower your system input volume in <strong>Settings -&gt; Sound</strong> to around <strong>30%</strong>.</li>
+<li class="blog-list-item_HQsiiA">Slowly lower your system input volume in <strong>Settings -> Sound</strong> to around <strong>30%</strong>.</li>
 <li class="blog-list-item_HQsiiA">If your voice becomes clear and the white noise disappears, your hardware is fine. You just need to force the system to use that clean signal as a mono source.</li>
 </ol>
 <h2 class="blog-heading_4rqRAY">The Solution: Creating a Virtual Mono Microphone</h2>
 <p>We will create a virtual microphone that takes only the working channel, usually the left channel, and presents it to the entire system as a high-quality mono source.</p>
-<h3 class="blog-subheading_YPkIht">Step 1: Find your microphone&#x27;s name</h3>
+<h3 class="blog-subheading_YPkIht">Step 1: Find your microphone's name</h3>
 <p>Open your terminal and run:</p>
 <pre class="blog-code-block_uxtieP"><code class="blog-code_So286B">pactl list short sources
 </code></pre>
