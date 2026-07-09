@@ -60,7 +60,7 @@ More delivery evidence:
 - 310+ Technical and quality tasks: Architecture, tooling, code-quality, testing, and technical-debt work grouped together.
 - ~48% Technical work share: Nearly half of completed tracked work focused on engineering quality, test coverage, or technical foundations.
 - ~55% Authored MRs: Authored the majority of core-project code changes among a team of five developers.
-- ~160% LOC Commit Ratio: The most effective AI user on the team. Averages 22 PRs for every 100M tokens used.
+- ~161% LOC Commit Ratio: The most effective AI user on the team. Averages 22 PRs for every 100M tokens used.
 - 10+ Engineering areas supported: Worked across billing UI, customer web, admin/support flows, shared modules, automation, and API surfaces.
 
 Stack: TypeScript, React, Micro Frontends, Jest&RTL, GraphQL, Node.js, GitLab CI/CD, SonarQube, ESLint, Chrome extension.
