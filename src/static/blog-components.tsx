@@ -1,8 +1,8 @@
 import type { ComponentChildren, JSX } from "preact";
 
-type WithChildren = {
+interface WithChildren {
     children?: ComponentChildren;
-};
+}
 
 export const blogMdxComponents = {
     a: ({ children, href }: JSX.IntrinsicElements["a"]) => {

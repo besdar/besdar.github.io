@@ -6,7 +6,8 @@ export default tseslint.config(
         ignores: ["dist", "node_modules", ".cache"],
     },
     js.configs.recommended,
-    tseslint.configs.recommended,
+    tseslint.configs.strict,
+    tseslint.configs.stylistic,
     {
         files: ["**/*.{js,mjs,ts,tsx}"],
         languageOptions: {
@@ -25,10 +26,6 @@ export default tseslint.config(
                 setTimeout: "readonly",
                 window: "readonly",
             },
-        },
-        rules: {
-            "no-use-before-define": "off",
-            "@typescript-eslint/no-use-before-define": ["error"],
         },
     },
 );

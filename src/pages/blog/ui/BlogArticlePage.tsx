@@ -3,9 +3,9 @@ import type { BlogArticle } from "../model/blog-article";
 import blogStyles from "./blog.module.css";
 import { BlogHeader } from "./BlogHeader";
 
-type BlogArticlePageProps = {
+interface BlogArticlePageProps {
     article: BlogArticle;
-};
+}
 
 export const BlogArticlePage = ({ article }: BlogArticlePageProps) => (
     <>

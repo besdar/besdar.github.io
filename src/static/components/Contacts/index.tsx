@@ -1,10 +1,10 @@
 import { Links } from "./components/Links";
 
-type ContactsProps = {
+interface ContactsProps {
     address: string;
     email: string;
     website: string;
-};
+}
 
 export const Contacts = ({ address, email, website }: ContactsProps) => (
     <div className="title-contacts">

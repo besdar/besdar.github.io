@@ -13,14 +13,14 @@ function getRandomInt(min = 0, max = 1) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-type SnowFlake = {
+interface SnowFlake {
     xpos: number;
     ypos: number;
     radius: number;
     opacity: number;
     speed: number;
     dx: number;
-};
+}
 
 class Snowfall {
     canvas: HTMLCanvasElement;
@@ -28,7 +28,7 @@ class Snowfall {
     snowCounter = 0;
     speedMultiplier = 0;
     snowflakes: SnowFlake[] = [];
-    animationFrameId: number = 0;
+    animationFrameId = 0;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;

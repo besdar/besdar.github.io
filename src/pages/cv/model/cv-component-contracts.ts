@@ -4,10 +4,10 @@ type WithChildren<Props> = Props & {
     children?: ComponentChildren;
 };
 
-export type StackItem = {
+export interface StackItem {
     description?: string;
     title: string;
-};
+}
 
 export type CvSectionProps = WithChildren<{
     id: string;
@@ -31,17 +31,17 @@ export type TimelineItemProps = WithChildren<{
     subtitle?: string;
 }>;
 
-export type TechStackProps = {
+export interface TechStackProps {
     items: StackItem[];
-};
+}
 
-export type ImpactEvidenceItem = {
+export interface ImpactEvidenceItem {
     description?: string;
     label: string;
     value: string;
-};
+}
 
-export type ImpactEvidenceProps = {
+export interface ImpactEvidenceProps {
     items: ImpactEvidenceItem[];
     title?: string;
-};
+}

@@ -2,9 +2,9 @@ import { blogMdxComponents } from "../../blog-components";
 import type { BlogArticle } from "../types";
 import { BlogHeader } from "./BlogHeader";
 
-type BlogArticlePageProps = {
+interface BlogArticlePageProps {
     article: BlogArticle;
-};
+}
 
 export const BlogArticlePage = ({ article }: BlogArticlePageProps) => (
     <>

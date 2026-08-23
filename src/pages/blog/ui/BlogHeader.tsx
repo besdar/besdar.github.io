@@ -1,9 +1,9 @@
 import { SiteNavLink, headerStyles } from "../../../shared/ui";
 
-type BlogHeaderProps = {
+interface BlogHeaderProps {
     blogHref: string;
     cvHref: string;
-};
+}
 
 export const BlogHeader = ({ blogHref, cvHref }: BlogHeaderProps) => (
     <header className={headerStyles["body-header"]}>

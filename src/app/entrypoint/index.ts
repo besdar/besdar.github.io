@@ -24,9 +24,7 @@ export const clampTooltipToViewport = (tooltipContainerElement: EventTarget | nu
     if (tooltipCoordinates.left < windowPadding) {
         tooltipElement.style.left = `${tooltipElement.offsetLeft + windowPadding - tooltipCoordinates.left}px`;
     } else if (tooltipCoordinates.right > viewportWidth - windowPadding) {
-        tooltipElement.style.left = `${
-            viewportWidth + tooltipElement.offsetLeft - 2 * windowPadding - tooltipCoordinates.left - tooltipCoordinates.width
-        }px`;
+        tooltipElement.style.left = `${viewportWidth + tooltipElement.offsetLeft - 2 * windowPadding - tooltipCoordinates.left - tooltipCoordinates.width}px`;
     }
 };
 

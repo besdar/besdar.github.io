@@ -4,7 +4,11 @@ import cn from "classnames";
 import type { TechStackProps } from "../model/cv-component-contracts";
 import styles from "./techStack.module.css";
 
-export const getTooltipIdPart = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const getTooltipIdPart = (title: string) =>
+    title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
 
 export const TechStack = ({ items }: TechStackProps) => {
     const tooltipGroupId = useId().replace(/[^a-zA-Z0-9_-]/g, "");
@@ -20,12 +24,7 @@ export const TechStack = ({ items }: TechStackProps) => {
                     <Fragment key={title}>
                         {description ? (
                             <span className={styles["tech-stack-item-wrapper"]} data-tooltip-container>
-                                <button
-                                    className={styles["tech-stack-item"]}
-                                    aria-describedby={tooltipId}
-                                    data-tech-stack-item
-                                    type="button"
-                                >
+                                <button className={styles["tech-stack-item"]} aria-describedby={tooltipId} data-tech-stack-item type="button">
                                     {itemText}
                                 </button>
                                 <span

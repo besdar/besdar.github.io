@@ -3,9 +3,9 @@ import cn from "classnames";
 import { baseStyles } from "../../../shared/ui";
 import blogStyles from "../ui/blog.module.css";
 
-type WithChildren = {
+interface WithChildren {
     children?: ComponentChildren;
-};
+}
 
 export const isExternalHref = (href: unknown): href is string => typeof href === "string" && /^https?:\/\//.test(href);
 

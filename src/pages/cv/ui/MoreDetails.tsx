@@ -1,9 +1,9 @@
 import type { ComponentChildren } from "preact";
 import styles from "./moreDetails.module.css";
 
-type MoreDetailsProps = {
+interface MoreDetailsProps {
     children?: ComponentChildren;
-};
+}
 
 export const MoreDetails = ({ children }: MoreDetailsProps) => (
     <details className={styles["description-details"]}>

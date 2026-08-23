@@ -1,10 +1,10 @@
 import type { ComponentChildren } from "preact";
 import styles from "./projectDetails.module.css";
 
-type ProjectDetailsProps = {
+interface ProjectDetailsProps {
     children?: ComponentChildren;
     title?: string;
-};
+}
 
 export const ProjectDetails = ({ children, title = "Activity context" }: ProjectDetailsProps) => (
     <details className={styles["projects-details"]}>

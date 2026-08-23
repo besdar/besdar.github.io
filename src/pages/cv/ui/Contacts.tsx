@@ -3,11 +3,11 @@ import { baseStyles } from "../../../shared/ui";
 import styles from "./contacts.module.css";
 import { ContactLinks } from "./ContactLinks";
 
-type ContactsProps = {
+interface ContactsProps {
     address: string;
     email: string;
     website: string;
-};
+}
 
 export const Contacts = ({ address, email, website }: ContactsProps) => (
     <div className={styles["title-contacts"]}>

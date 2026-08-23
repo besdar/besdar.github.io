@@ -1,9 +1,9 @@
 import { BlogLink } from "../../site-components";
 
-type BlogHeaderProps = {
+interface BlogHeaderProps {
     blogHref: string;
     cvHref: string;
-};
+}
 
 export const BlogHeader = ({ blogHref, cvHref }: BlogHeaderProps) => (
     <header className="body-header blog-header">

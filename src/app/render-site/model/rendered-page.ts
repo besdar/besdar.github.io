@@ -1,13 +1,13 @@
 import type { jsx } from "preact/jsx-runtime";
 
-export type AlternateLink = {
+export interface AlternateLink {
     href: string;
     rel?: string;
     title?: string;
     type: string;
-};
+}
 
-export type SitePage = {
+export interface SitePage {
     alternateLinks?: AlternateLink[];
     bodyClass: string;
     content: ReturnType<typeof jsx>;
@@ -15,9 +15,9 @@ export type SitePage = {
     outputPath: string;
     structuredData?: unknown;
     title: string;
-};
+}
 
-export type RenderedPage = {
+export interface RenderedPage {
     html: string;
     outputPath: string;
-};
+}

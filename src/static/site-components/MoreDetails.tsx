@@ -1,8 +1,8 @@
 import type { ComponentChildren } from "preact";
 
-type MoreDetailsProps = {
+interface MoreDetailsProps {
     children?: ComponentChildren;
-};
+}
 
 export const MoreDetails = ({ children }: MoreDetailsProps) => (
     <details className="description-details">
