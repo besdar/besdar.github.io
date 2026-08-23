@@ -3,6 +3,8 @@
     "author": "besdar",
     "description": "Personal CV",
     "homepage": "https://besdar.github.io",
+    "type": "module",
+    "private": true,
     "scripts": {
         "dev": "npm run build:all && vite preview --host 0.0.0.0",
         "build:cv:markdown": "node build/generate-cv-markdown.mjs",
@@ -11,11 +13,12 @@
         "build:all": "npm run build:cv:markdown && npm run build:site && npm run build:browser",
         "deploy": "gh-pages -d dist",
         "check:js": "eslint --cache .",
+        "check:format": "prettier --check .",
         "check:styles": "stylelint \"./src/**/*.css\"",
         "check:types": "tsc --noEmit",
         "check:tests": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
-        "check:all": "npm run check:js && npm run check:styles && npm run check:types && npm run check:tests",
-        "eslint:fix": "eslint --fix ./src && prettier --write src/",
+        "check:all": "npm run check:js && npm run check:format && npm run check:styles && npm run check:types && npm run check:tests",
+        "eslint:fix": "eslint --fix . && prettier --write .",
         "styles:fix": "stylelint --fix \"./src/**/*.css\"",
         "lint:fix": "npm run eslint:fix && npm run styles:fix"
     },
@@ -33,11 +36,12 @@
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
+        "@jest/globals": "^30.4.1",
         "@mdx-js/rollup": "^3.1.1",
-        "@types/jest": "^30.0.0",
-        "@types/mdx": "^2.0.14",
-        "@types/node": "^26.2.0",
+        "classnames": "^2.5.1",
+        "esbuild": "^0.28.2",
         "eslint": "^10.9.0",
+        "eslint-config-prettier": "^10.1.8",
         "gh-pages": "^6.3.0",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^30.4.2",
@@ -47,12 +51,10 @@
         "prettier": "^3.9.6",
         "stylelint": "^17.14.1",
         "stylelint-config-standard": "^40.0.0",
-        "svgo": "^4.0.2",
         "ts-jest": "^29.4.12",
         "typescript": "^6.0.3",
         "typescript-eslint": "^8.67.0",
-        "vite": "^8.2.2",
-        "classnames": "^2.5.1"
+        "vite": "^8.2.2"
     },
     "engines": {
         "node": ">=22.0.0"

@@ -1,18 +1,25 @@
 import js from "@eslint/js";
+import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 
-export default tseslint.config(
+export default defineConfig(
     {
-        ignores: ["dist", "node_modules", ".cache"],
+        ignores: ["**/dist/**", "**/node_modules/**", "**/.cache/**"],
     },
     js.configs.recommended,
-    tseslint.configs.strict,
-    tseslint.configs.stylistic,
+    ...tseslint.configs.strictTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
+    eslintConfigPrettier,
     {
-        files: ["**/*.{js,mjs,ts,tsx}"],
+        files: [tseslint.globs.jsts],
         languageOptions: {
             ecmaVersion: "latest",
             sourceType: "module",
+            parserOptions: {
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
+            },
             globals: {
                 HTMLCanvasElement: "readonly",
                 HTMLSpanElement: "readonly",
@@ -27,5 +34,9 @@ export default tseslint.config(
                 window: "readonly",
             },
         },
+    },
+    {
+        files: [tseslint.globs.js],
+        extends: [tseslint.configs.disableTypeChecked],
     },
 );

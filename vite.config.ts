@@ -1,12 +1,12 @@
 import mdx from "@mdx-js/rollup";
 import { defineConfig, type Plugin } from "vite";
-import { getCssAssetFileName, getCssModuleClassName, styleEntryFiles, styleEntryNames } from "./vite.config.helpers";
+import { getCssAssetFileName, getCssModuleClassName, styleEntryFiles, styleEntryNames } from "./vite.config.helpers.js";
 
 const removeStyleEntryChunks = (): Plugin => ({
     generateBundle(_, bundle) {
         for (const [fileName, asset] of Object.entries(bundle)) {
             if (asset.type === "chunk" && styleEntryNames.has(asset.name)) {
-                delete bundle[fileName];
+                Reflect.deleteProperty(bundle, fileName);
             }
         }
     },

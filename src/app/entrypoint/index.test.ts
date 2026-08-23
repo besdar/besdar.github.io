@@ -16,18 +16,17 @@ const setOffsetLeft = (element: HTMLElement, offsetLeft: number) => {
 };
 
 const setRect = (element: HTMLElement, left: number, width: number) => {
-    element.getBoundingClientRect = () =>
-        ({
-            bottom: 1,
-            height: 1,
-            left,
-            right: left + width,
-            top: 0,
-            width,
-            x: left,
-            y: 0,
-            toJSON: () => ({}),
-        }) as DOMRect;
+    element.getBoundingClientRect = () => ({
+        bottom: 1,
+        height: 1,
+        left,
+        right: left + width,
+        top: 0,
+        width,
+        x: left,
+        y: 0,
+        toJSON: () => ({}),
+    });
 };
 
 const createTooltipElements = () => {

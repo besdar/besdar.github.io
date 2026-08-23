@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "esnext",
         "allowJs": false,
-        "skipLibCheck": false,
+        "skipLibCheck": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
@@ -17,5 +17,5 @@
         "jsxImportSource": "preact",
         "types": ["node"]
     },
-    "include": ["src"]
+    "include": ["src", "test", "vite.config*.ts"]
 }

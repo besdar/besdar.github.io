@@ -5,7 +5,7 @@ document.querySelectorAll<HTMLSpanElement>(".tech-stack-item").forEach((tooltipC
         }
 
         const windowPadding = 10;
-        const tooltipElement = (currentTarget as HTMLSpanElement)?.querySelector<HTMLSpanElement>(".tooltip");
+        const tooltipElement = (currentTarget as HTMLSpanElement).querySelector<HTMLSpanElement>(".tooltip");
         if (!tooltipElement) {
             return;
         }
@@ -13,11 +13,11 @@ document.querySelectorAll<HTMLSpanElement>(".tech-stack-item").forEach((tooltipC
         const tooltipCoordinates = tooltipElement.getBoundingClientRect();
 
         if (tooltipCoordinates.x < windowPadding) {
-            tooltipElement.style.left = `${tooltipElement.offsetLeft + windowPadding - tooltipCoordinates.x}px`;
+            tooltipElement.style.left = `${String(tooltipElement.offsetLeft + windowPadding - tooltipCoordinates.x)}px`;
         } else if (tooltipCoordinates.x + tooltipCoordinates.width > window.innerWidth - windowPadding) {
-            tooltipElement.style.left = `${
-                window.innerWidth + tooltipElement.offsetLeft - 2 * windowPadding - tooltipCoordinates.x - tooltipCoordinates.width
-            }px`;
+            tooltipElement.style.left = `${String(
+                window.innerWidth + tooltipElement.offsetLeft - 2 * windowPadding - tooltipCoordinates.x - tooltipCoordinates.width,
+            )}px`;
         }
     });
 });
@@ -29,8 +29,8 @@ if (currentDate.getMonth() === 11 || currentDate.getMonth() < 2) {
         window.onload = resolve;
     });
 
-    import("./snow").then((module) => {
-        promisifiedOnloadEvent.then(() => {
+    void import("./snow").then((module) => {
+        void promisifiedOnloadEvent.then(() => {
             module.initSnow();
         });
     });

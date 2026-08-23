@@ -14,12 +14,7 @@ const profileLinks = [
 ];
 
 export const decodeHtmlEntities = (value) =>
-    value
-        .replaceAll("&amp;", "&")
-        .replaceAll("&lt;", "<")
-        .replaceAll("&gt;", ">")
-        .replaceAll("&quot;", '"')
-        .replaceAll("&#39;", "'");
+    value.replaceAll("&amp;", "&").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&quot;", '"').replaceAll("&#39;", "'");
 
 export const getAttribute = (attributes, name) => attributes.match(new RegExp(`${name}="([^"]*)"`))?.[1];
 
@@ -28,9 +23,7 @@ const parseLocalArray = (source) => Function(`"use strict"; return (${source});`
 export const parseMetadata = (source) => {
     const metadataSource = source.match(/export const metadata = \{([\s\S]*?)\};/)?.[1] ?? "";
 
-    return Object.fromEntries(
-        Array.from(metadataSource.matchAll(/(\w+):\s*"([^"]*)"/g)).map(([, key, value]) => [key, value]),
-    );
+    return Object.fromEntries(Array.from(metadataSource.matchAll(/(\w+):\s*"([^"]*)"/g)).map(([, key, value]) => [key, value]));
 };
 
 export const stripWrappingTags = (value) =>
@@ -39,10 +32,7 @@ export const stripWrappingTags = (value) =>
         .replace(/<\/?p>/g, "\n\n")
         .replace(/<\/?div[^>]*>/g, "\n\n");
 
-export const normalizeInline = (value) =>
-    decodeHtmlEntities(stripWrappingTags(value))
-        .replace(/\s+/g, " ")
-        .trim();
+export const normalizeInline = (value) => decodeHtmlEntities(stripWrappingTags(value)).replace(/\s+/g, " ").trim();
 
 export const renderTimelineHeading = (attributes) => {
     const dates = getAttribute(attributes, "dates");
@@ -52,11 +42,7 @@ export const renderTimelineHeading = (attributes) => {
     const roleUrl = getAttribute(attributes, "roleUrl");
     const subtitle = getAttribute(attributes, "subtitle");
     const heading = roleUrl ? `[${role}](${roleUrl})` : [role, organization].filter(Boolean).join(", ");
-    const details = [
-        dates,
-        organization && organizationUrl ? `[${organization}](${organizationUrl})` : undefined,
-        subtitle,
-    ].filter(Boolean);
+    const details = [dates, organization && organizationUrl ? `[${organization}](${organizationUrl})` : undefined, subtitle].filter(Boolean);
 
     return [`### ${heading}`, ...details].join("\n\n");
 };

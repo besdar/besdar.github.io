@@ -59,7 +59,7 @@ class Snowfall {
     #drawSnowflake(flake: SnowFlake) {
         this.context.beginPath();
         this.context.arc(flake.xpos, flake.ypos, flake.radius, 0, Math.PI * 2);
-        this.context.fillStyle = `hsl(202.33deg 53.09% 84.12% / ${flake.opacity}%)`;
+        this.context.fillStyle = `hsl(202.33deg 53.09% 84.12% / ${String(flake.opacity)}%)`;
         this.context.fill();
     }
 
@@ -125,9 +125,15 @@ export function initSnow() {
 
     window.addEventListener(
         "resize",
-        debounce(() => snowfall.resize(), 150),
+        debounce(() => {
+            snowfall.resize();
+        }, 150),
     );
 
-    window.onbeforeprint = () => snowfall.stop();
-    window.onafterprint = () => snowfall.start();
+    window.onbeforeprint = () => {
+        snowfall.stop();
+    };
+    window.onafterprint = () => {
+        snowfall.start();
+    };
 }

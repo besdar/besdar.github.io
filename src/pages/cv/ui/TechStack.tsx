@@ -18,7 +18,7 @@ export const TechStack = ({ items }: TechStackProps) => {
             <span>Stack:&nbsp;&#8203;</span>
             {items.map(({ description, title }, index) => {
                 const itemText = title + (items.length - 1 !== index ? "," : "");
-                const tooltipId = `tech-stack-tooltip-${tooltipGroupId}-${index}-${getTooltipIdPart(title)}`;
+                const tooltipId = `tech-stack-tooltip-${tooltipGroupId}-${String(index)}-${getTooltipIdPart(title)}`;
 
                 return (
                     <Fragment key={title}>

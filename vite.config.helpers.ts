@@ -32,7 +32,10 @@ export const getCssModuleClassName = (className: string) => {
 export const getCssAssetFileName = (assetInfo: { name?: string; names?: string[]; originalFileNames?: string[] }) => {
     const assetNames = [assetInfo.name, ...(assetInfo.names ?? []), ...(assetInfo.originalFileNames ?? [])].filter(Boolean);
     const styleEntryFile = Object.keys(styleEntryFiles).find((styleName) =>
-        assetNames.some((assetName) => assetName?.endsWith(`${styleName}.module.css`) || assetName === `${styleName}.css` || assetName === `style-${styleName}.css`),
+        assetNames.some(
+            (assetName) =>
+                (assetName?.endsWith(`${styleName}.module.css`) ?? false) || assetName === `${styleName}.css` || assetName === `style-${styleName}.css`,
+        ),
     );
 
     if (styleEntryFile) {
