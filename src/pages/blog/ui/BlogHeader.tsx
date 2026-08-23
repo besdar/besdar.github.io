@@ -1,4 +1,4 @@
-import { SiteNavLink, headerStyles } from "../../../shared/ui";
+import { SiteNavLink, ThemeSwitcher, headerStyles } from "../../../shared/ui";
 
 interface BlogHeaderProps {
     blogHref: string;
@@ -16,6 +16,7 @@ export const BlogHeader = ({ blogHref, cvHref }: BlogHeaderProps) => (
         <nav aria-label="Site navigation" className={headerStyles["site-nav"]}>
             <SiteNavLink href={cvHref}>CV</SiteNavLink>
             <SiteNavLink href={blogHref}>Articles</SiteNavLink>
+            <ThemeSwitcher />
         </nav>
     </header>
 );

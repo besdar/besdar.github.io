@@ -12,7 +12,7 @@
         "build:browser": "vite build",
         "build:all": "npm run build:cv:markdown && npm run build:site && npm run build:browser",
         "deploy": "gh-pages -d dist",
-        "check:js": "eslint --cache .",
+        "check:js": "eslint .",
         "check:format": "prettier --check .",
         "check:styles": "stylelint \"./src/**/*.css\"",
         "check:types": "tsc --noEmit",

@@ -41,6 +41,19 @@
     font-style: normal;
 }
 
+.theme-switcher {
+    border: 0;
+    padding: 0;
+    color: var(--highlight-color);
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+}
+
+.theme-switcher:hover {
+    color: var(--hover-color);
+}
+
 @media screen and (width <= 700px), print {
     .body-header {
         flex-direction: column;

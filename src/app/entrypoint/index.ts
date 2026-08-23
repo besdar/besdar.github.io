@@ -1,3 +1,5 @@
+import { bindThemeSwitcher } from "./theme";
+
 export const clampTooltipToViewport = (tooltipContainerElement: EventTarget | null) => {
     const windowPadding = 10;
     const tooltipPopupSelector = "[data-tooltip-popup]";
@@ -44,6 +46,7 @@ export const shouldEnableSeasonalSnow = (date: Date, reducedMotionMedia: Pick<Me
     (date.getMonth() === 11 || date.getMonth() < 2) && !reducedMotionMedia.matches;
 
 export const initEntrypoint = () => {
+    bindThemeSwitcher();
     bindTooltipViewportClamp();
 
     const currentDate = new Date();

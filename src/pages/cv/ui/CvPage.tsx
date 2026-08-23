@@ -1,6 +1,6 @@
 import cn from "classnames";
 import CvContent, { metadata as cvMetadata } from "../content/cv.mdx";
-import { SiteNavLink, baseStyles, headerStyles } from "../../../shared/ui";
+import { SiteNavLink, ThemeSwitcher, baseStyles, headerStyles } from "../../../shared/ui";
 import cvPageStyles from "./cvPage.module.css";
 import { cvComponents } from "../model/cv-components";
 import { Contacts } from "./Contacts";
@@ -17,6 +17,7 @@ export const CvPage = () => (
                 <Contacts address={cvMetadata.address} email={cvMetadata.email} website={cvMetadata.website} />
                 <nav aria-label="Site navigation" className={cn(headerStyles["site-nav"], baseStyles["not-printed"])}>
                     <SiteNavLink href="./blog/">Articles</SiteNavLink>
+                    <ThemeSwitcher />
                 </nav>
             </div>
         </header>
